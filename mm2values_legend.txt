@@ -1,0 +1,546 @@
+Name: Latte Gun
+Value: 120
+Range: N/A
+Demand: 2.5
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Latte Knife
+Value: 120
+Range: N/A
+Demand: 2.5
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Cotton Candy
+Value: 42
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: JD
+Value: 40
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Spectral Knife
+Value: 20
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Traveler Gun
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Witched
+Value: 15
+Range: N/A
+Demand: 1.5
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Witched
+Value: 15
+Range: N/A
+Demand: 1.5
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Beach
+Value: 15
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Vampire Gun
+Value: 12
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Aurora Gun
+Value: 10
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Skulls
+Value: 10
+Range: N/A
+Demand: 1.5
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Cavern Knife
+Value: 10
+Range: N/A
+Demand: 1.5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Broken
+Value: 7
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Icedriller
+Value: 6
+Range: N/A
+Demand: 1
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Arctic Gun
+Value: 6
+Range: N/A
+Demand: 1.5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Green Elite
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Ghost Knife
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Santas Spirit
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Santas Magic
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Scratch
+Value: 4
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Blue Elite
+Value: 4
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Blue Scratch
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Blue Scratch
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Frostfade Knife
+Value: 2
+Range: N/A
+Demand: 1.5
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Icecracker
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Web
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Rupture
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Tree (gun)
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Tree (knife)
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Ginger Gun
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Red Fire
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Vampire Knife
+Value: 2
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Bunnies
+Value: 2
+Range: 1-3
+Demand: 1.5
+Rarity: 2.5
+Stability: Fluctuating
+----------------------------------------
+Name: Energized Gun
+Value: 2
+Range: N/A
+Demand: 4
+Rarity: 4
+Stability: N/A
+----------------------------------------
+Name: Frozen Knife
+Value: 2
+Range: 1-3
+Demand: 2
+Rarity: 2
+Stability: Fluctuating
+----------------------------------------
+Name: Traveler Knife
+Value: 2
+Range: N/A
+Demand: 2.5
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Cursed
+Value: 1
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ghost Gun
+Value: 1
+Range: N/A
+Demand: 1
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Nightsky
+Value: 1
+Range: N/A
+Demand: 1.5
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Aquarium Knife
+Value: 1
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Aquarium Gun
+Value: 1
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Energized Knife
+Value: 1
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: N/A
+----------------------------------------
+Name: Cavern Gun
+Value: 1
+Range: N/A
+Demand: 1
+Rarity: 2.5
+Stability: Stable
+----------------------------------------
+Name: Predator (knife)
+Value: 4
+Range: N/A
+Demand: 2.5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Predator (knife)
+Value: 4
+Range: N/A
+Demand: 2.5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Emerald
+Value: 4
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Overseer (gun)
+Value: 4
+Range: N/A
+Demand: 2.5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Spectral Gun
+Value: 4
+Range: N/A
+Demand: 2.5
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chromatic Knife
+Value: 4
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Ripper Knife
+Value: 4
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Frostfade Gun
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Aurora Knife
+Value: 3
+Range: N/A
+Demand: 2.5
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Green Fire
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Sparkle
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Midnight
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Arctic Knife
+Value: 3
+Range: N/A
+Demand: 3
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Frozen Gun
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Fluctuating
+----------------------------------------
+Name: Chromatic Gun
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ripper Gun
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Palms Gun
+Value: 2
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ginger Knife
+Value: 2
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Nightstar
+Value: 2
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Cursed
+Value: 1
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Palms Knife
+Value: 4
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Palms Knife
+Value: 4
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Overseer (knife)
+Value: 4
+Range: N/A
+Demand: 3
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Predator (gun)
+Value: 4
+Range: N/A
+Demand: 3
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Elite
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Shiny
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Fusion
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Fade
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Splash
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Universe
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Plasmite
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Viper
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Rune
+Value: 3
+Range: N/A
+Demand: 2
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Splash Gun
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
