@@ -1,0 +1,1946 @@
+Name: Travelers Gun
+Value: 4100
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Evergun
+Value: 3550
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Constellation
+Value: 3000
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Evergreen
+Value: 2700
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Turkey
+Value: 1825
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Vampires Gun
+Value: 1800
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Alienbeam
+Value: 1350
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Darkshot
+Value: 1140
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Darksword
+Value: 1120
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Blossom
+Value: 1040
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Sakura
+Value: 1030
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Bauble
+Value: 925
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Raygun
+Value: 900
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Sunrise
+Value: 625
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Snowcannon
+Value: 400
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Soul
+Value: 310
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Rainbow Gun
+Value: 300
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Spirit
+Value: 300
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Rainbow
+Value: 290
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Sunset
+Value: 275
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Flora
+Value: 265
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Heart Wand
+Value: 260
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
+Name: Treat
+Value: 255
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Fluctuating
+----------------------------------------
+Name: Bloom
+Value: 255
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Sweet
+Value: 250
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Fluctuating
+----------------------------------------
+Name: Flowerwood Gun
+Value: 205
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Flowerwood
+Value: 200
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Snow Dagger
+Value: 190
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Bat
+Value: 180
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Xenoknife
+Value: 175
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Xenoshot
+Value: 175
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Ocean
+Value: 170
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Waves
+Value: 165
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Blizzard
+Value: 150
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Snowstorm
+Value: 150
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Watergun
+Value: 120
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Borealis
+Value: 105
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Candy
+Value: 105
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Heartblade
+Value: 105
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Australis
+Value: 100
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Pearlshine
+Value: 55
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Pearl
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Luger
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Sugar
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Candleflame
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Elderwood Blade
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Makeshift
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Phantom
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Spectre
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Darkbringer
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Elderwood Revolver
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Iceblaster
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Red Luger
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Lightbringer
+Value: 40
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Swirly Gun
+Value: 35
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Ornament Godly
+Value: 35
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
+Name: Green Luger
+Value: 30
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Laser
+Value: 27
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Amerilaser
+Value: 25
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Hallowgun
+Value: 25
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Icebeam
+Value: 25
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Plasmabeam
+Value: 25
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Swirly Blade
+Value: 23
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Iceflake
+Value: 23
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Plasmablade
+Value: 23
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Shark
+Value: 23
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Nightblade
+Value: 22
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Blaster
+Value: 20
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ginger Luger
+Value: 20
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Pixel
+Value: 20
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Cookiecane
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Gingermint
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Lugercane
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Minty
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Old Glory
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Slasher
+Value: 18
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: BattleAxe II
+Value: 18
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternalcane
+Value: 17
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Jinglegun
+Value: 17
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Virtual
+Value: 17
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Gemstone
+Value: 17
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Gingerblade
+Value: 17
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Nebula
+Value: 15
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Vampires Edge
+Value: 15
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Deathshard
+Value: 15
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: BattleAxe
+Value: 12
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Bioblade
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chill
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Clockwork
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternal III
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternal IV
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Fang
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Frostsaber
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Heat
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Spider
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Tides
+Value: 10
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternal
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternal II
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Hallows Blade
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Hallows Edge
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Handsaw
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Xmas
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Boneblade
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Frostbite
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ghostblade
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ice Dragon
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Ice Shard
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Prismatic
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Pumpking
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Saw
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eggblade
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Flames
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Snowflake
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Winters Edge
+Value: 5
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Peppermint
+Value: 4
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Cookieblade
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Blue Seer
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Purple Seer
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Red Seer
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Seer
+Value: 3
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Orange Seer
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Yellow Seer
+Value: 2
+Range: N/A
+Demand: 1
+Rarity: 1
+Stability: Stable
+----------------------------------------
+Name: Chroma Travelers Gun
+Value: 225000
+Range: N/A
+Demand: 9
+Rarity: 9
+Stability: Stable
+----------------------------------------
+Name: Chroma Evergun
+Value: 102000
+Range: N/A
+Demand: 8
+Rarity: 7
+Stability: Overpaid For
+----------------------------------------
+Name: Chroma Evergreen
+Value: 70000
+Range: N/A
+Demand: 7
+Rarity: 6
+Stability: Doing Well
+----------------------------------------
+Name: Chroma Bauble
+Value: 47500
+Range: N/A
+Demand: 7
+Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Chroma Vampires Gun
+Value: 38000
+Range: N/A
+Demand: 7
+Rarity: 6
+Stability: Stable
+----------------------------------------
+Name: Chroma Alienbeam
+Value: 35000
+Range: N/A
+Demand: 7
+Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Chroma Constellation
+Value: 35000
+Range: N/A
+Demand: 7
+Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Chroma Raygun
+Value: 17500
+Range: N/A
+Demand: 7
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Chroma Blizzard
+Value: 11500
+Range: N/A
+Demand: 5
+Rarity: 5
+Stability: Decreasing
+----------------------------------------
+Name: Chroma Sunrise
+Value: 10500
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Chroma Treat
+Value: 10000
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Snowcannon
+Value: 8750
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Doing Well
+----------------------------------------
+Name: Chroma Sweet
+Value: 8250
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Heart Wand
+Value: 7500
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Snowstorm
+Value: 7250
+Range: N/A
+Demand: 5
+Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Chroma Sunset
+Value: 6200
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Chroma Snow Dagger
+Value: 4250
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Ornament
+Value: 3500
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Watergun
+Value: 3400
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Chroma Darkbringer
+Value: 90
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Lightbringer
+Value: 85
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Candleflame
+Value: 65
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Chroma Luger
+Value: 57
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Elderwood Blade
+Value: 55
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Chroma Swirly Gun
+Value: 55
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Chroma Cookiecane
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Chroma Laser
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Deathshard
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Slasher
+Value: 45
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Shark
+Value: 43
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Fang
+Value: 42
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Gemstone
+Value: 38
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Heat
+Value: 38
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Gingerblade
+Value: 37
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Saw
+Value: 37
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Seer
+Value: 37
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Tides
+Value: 35
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Boneblade
+Value: 30
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Chroma Fire Bat
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Fire Bear
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Fire Bunny
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Fire Cat
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Fire Dog
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Fire Fox
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Fire Pig
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 4
+Stability: Underpaid For
+----------------------------------------
+Name: Nik's Scythe
+Value: N/A
+Range: N/A
+Demand: 11
+Rarity: 11
+Stability: Overpaid For
+----------------------------------------
+Name: Gingerscope
+Value: 17750
+Range: N/A
+Demand: 7
+Rarity: 4
+Stability: Doing Well
+----------------------------------------
+Name: Travelers Axe
+Value: 7700
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Celestial
+Value: 1775
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Vampires Axe
+Value: 925
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Harvester
+Value: 375
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
+Name: Icepiercer
+Value: 275
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
+Name: Icebreaker
+Value: 105
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Swirly Axe
+Value: 52
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Batwing
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Elderwood Scythe
+Value: 50
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Hallowscythe
+Value: 35
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Logchopper
+Value: 20
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Icewing
+Value: 15
+Range: N/A
+Demand: 2
+Rarity: 1
+Stability: Fluctuating
+----------------------------------------
+Name: Corrupt
+Value: 650
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Slouses Clown Gun
+Value: N/A
+Range: N/A
+Demand: 11
+Rarity: 11
+Stability: N/A
+----------------------------------------
+Name: Slouses Clown Knife
+Value: N/A
+Range: N/A
+Demand: 11
+Rarity: 11
+Stability: N/A
+----------------------------------------
+Name: Sharkseeker
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: 6
+Stability: N/A
+----------------------------------------
+Name: Dartbringer
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: 7
+Stability: N/A
+----------------------------------------
+Name: Gold Candy
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Hallow
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Sugar
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Elderwood Revolver
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Minty
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold_Logchopper
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Vamp's Edge
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Iceblaster
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Icebreaker
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Harvester
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Swirly Gun
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Swirly Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Elderwood Blade
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Icecrusher
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Icepiercer
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Travelers
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Gingerscythe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Gingerscope
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Vampires Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Constellation
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Celestial
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Synthwave
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Gold Placeholder
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Candy
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Hallow
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Sugar
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Elderwood Revolver
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Minty
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Logchopper
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Vamp's Edge
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Iceblaster
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Icebreaker
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Harvester
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Swirly Gun
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Swirly Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Elderwood Blade
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Icecrusher
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Icepiercer
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Travelers
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Gingerscythe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Gingerscope
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Vampires Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Constellation
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Celestial
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Synthwave
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Silver Placeholder
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Candy
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Hallow
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Sugar
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Elderwood Revolver
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Minty
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Logchopper
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Vamp's Edge
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Iceblaster
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Icebreaker
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Harvester
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Swirly Gun
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Swirly Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Elderwood Blade
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Icecrusher
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Icepiercer
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Travelers
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Gingerscythe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Gingerscope
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Vampires Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Constellation
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Celestial
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Synthwave
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Bronze Placeholder
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Candy
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Hallow
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Sugar
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Elderwood Revolver
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Minty
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Logchopper
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Vamp's Edge
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Iceblaster
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Icebreaker
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Harvester
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Swirly Gun
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Swirly Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Elderwood
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Icecrusher
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Icepiercer
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Travelers
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Gingerscythe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Gingerscope
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Purple Vampires Axe
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Constellation
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Red Celestial
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Blue Synthwave
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
+Name: Top 100 Placeholder
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: N/A
+----------------------------------------
