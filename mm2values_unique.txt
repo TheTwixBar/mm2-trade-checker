@@ -1,7 +1,0 @@
-Name: Corrupt
-Value: 825
-Range: N/A
-Demand: 4
-Rarity: 2.5
-Stability: Stable
-----------------------------------------
