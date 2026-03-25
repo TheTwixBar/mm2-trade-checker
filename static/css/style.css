@@ -2,22 +2,22 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #f5f0e8;
-  --bg2:       #eee8dc;
-  --bg3:       #e8e0d0;
-  --border:    #c8bfaa;
-  --border-dark: #a09080;
-  --accent:    #2a2a2a;
-  --link:      #5a3e8a;
-  --win:       #2d6a2d;
-  --lose:      #8a2020;
-  --fair:      #7a6000;
-  --text:      #1a1a1a;
-  --text-dim:  #7a6e60;
-  --text-mid:  #4a4038;
-  --font-body: 'Georgia', 'Times New Roman', serif;
-  --font-mono: 'Courier New', 'Courier', monospace;
-  --font-ui:   'Verdana', 'Geneva', sans-serif;
+  --bg:          #fffdf7;
+  --bg2:         #f0ede4;
+  --bg3:         #eee;
+  --border:      #ccc;
+  --border-dark: #aaa;
+  --accent:      #111;
+  --link:        #0000ee;
+  --win:         #2d6a2d;
+  --lose:        #aa0000;
+  --fair:        #7a6000;
+  --text:        #222;
+  --text-dim:    #888;
+  --text-mid:    #555;
+  --font-body:   Georgia, 'Times New Roman', serif;
+  --font-mono:   'Courier New', Courier, monospace;
+  --font-ui:     Verdana, Geneva, sans-serif;
 }
 
 body {
