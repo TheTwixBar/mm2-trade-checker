@@ -98,7 +98,8 @@ main {
 }
 
 .tab { display: none; }
-.tab.active { display: block; }
+.tab.active { display: block; animation: fadein 0.35s ease; }
+@keyframes fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 
 /* ── Trade Layout ─────────────────────────────────────────── */
 .trade-section-label {
@@ -190,6 +191,11 @@ main {
   font-size: 0.75rem;
   padding: 2px 7px;
   text-transform: capitalize;
+  animation: tagpop 0.15s ease;
+}
+@keyframes tagpop {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .tag-remove {
@@ -250,9 +256,10 @@ main {
   text-transform: uppercase;
   padding: 9px 28px;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, transform 0.1s;
 }
-#check-btn:hover { opacity: 0.82; }
+#check-btn:hover  { opacity: 0.82; }
+#check-btn:active { transform: scale(0.97); }
 
 .clear-btn {
   background: none;
@@ -285,18 +292,18 @@ main {
   border-top: 2px solid var(--accent);
   padding-top: 20px;
   margin-top: 4px;
+  animation: fadein 0.35s ease;
 }
 
 .result-verdict {
   font-family: var(--font-body);
   font-size: 1.6rem;
-  font-style: italic;
   margin-bottom: 18px;
   letter-spacing: 0.01em;
 }
-.verdict-win  { color: var(--win); }
-.verdict-lose { color: var(--lose); }
-.verdict-fair { color: var(--fair); }
+.verdict-win  { color: var(--win);  font-weight: bold; font-style: normal; }
+.verdict-lose { color: var(--lose); font-style: italic; }
+.verdict-fair { color: var(--fair); font-style: italic; }
 
 /* result tables */
 .result-grid {
@@ -345,7 +352,8 @@ main {
   margin-top: 4px;
   padding-top: 4px;
 }
-.diff-row .value { color: var(--text-dim); }
+.diff-row .label { font-weight: bold; color: var(--text-mid) !important; }
+.diff-row .value { color: var(--text-dim); font-weight: bold; }
 .diff-pos { color: var(--win)  !important; }
 .diff-neg { color: var(--lose) !important; }
 
