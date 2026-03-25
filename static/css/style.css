@@ -1046,3 +1046,72 @@ footer {
   letter-spacing: 0.04em;
 }
 .qty-done:hover { opacity: 0.85; }
+
+/* ── Inventory import/export string ─────────────────────────── */
+.inv-string-row {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  background: var(--bg2);
+}
+
+.inv-string-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.inv-string-desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.inv-string-controls {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.inv-export-box {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 6px 8px;
+  border: 1px solid var(--border-dark);
+  background: #fff;
+  color: var(--text);
+  resize: none;
+  outline: none;
+  line-height: 1.45;
+  min-height: 46px;
+}
+.inv-export-box:focus { border-color: var(--accent); }
+
+.inv-string-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.inv-str-btn {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border: 1px solid var(--border-dark);
+  background: #fff;
+  cursor: pointer;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.inv-str-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
