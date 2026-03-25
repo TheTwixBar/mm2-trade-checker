@@ -167,7 +167,7 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   }
 
   // Verdict
-  const labels = { win: "WIN ✅", lose: "LOSE ❌", fair: "FAIR ➖" };
+  const labels = { win: "WIN", lose: "LOSE", fair: "FAIR" };
   const verdict = document.getElementById("result-verdict");
   verdict.textContent = labels[data.result] || data.result.toUpperCase();
   verdict.className = "result-verdict verdict-" + data.result;
@@ -202,9 +202,9 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   const danger = new Set(["Underpaid For", "Decreasing", "Losing Hype", "Fluctuating"]);
   const theirDanger = data.their_stability.filter(s => danger.has(s));
   const yourDanger  = data.your_stability.filter(s  => danger.has(s));
-  if (theirDanger.length) warns.push(`⚠️ You'd receive: ${theirDanger.join(", ")}`);
-  if (yourDanger.length)  warns.push(`⚠️ You'd give: ${yourDanger.join(", ")}`);
-  if (data.bundle_penalty) warns.push("⚠️ Bundle penalty applied — giving multiple items reduces your AI score slightly.");
+  if (theirDanger.length) warns.push(`Note: you'd receive ${theirDanger.join(", ")}`);
+  if (yourDanger.length)  warns.push(`Note: you'd give ${yourDanger.join(", ")}`);
+  if (data.bundle_penalty) warns.push("Bundle penalty applied — giving multiple items reduces your AI score slightly.");
   warnEl.innerHTML = warns.map(w => `<div class="warn-item">${w}</div>`).join("");
 
   panel.classList.remove("hidden");
