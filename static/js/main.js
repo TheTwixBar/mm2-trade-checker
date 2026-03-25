@@ -227,7 +227,7 @@ const STAB_WARN = {
   "Underpaid For": "people often trade this below its listed value, so it may be hard to get fair value back out of it",
   "Decreasing":    "this item is actively losing value and may be worth less by the time you try to retrade it",
   "Losing Hype":   "demand is fading on this item, which could make it harder to move later",
-  "Fluctuating":   "this item's price is unstable and hard to pin down — trades involving it are riskier",
+  "Fluctuating":   "this item's price is unstable and hard to pin down, trades involving it are riskier",
 };
 
 // ── Check trade ───────────────────────────────────────────────
@@ -266,9 +266,9 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   const warns = [];
   const danger = new Set(["Fluctuating","Losing Hype","Underpaid For","Decreasing"]);
   data.their_stability.filter(s => danger.has(s)).forEach(s => {
-    warns.push(`⚠ You'd receive a <strong>${s}</strong> item — ${STAB_WARN[s] || s}.`);
+    warns.push(`⚠ You'd receive a <strong>${s}</strong> item: ${STAB_WARN[s] || s}.`);
   });
-  if (data.bundle_penalty) warns.push("⚠ Bundle penalty applied — giving multiple items reduces your AI score slightly.");
+  if (data.bundle_penalty) warns.push("⚠ Bundle penalty applied: giving multiple items reduces your AI score slightly.");
   document.getElementById("r-warnings").innerHTML = warns.map(w => `<div class="warn-item">${w}</div>`).join("");
   panel.classList.remove("hidden");
 });
@@ -391,7 +391,7 @@ document.getElementById("inv-save-btn").addEventListener("click", () => {
   const total = items.reduce((s, e) => s + e.qty, 0);
   status.classList.remove("hidden");
   status.classList.add("status-ok");
-  status.textContent = `Saved — ${items.length} item type${items.length !== 1 ? "s" : ""}, ${total} total.`;
+  status.textContent = `Saved: ${items.length} item type${items.length !== 1 ? "s" : ""}, ${total} total.`;
   setTimeout(() => status.classList.add("hidden"), 3500);
 });
 
@@ -438,10 +438,23 @@ document.getElementById("inv-copy-btn").addEventListener("click", () => {
   setTimeout(() => btn.textContent = "copy", 1800);
 });
 
-// ── Offer generator ───────────────────────────────────────────
+// ── Offer generator (multi-item tag input) ────────────────────
+const offerTargetInput = new TagInput("offer-tags", { allowDuplicates: true, autoPopup: false });
 const offerInput   = document.getElementById("offer-input");
 const offerSuggest = document.getElementById("offer-suggestions");
 let offerActiveIdx = -1;
+
+function addOfferTag() {
+  const val = offerInput.value.trim().toLowerCase();
+  if (!val) return;
+  const match = allItems.find(i => i === val) || allItems.find(i => i.includes(val));
+  if (match) {
+    offerTargetInput.addTag(match);
+    offerInput.value = "";
+    offerSuggest.classList.remove("open");
+  }
+}
+
 offerInput.addEventListener("input", () => {
   const q = offerInput.value.trim().toLowerCase();
   if (!q) { offerSuggest.classList.remove("open"); return; }
@@ -450,7 +463,12 @@ offerInput.addEventListener("input", () => {
   offerSuggest.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
   offerSuggest.classList.add("open"); offerActiveIdx = -1;
   offerSuggest.querySelectorAll("li").forEach(li => {
-    li.addEventListener("mousedown", e => { e.preventDefault(); offerInput.value = li.textContent; offerSuggest.classList.remove("open"); });
+    li.addEventListener("mousedown", e => {
+      e.preventDefault();
+      offerTargetInput.addTag(li.textContent);
+      offerInput.value = "";
+      offerSuggest.classList.remove("open");
+    });
   });
 });
 offerInput.addEventListener("blur", () => setTimeout(() => offerSuggest.classList.remove("open"), 150));
@@ -458,18 +476,30 @@ offerInput.addEventListener("keydown", e => {
   const items = offerSuggest.querySelectorAll("li");
   if (e.key === "ArrowDown") { e.preventDefault(); offerActiveIdx = Math.min(offerActiveIdx+1, items.length-1); }
   else if (e.key === "ArrowUp") { e.preventDefault(); offerActiveIdx = Math.max(offerActiveIdx-1, -1); }
-  else if (e.key === "Enter") { e.preventDefault(); generateOffer(); return; }
+  else if (e.key === "Enter") {
+    e.preventDefault();
+    if (offerActiveIdx >= 0 && items[offerActiveIdx]) {
+      offerTargetInput.addTag(items[offerActiveIdx].textContent);
+      offerInput.value = "";
+      offerSuggest.classList.remove("open");
+    } else if (offerInput.value.trim()) {
+      addOfferTag();
+    } else {
+      generateOffer();
+    }
+    return;
+  }
   items.forEach((li, i) => li.classList.toggle("active", i === offerActiveIdx));
 });
 document.getElementById("offer-btn").addEventListener("click", generateOffer);
 
 async function generateOffer() {
-  const target = offerInput.value.trim().toLowerCase();
+  const targets = offerTargetInput.getTags();
   const errEl  = document.getElementById("offer-error");
   const panel  = document.getElementById("offer-panel");
   errEl.classList.add("hidden"); panel.classList.add("hidden");
-  if (!target) {
-    errEl.textContent = "Please enter the item you want to get.";
+  if (!targets.length) {
+    errEl.textContent = "Please add at least one item you want to get.";
     errEl.classList.remove("hidden"); return;
   }
   const flat = invInput.getTags();
@@ -479,27 +509,33 @@ async function generateOffer() {
   }
   const res = await fetch("/api/suggest-offer", {
     method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ target, inventory: flat }),
+    body: JSON.stringify({ target: targets[0], targets, inventory: flat }),
   });
   const data = await res.json();
   if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
 
-  document.getElementById("op-target-name").textContent = data.target_name;
+  const targetNames = data.target_names || [data.target_name];
+  document.getElementById("op-target-name").textContent = targetNames.join(", ");
   const offerCounts = {};
   data.offer_items.forEach(n => { offerCounts[n] = (offerCounts[n] || 0) + 1; });
   document.getElementById("op-offer-items").innerHTML = Object.entries(offerCounts)
-    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " ×"+cnt : ""}</span>`).join("");
+    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " x"+cnt : ""}</span>`).join("");
   document.getElementById("op-offer-ai").textContent  = data.offer_ai;
   document.getElementById("op-offer-raw").textContent = data.offer_raw;
-  document.getElementById("op-target-pill").textContent = data.target_name;
+
+  const targetItemsEl = document.getElementById("op-target-items");
+  targetItemsEl.innerHTML = targetNames.map(n => `<span class="offer-item-pill">${n}</span>`).join("");
+  const singlePill = document.getElementById("op-target-pill");
+  if (singlePill) singlePill.textContent = "";
+
   document.getElementById("op-target-ai").textContent   = data.target_ai;
   document.getElementById("op-target-raw").textContent  = data.target_raw;
 
   const verdictEl = document.getElementById("op-verdict");
-  verdictEl.textContent = { win:"WIN ✓", lose:"LOSE", fair:"FAIR" }[data.verdict] || data.verdict.toUpperCase();
+  verdictEl.textContent = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.verdict] || data.verdict.toUpperCase();
   verdictEl.className = "offer-verdict-badge verdict-" + data.verdict;
   const gainEl = document.getElementById("op-gain");
   gainEl.textContent = data.your_gain > 0 ? `(+${data.your_gain} AI in your favor)`
-    : data.your_gain < 0 ? `(${data.your_gain} AI — closest possible from your inventory)` : "";
+    : data.your_gain < 0 ? `(${data.your_gain} AI, closest possible from your inventory)` : "";
   panel.classList.remove("hidden");
 }
