@@ -4,19 +4,21 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MM2 Trade Checker</title>
-  <link rel="icon" type="image/x-icon" href="https://i.imgur.com/5idli1e.png">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css"/>
 </head>
 <body>
-
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
+  <div class="bg-texture"></div>
+  <div class="bg-scratches"></div>
+  <div class="bg-vignette"></div>
+  <div class="bg-hotspot"></div>
 
   <header>
     <div class="logo">
       <span class="logo-mm2">MM2</span>
+      <span class="logo-sep"></span>
       <span class="logo-trade">Trade Checker</span>
     </div>
     <nav>
@@ -26,121 +28,76 @@
   </header>
 
   <main>
-
     <!-- ── TRADE TAB ── -->
     <section class="tab active" id="tab-trade">
       <div class="card-row">
-
         <div class="trade-card yours">
-          <div class="card-label">YOUR ITEMS</div>
+          <div class="card-label">Your Items</div>
           <div class="tag-input-wrapper" id="yours-tags">
             <input type="text" id="yours-input" placeholder="Type item name..." autocomplete="off"/>
           </div>
           <ul class="suggestions" id="yours-suggestions"></ul>
         </div>
-
         <div class="vs-col">
-          <div class="vs-badge">VS</div>
+          <div class="vs-badge"><span>VS</span></div>
         </div>
-
         <div class="trade-card theirs">
-          <div class="card-label">THEIR ITEMS</div>
+          <div class="card-label">Their Items</div>
           <div class="tag-input-wrapper" id="theirs-tags">
             <input type="text" id="theirs-input" placeholder="Type item name..." autocomplete="off"/>
           </div>
           <ul class="suggestions" id="theirs-suggestions"></ul>
         </div>
-
       </div>
 
       <div class="check-row">
-        <button id="check-btn">CHECK TRADE</button>
-        <button id="clear-btn" class="clear-btn">CLEAR</button>
+        <button id="check-btn">Check Trade</button>
+        <button id="clear-btn" class="clear-btn">Clear</button>
       </div>
 
       <div id="trade-error" class="error-msg hidden"></div>
 
       <div id="result-panel" class="result-panel hidden">
         <div class="result-verdict" id="result-verdict"></div>
-
-        <div class="result-grid">
-          <div class="stat-block">
-            <div class="stat-title">MM2 VALUE</div>
-            <div class="stat-row">
-              <span class="label">You</span>
-              <span class="value" id="r-your-raw"></span>
+        <div class="result-body">
+          <div class="result-grid">
+            <div class="stat-block">
+              <div class="stat-title">MM2 Value</div>
+              <div class="stat-row"><span class="label">You</span><span class="value" id="r-your-raw"></span></div>
+              <div class="stat-row"><span class="label">Them</span><span class="value" id="r-their-raw"></span></div>
+              <div class="stat-row diff-row"><span class="label">Diff</span><span class="value" id="r-raw-diff"></span></div>
             </div>
-            <div class="stat-row">
-              <span class="label">Them</span>
-              <span class="value" id="r-their-raw"></span>
+            <div class="stat-block">
+              <div class="stat-title">AI Score</div>
+              <div class="stat-row"><span class="label">You</span><span class="value" id="r-your-ai"></span></div>
+              <div class="stat-row"><span class="label">Them</span><span class="value" id="r-their-ai"></span></div>
+              <div class="stat-row diff-row"><span class="label">Diff</span><span class="value" id="r-ai-diff"></span></div>
             </div>
-            <div class="stat-row diff-row">
-              <span class="label">Diff</span>
-              <span class="value" id="r-raw-diff"></span>
+            <div class="stat-block">
+              <div class="stat-title">Demand</div>
+              <div class="stat-row"><span class="label">You</span><span class="value" id="r-your-demand"></span></div>
+              <div class="stat-row"><span class="label">Them</span><span class="value" id="r-their-demand"></span></div>
+              <div class="stat-row diff-row"><span class="label">Diff</span><span class="value" id="r-demand-diff"></span></div>
             </div>
-          </div>
-
-          <div class="stat-block">
-            <div class="stat-title">AI SCORE</div>
-            <div class="stat-row">
-              <span class="label">You</span>
-              <span class="value" id="r-your-ai"></span>
-            </div>
-            <div class="stat-row">
-              <span class="label">Them</span>
-              <span class="value" id="r-their-ai"></span>
-            </div>
-            <div class="stat-row diff-row">
-              <span class="label">Diff</span>
-              <span class="value" id="r-ai-diff"></span>
+            <div class="stat-block">
+              <div class="stat-title">Rarity</div>
+              <div class="stat-row"><span class="label">You</span><span class="value" id="r-your-rarity"></span></div>
+              <div class="stat-row"><span class="label">Them</span><span class="value" id="r-their-rarity"></span></div>
+              <div class="stat-row diff-row"><span class="label">Diff</span><span class="value" id="r-rarity-diff"></span></div>
             </div>
           </div>
-
-          <div class="stat-block">
-            <div class="stat-title">DEMAND</div>
-            <div class="stat-row">
-              <span class="label">You</span>
-              <span class="value" id="r-your-demand"></span>
+          <div class="stability-row">
+            <div class="stab-block">
+              <div class="stab-label">Your Stability</div>
+              <div id="r-your-stab" class="stab-tags"></div>
             </div>
-            <div class="stat-row">
-              <span class="label">Them</span>
-              <span class="value" id="r-their-demand"></span>
-            </div>
-            <div class="stat-row diff-row">
-              <span class="label">Diff</span>
-              <span class="value" id="r-demand-diff"></span>
+            <div class="stab-block">
+              <div class="stab-label">Their Stability</div>
+              <div id="r-their-stab" class="stab-tags"></div>
             </div>
           </div>
-
-          <div class="stat-block">
-            <div class="stat-title">RARITY</div>
-            <div class="stat-row">
-              <span class="label">You</span>
-              <span class="value" id="r-your-rarity"></span>
-            </div>
-            <div class="stat-row">
-              <span class="label">Them</span>
-              <span class="value" id="r-their-rarity"></span>
-            </div>
-            <div class="stat-row diff-row">
-              <span class="label">Diff</span>
-              <span class="value" id="r-rarity-diff"></span>
-            </div>
-          </div>
+          <div id="r-warnings" class="warnings"></div>
         </div>
-
-        <div class="stability-row">
-          <div class="stab-block">
-            <div class="stab-label">YOUR STABILITY</div>
-            <div id="r-your-stab" class="stab-tags"></div>
-          </div>
-          <div class="stab-block">
-            <div class="stab-label">THEIR STABILITY</div>
-            <div id="r-their-stab" class="stab-tags"></div>
-          </div>
-        </div>
-
-        <div id="r-warnings" class="warnings"></div>
       </div>
     </section>
 
@@ -151,47 +108,24 @@
           <input type="text" id="stats-input" placeholder="Search for an item..." autocomplete="off"/>
           <ul class="suggestions" id="stats-suggestions"></ul>
         </div>
-        <button id="stats-btn">LOOK UP</button>
+        <button id="stats-btn">Look Up</button>
       </div>
-
       <div id="stats-error" class="error-msg hidden"></div>
-
       <div id="stats-panel" class="stats-panel hidden">
         <div class="stats-name" id="s-name"></div>
         <div class="stats-grid">
-          <div class="stats-tile">
-            <div class="tile-label">VALUE</div>
-            <div class="tile-value" id="s-value"></div>
-          </div>
-          <div class="stats-tile">
-            <div class="tile-label">RANGE</div>
-            <div class="tile-value" id="s-range"></div>
-          </div>
-          <div class="stats-tile">
-            <div class="tile-label">DEMAND</div>
-            <div class="tile-value" id="s-demand"></div>
-          </div>
-          <div class="stats-tile">
-            <div class="tile-label">RARITY</div>
-            <div class="tile-value" id="s-rarity"></div>
-          </div>
-          <div class="stats-tile">
-            <div class="tile-label">STABILITY</div>
-            <div class="tile-value" id="s-stability"></div>
-          </div>
-          <div class="stats-tile highlight">
-            <div class="tile-label">AI SCORE</div>
-            <div class="tile-value" id="s-ai"></div>
-          </div>
+          <div class="stats-tile"><div class="tile-label">Value</div><div class="tile-value" id="s-value"></div></div>
+          <div class="stats-tile"><div class="tile-label">Range</div><div class="tile-value" id="s-range"></div></div>
+          <div class="stats-tile"><div class="tile-label">Demand</div><div class="tile-value" id="s-demand"></div></div>
+          <div class="stats-tile"><div class="tile-label">Rarity</div><div class="tile-value" id="s-rarity"></div></div>
+          <div class="stats-tile"><div class="tile-label">Stability</div><div class="tile-value" id="s-stability"></div></div>
+          <div class="stats-tile highlight"><div class="tile-label">AI Score</div><div class="tile-value" id="s-ai"></div></div>
         </div>
       </div>
     </section>
-
   </main>
 
-  <footer>
-    MM2 Trade Checker &nbsp;·&nbsp; Powered by Supreme Values data
-  </footer>
+  <footer>MM2 Trade Checker &nbsp;·&nbsp; Supreme Values data</footer>
 
   <script src="/static/js/main.js"></script>
 </body>
