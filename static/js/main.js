@@ -439,7 +439,7 @@ document.getElementById("inv-copy-btn").addEventListener("click", () => {
 });
 
 // ── Offer generator (multi-item tag input) ────────────────────
-const offerTargetInput = new TagInput("offer-tags", { allowDuplicates: true, autoPopup: false });
+const offerTargetInput = makeQtyTagInput("offer-tags", "offer-input", "offer-suggestions", { autoPopup: false });
 const offerInput   = document.getElementById("offer-input");
 const offerSuggest = document.getElementById("offer-suggestions");
 let offerActiveIdx = -1;
@@ -449,7 +449,7 @@ function addOfferTag() {
   if (!val) return;
   const match = allItems.find(i => i === val) || allItems.find(i => i.includes(val));
   if (match) {
-    offerTargetInput.addTag(match);
+    offerTargetInput.setItems([...offerTargetInput.getItems(), { name: match, qty: 1 }]);
     offerInput.value = "";
     offerSuggest.classList.remove("open");
   }
@@ -465,7 +465,7 @@ offerInput.addEventListener("input", () => {
   offerSuggest.querySelectorAll("li").forEach(li => {
     li.addEventListener("mousedown", e => {
       e.preventDefault();
-      offerTargetInput.addTag(li.textContent);
+      offerTargetInput.setItems([...offerTargetInput.getItems(), { name: li.textContent, qty: 1 }]);
       offerInput.value = "";
       offerSuggest.classList.remove("open");
     });
@@ -479,7 +479,7 @@ offerInput.addEventListener("keydown", e => {
   else if (e.key === "Enter") {
     e.preventDefault();
     if (offerActiveIdx >= 0 && items[offerActiveIdx]) {
-      offerTargetInput.addTag(items[offerActiveIdx].textContent);
+      offerTargetInput.setItems([...offerTargetInput.getItems(), { name: items[offerActiveIdx].textContent, qty: 1 }]);
       offerInput.value = "";
       offerSuggest.classList.remove("open");
     } else if (offerInput.value.trim()) {
