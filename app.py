@@ -8,18 +8,8 @@ db = load_items()
 
 INVENTORY_FILE = "data_txt/inventory.json"
 
-# ── Untradeable item prefixes ──────────────────────────────────────────────
-UNTRADEABLE_PREFIXES = (
-    "gold ", "silver ", "bronze ",
-    "red ", "blue ", "purple ",
-)
-
-def is_untradeable(name: str) -> bool:
-    lower = name.lower()
-    return any(lower.startswith(p) for p in UNTRADEABLE_PREFIXES)
-
 def tradeable_items():
-    return sorted(k for k in db.keys() if not is_untradeable(k))
+    return sorted(db.keys())
 
 
 # ── Inventory persistence ────────────────────────────────────────────────────
