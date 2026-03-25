@@ -14,8 +14,8 @@ STABILITY_MAP = {
     "Recovering":    1.07,
     "Stable":        1.00,
     "Fluctuating":   0.82,
+    "Underpaid For": 0.73,  
     "Losing Hype":   0.68,
-    "Underpaid For": 0.55,   # people underpay — bad to receive
     "Decreasing":    0.50,
 }
 
@@ -273,7 +273,7 @@ def evaluate_trade(
 # ---------------- OFFER FINDER ----------------
 def find_best_offer(
     inventory_items: List[Dict[str, Any]],
-    target_item: Dict[str, Any],
+    target_items: List[Dict[str, Any]],
     max_slots: int = 4,
     min_gain_pct: float = 0.03,
     min_gain_flat: float = 5.0
@@ -281,7 +281,11 @@ def find_best_offer(
     if not inventory_items:
         return None
 
-    target_ai, *_ = score_item(target_item)
+    # Support both single item (legacy) and list
+    if isinstance(target_items, dict):
+        target_items = [target_items]
+
+    target_ai = sum(score_item(t)[0] for t in target_items)
     gain_margin      = max(min_gain_flat, target_ai * min_gain_pct)
     max_offer_allowed = target_ai - gain_margin
 
