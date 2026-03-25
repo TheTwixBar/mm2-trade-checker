@@ -495,9 +495,11 @@ document.getElementById("offer-btn").addEventListener("click", generateOffer);
 
 async function generateOffer() {
   const targets = offerTargetInput.getTags();
-  const errEl  = document.getElementById("offer-error");
-  const panel  = document.getElementById("offer-panel");
-  errEl.classList.add("hidden"); panel.classList.add("hidden");
+  const errEl     = document.getElementById("offer-error");
+  const panel     = document.getElementById("offer-panel");
+  const loadingEl = document.getElementById("offer-loading");
+  const btn       = document.getElementById("offer-btn");
+  errEl.classList.add("hidden"); panel.classList.add("hidden"); loadingEl.classList.add("hidden");
   if (!targets.length) {
     errEl.textContent = "Please add at least one item you want to get.";
     errEl.classList.remove("hidden"); return;
@@ -507,11 +509,22 @@ async function generateOffer() {
     errEl.textContent = "Your inventory is empty. Add items above first.";
     errEl.classList.remove("hidden"); return;
   }
-  const res = await fetch("/api/suggest-offer", {
-    method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ target: targets[0], targets, inventory: flat }),
-  });
-  const data = await res.json();
+
+  loadingEl.classList.remove("hidden");
+  btn.disabled = true;
+
+  let res, data;
+  try {
+    res = await fetch("/api/suggest-offer", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ target: targets[0], targets, inventory: flat }),
+    });
+    data = await res.json();
+  } finally {
+    loadingEl.classList.add("hidden");
+    btn.disabled = false;
+  }
+
   if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
 
   const targetNames = data.target_names || [data.target_name];
