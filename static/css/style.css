@@ -440,6 +440,38 @@ main {
 }
 #stats-btn:hover { opacity: 0.82; }
 
+#inv-save-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 28px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+#inv-save-btn:hover  { opacity: 0.82; }
+#inv-save-btn:active { transform: scale(0.97); }
+
+#offer-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 28px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+#offer-btn:hover  { opacity: 0.82; }
+#offer-btn:active { transform: scale(0.97); }
+
 .stats-panel { }
 .stats-name {
   font-family: var(--font-body);
