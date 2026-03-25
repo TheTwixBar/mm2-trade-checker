@@ -17,6 +17,7 @@
       </div>
       <nav>
         <button class="nav-btn active" data-tab="trade">trade</button>
+        <button class="nav-btn" data-tab="inventory">inventory</button>
         <button class="nav-btn" data-tab="stats">item stats</button>
         <button class="nav-btn" data-tab="how">how it works</button>
       </nav>
@@ -100,6 +101,94 @@
 
         <div id="r-warnings" class="warnings"></div>
       </div>
+    </section>
+
+    <!-- ── INVENTORY TAB ── -->
+    <section class="tab" id="tab-inventory">
+
+      <p class="inv-intro">
+        Save the items in your inventory here. Once saved, use the <strong>offer generator</strong> below — enter any item someone else has, and the AI will suggest what to offer from your inventory for a slight win.
+      </p>
+
+      <!-- Inventory editor -->
+      <div class="inv-section">
+        <div class="inv-section-label">your inventory</div>
+        <div class="inv-tag-area">
+          <div class="tag-input-wrapper" id="inv-tags">
+            <input type="text" id="inv-input" placeholder="type an item name..." autocomplete="off"/>
+          </div>
+          <ul class="suggestions" id="inv-suggestions"></ul>
+        </div>
+        <div class="inv-btn-row">
+          <button id="inv-save-btn">save inventory</button>
+          <button id="inv-clear-btn" class="clear-btn">clear all</button>
+        </div>
+        <div id="inv-status" class="inv-status hidden"></div>
+      </div>
+
+      <hr class="inv-divider"/>
+
+      <!-- Offer generator -->
+      <div class="inv-section">
+        <div class="inv-section-label">offer generator</div>
+        <p class="inv-sub">Enter an item someone else has. The AI will pick items from your saved inventory to offer — slightly in your favor.</p>
+
+        <div class="offer-search-row">
+          <div class="offer-input-wrap">
+            <input type="text" id="offer-input" placeholder="their item..." autocomplete="off"/>
+            <ul class="suggestions" id="offer-suggestions"></ul>
+          </div>
+          <button id="offer-btn">generate offer</button>
+        </div>
+
+        <div id="offer-error" class="error-msg hidden"></div>
+
+        <div id="offer-panel" class="offer-panel hidden">
+          <div class="offer-header">
+            <div class="offer-label">suggested offer for</div>
+            <div class="offer-target-name" id="op-target-name"></div>
+          </div>
+
+          <div class="offer-trade-row">
+            <div class="offer-side">
+              <div class="offer-side-label">you give</div>
+              <div id="op-offer-items" class="offer-item-list"></div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">ai score</span>
+                <span class="offer-score-val" id="op-offer-ai"></span>
+              </div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">mm2 value</span>
+                <span class="offer-score-val" id="op-offer-raw"></span>
+              </div>
+            </div>
+
+            <div class="offer-arrow">→</div>
+
+            <div class="offer-side">
+              <div class="offer-side-label">you get</div>
+              <div class="offer-item-list">
+                <span class="offer-item-pill" id="op-target-pill"></span>
+              </div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">ai score</span>
+                <span class="offer-score-val" id="op-target-ai"></span>
+              </div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">mm2 value</span>
+                <span class="offer-score-val" id="op-target-raw"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="offer-verdict-row">
+            <span class="offer-verdict-label">expected result:</span>
+            <span class="offer-verdict-badge" id="op-verdict"></span>
+            <span class="offer-gain-note" id="op-gain"></span>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ── STATS TAB ── -->
