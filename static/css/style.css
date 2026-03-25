@@ -697,3 +697,246 @@ footer {
   .vl-block:last-child { border-bottom: none; }
   .step-item { grid-template-columns: 30px 1fr; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   INVENTORY TAB
+   ══════════════════════════════════════════════════════════════ */
+
+.inv-intro {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+.inv-section {
+  margin-bottom: 28px;
+}
+
+.inv-section-label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.inv-tag-area {
+  position: relative;
+}
+
+.inv-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.inv-status {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+.inv-status.status-ok {
+  border-color: var(--win);
+  color: var(--win);
+  background: #f0f7f0;
+}
+
+.inv-status.status-err {
+  border-color: var(--lose);
+  color: var(--lose);
+  background: #fff0f0;
+}
+
+.inv-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+.inv-sub {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+
+/* Offer search row */
+.offer-search-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.offer-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.offer-input-wrap input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  padding: 7px 10px;
+  border: 1px solid var(--border-dark);
+  background: #fff;
+  outline: none;
+  color: var(--text);
+}
+
+.offer-input-wrap input:focus {
+  border-color: var(--accent);
+}
+
+/* Offer result panel */
+.offer-panel {
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.offer-header {
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.offer-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.offer-target-name {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.offer-trade-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  padding: 14px;
+  align-items: start;
+}
+
+.offer-side {
+  padding: 0 10px;
+}
+
+.offer-side-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.offer-item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+  min-height: 28px;
+}
+
+.offer-item-pill {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  color: var(--text);
+}
+
+.offer-score-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--text-mid);
+  margin-bottom: 3px;
+  gap: 8px;
+}
+
+.offer-score-label {
+  color: var(--text-dim);
+}
+
+.offer-score-val {
+  font-weight: bold;
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.offer-arrow {
+  font-size: 1.4rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  padding-top: 22px;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.offer-verdict-row {
+  border-top: 1px solid var(--border);
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--bg2);
+}
+
+.offer-verdict-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.offer-verdict-badge {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: bold;
+}
+
+.offer-verdict-badge.verdict-win  { color: var(--win); }
+.offer-verdict-badge.verdict-fair { color: var(--fair); }
+.offer-verdict-badge.verdict-lose { color: var(--lose); }
+
+.offer-gain-note {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--text-mid);
+  font-style: italic;
+}
+
+@media (max-width: 520px) {
+  .offer-trade-row {
+    grid-template-columns: 1fr;
+  }
+  .offer-arrow {
+    padding: 4px 10px;
+    transform: rotate(90deg);
+    justify-content: center;
+  }
+}
