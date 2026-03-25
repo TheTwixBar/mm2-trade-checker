@@ -124,6 +124,19 @@
           <button id="inv-clear-btn" class="clear-btn">clear all</button>
         </div>
         <div id="inv-status" class="inv-status hidden"></div>
+
+        <!-- Import / export string -->
+        <div class="inv-string-row">
+          <div class="inv-string-label">backup / import string</div>
+          <div class="inv-string-desc">copy this string to back up your inventory. paste it back anytime to restore — even after a redeploy.</div>
+          <div class="inv-string-controls">
+            <textarea id="inv-export-box" class="inv-export-box" rows="2" placeholder="paste an inventory string here to import, or save your inventory above to generate one..."></textarea>
+            <div class="inv-string-btns">
+              <button id="inv-copy-btn" class="inv-str-btn">copy</button>
+              <button id="inv-import-btn" class="inv-str-btn">import</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <hr class="inv-divider"/>
