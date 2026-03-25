@@ -508,3 +508,192 @@ footer {
   .stab-block { border-right: none; border-bottom: 1px solid var(--border); }
   .stab-block:last-child { border-bottom: none; }
 }
+/* ================================================================
+   HOW IT WORKS TAB — append to the bottom of static/css/style.css
+   ================================================================ */
+
+/* ── How It Works Tab ─────────────────────────────────────── */
+.how-section {
+  margin-bottom: 32px;
+}
+.how-section-title {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+.how-intro {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+/* step cards */
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.step-item {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+.step-item:last-child { border-bottom: none; }
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 13px;
+}
+.step-body {
+  padding: 11px 14px;
+  background: #fff;
+}
+.step-title {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+.step-desc {
+  font-family: var(--font-body);
+  font-size: 0.87rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.step-desc code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--bg2);
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* formula box */
+.formula-box {
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 14px 16px;
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.9;
+}
+.formula-box .formula-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-style: normal;
+}
+.formula-comment {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+}
+
+/* stability table */
+.stab-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  margin-top: 0;
+}
+.stab-table th {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: var(--bg2);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-weight: normal;
+}
+.stab-table td {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--bg3);
+  vertical-align: middle;
+}
+.stab-table tr:last-child td { border-bottom: none; }
+.stab-table td:first-child { width: 44%; }
+.stab-table td:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  width: 22%;
+}
+.stab-table td:nth-child(3) {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+}
+.mult-up   { color: var(--win); }
+.mult-down { color: var(--lose); }
+.mult-neut { color: var(--text-dim); }
+
+/* verdict legend */
+.verdict-legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+}
+.vl-block {
+  padding: 12px 14px;
+  border-right: 1px solid var(--border);
+  background: #fff;
+}
+.vl-block:last-child { border-right: none; }
+.vl-label {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.vl-desc {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+/* callout note */
+.how-note {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  background: #fffbe8;
+  border-left: 3px solid #c8a830;
+  padding: 9px 12px;
+  margin-top: 14px;
+  line-height: 1.55;
+}
+
+/* ── Responsive additions ─────────────────────────────────── */
+@media (max-width: 600px) {
+  .verdict-legend { grid-template-columns: 1fr; }
+  .vl-block { border-right: none; border-bottom: 1px solid var(--border); }
+  .vl-block:last-child { border-bottom: none; }
+  .step-item { grid-template-columns: 30px 1fr; }
+}
