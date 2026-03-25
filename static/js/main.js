@@ -273,3 +273,25 @@ async function lookupStats() {
 }
 
 document.getElementById("stats-btn").addEventListener("click", lookupStats);
+
+/* ================================================================
+   HOW IT WORKS TAB — append to the bottom of static/js/main.js
+   ================================================================
+   This wires up the "how it works" nav button. If your existing
+   main.js already handles tab switching with querySelectorAll,
+   you may only need to check that it doesn't hardcode tab IDs —
+   if it does, just add 'how' to that list instead of using this.
+   ================================================================ */
+
+(function () {
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const tabs    = document.querySelectorAll('.tab');
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      navBtns.forEach(b => b.classList.toggle('active', b === btn));
+      tabs.forEach(t => t.classList.toggle('active', t.id === 'tab-' + target));
+    });
+  });
+}());
