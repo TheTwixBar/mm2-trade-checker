@@ -21,7 +21,10 @@ import requests
 from bs4 import BeautifulSoup
 
 # ── GitHub config ─────────────────────────────────────────────
-GITHUB_TOKEN  = "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"       # paste your token here
+# When running locally, paste your token in the string below.
+# When running via GitHub Actions, it reads from the environment
+# automatically — no changes needed.
+GITHUB_TOKEN  = os.environ.get("GITHUB_TOKEN", "YOUR_TOKEN_HERE")
 GITHUB_REPO   = "TheTwixBar/mm2-trade-checker"
 GITHUB_PATH   = "data_txt/mm2values.txt"
 GITHUB_BRANCH = "main"
