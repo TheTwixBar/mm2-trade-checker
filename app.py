@@ -152,12 +152,22 @@ def set_inventory():
 @app.route("/api/suggest-offer", methods=["POST"])
 def suggest_offer():
     data = request.get_json()
-    target_name = data.get("target", "").strip().lower()
 
-    if not target_name:
+    # Support both single target (legacy) and multiple targets (expanded flat list)
+    raw_targets = data.get("targets") or []
+    if not raw_targets:
+        single = data.get("target", "").strip().lower()
+        if single:
+            raw_targets = [single]
+
+    target_names = [t.strip().lower() for t in raw_targets if isinstance(t, str) and t.strip()]
+
+    if not target_names:
         return jsonify({"error": "No target item provided."}), 400
-    if target_name not in db:
-        return jsonify({"error": f"Unknown item: '{target_name}'"}), 404
+
+    unknown = [n for n in target_names if n not in db]
+    if unknown:
+        return jsonify({"error": f"Unknown item: '{unknown[0]}'"}), 404
 
     # Accept inventory from request body first (sent by JS with qty expansion),
     # fall back to server-saved file if not provided
@@ -170,13 +180,13 @@ def suggest_offer():
     if not inventory_keys:
         return jsonify({"error": "Your inventory is empty. Add items on the Inventory tab first."}), 400
 
-    target_item = db[target_name]
+    target_items = [db[n] for n in target_names]
     inventory_items = [db[k] for k in inventory_keys if k in db]
 
     # 5% min gain = slightly biased toward us
     result = find_best_offer(
         inventory_items,
-        target_item,
+        target_items,
         max_slots=4,
         min_gain_pct=0.05,
         min_gain_flat=5.0,
@@ -186,21 +196,23 @@ def suggest_offer():
         return jsonify({"error": "Could not find a suitable offer from your inventory."}), 400
 
     offer_items, offer_ai, your_gain = result
-    offer_names = [item["name"] for item in offer_items]
-    offer_raw   = sum(item.get("value", 0) for item in offer_items)
-    target_ai, *_ = score_item(target_item)
-    trade_result = evaluate_trade(offer_items, [target_item])
+    offer_names  = [item["name"] for item in offer_items]
+    offer_raw    = sum(item.get("value", 0) for item in offer_items)
+    target_ai_total = sum(score_item(t)[0] for t in target_items)
+    target_raw_total = sum(t.get("value", 0) for t in target_items)
+    trade_result = evaluate_trade(offer_items, target_items)
 
     return jsonify({
-        "offer_items":  offer_names,
-        "offer_ai":     round(offer_ai),
-        "offer_raw":    offer_raw,
-        "target_name":  target_item["name"],
-        "target_ai":    round(target_ai),
-        "target_raw":   target_item.get("value", 0),
-        "your_gain":    round(your_gain),
-        "verdict":      trade_result["result"],
-        "ai_diff":      trade_result["ai_diff"],
+        "offer_items":   offer_names,
+        "offer_ai":      round(offer_ai),
+        "offer_raw":     offer_raw,
+        "target_name":   target_items[0]["name"],
+        "target_names":  [t["name"] for t in target_items],
+        "target_ai":     round(target_ai_total),
+        "target_raw":    target_raw_total,
+        "your_gain":     round(your_gain),
+        "verdict":       trade_result["result"],
+        "ai_diff":       trade_result["ai_diff"],
     })
 
 
