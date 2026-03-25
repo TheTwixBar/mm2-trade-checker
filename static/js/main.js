@@ -137,6 +137,14 @@ function setDiff(elId, val) {
   el.className = "value " + (val > 0 ? "diff-pos" : val < 0 ? "diff-neg" : "");
 }
 
+// ── Warning descriptions ──────────────────────────────────────
+const STAB_WARN = {
+  "Underpaid For": "people often trade this below its listed value, so it may be hard to get fair value back out of it",
+  "Decreasing":    "this item is actively losing value and may be worth less by the time you try to retrade it",
+  "Losing Hype":   "demand is fading on this item, which could make it harder to move later",
+  "Fluctuating":   "this item's price is unstable and hard to pin down — trades involving it are riskier",
+};
+
 // ── Check trade ───────────────────────────────────────────────
 document.getElementById("check-btn").addEventListener("click", async () => {
   const yours  = yoursInput.getTags();
@@ -199,12 +207,18 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   // Warnings
   const warnEl = document.getElementById("r-warnings");
   const warns  = [];
-  const danger = new Set(["Underpaid For", "Decreasing", "Losing Hype", "Fluctuating"]);
+  // Warn only when receiving items with stability multiplier below 1.0
+  const danger = new Set(["Fluctuating", "Losing Hype", "Underpaid For", "Decreasing"]);
   const theirDanger = data.their_stability.filter(s => danger.has(s));
-  const yourDanger  = data.your_stability.filter(s  => danger.has(s));
-  if (theirDanger.length) warns.push(`Note: you'd receive ${theirDanger.join(", ")}`);
-  if (yourDanger.length)  warns.push(`Note: you'd give ${yourDanger.join(", ")}`);
-  if (data.bundle_penalty) warns.push("Bundle penalty applied — giving multiple items reduces your AI score slightly.");
+
+  theirDanger.forEach(s => {
+    const desc = STAB_WARN[s] || s;
+    warns.push(`⚠ You'd receive a <strong>${s}</strong> item — ${desc}.`);
+  });
+  if (data.bundle_penalty) {
+    warns.push("⚠ Bundle penalty applied — giving multiple items reduces your AI score slightly, since single items are easier to retrade.");
+  }
+
   warnEl.innerHTML = warns.map(w => `<div class="warn-item">${w}</div>`).join("");
 
   panel.classList.remove("hidden");
@@ -273,25 +287,3 @@ async function lookupStats() {
 }
 
 document.getElementById("stats-btn").addEventListener("click", lookupStats);
-
-/* ================================================================
-   HOW IT WORKS TAB — append to the bottom of static/js/main.js
-   ================================================================
-   This wires up the "how it works" nav button. If your existing
-   main.js already handles tab switching with querySelectorAll,
-   you may only need to check that it doesn't hardcode tab IDs —
-   if it does, just add 'how' to that list instead of using this.
-   ================================================================ */
-
-(function () {
-  const navBtns = document.querySelectorAll('.nav-btn');
-  const tabs    = document.querySelectorAll('.tab');
-
-  navBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
-      navBtns.forEach(b => b.classList.toggle('active', b === btn));
-      tabs.forEach(t => t.classList.toggle('active', t.id === 'tab-' + target));
-    });
-  });
-}());
