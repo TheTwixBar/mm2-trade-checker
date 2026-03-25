@@ -159,7 +159,14 @@ def suggest_offer():
     if target_name not in db:
         return jsonify({"error": f"Unknown item: '{target_name}'"}), 404
 
-    inventory_keys = load_inventory_json()
+    # Accept inventory from request body first (sent by JS with qty expansion),
+    # fall back to server-saved file if not provided
+    req_inventory = data.get("inventory")
+    if req_inventory and isinstance(req_inventory, list):
+        inventory_keys = [n.strip().lower() for n in req_inventory if isinstance(n, str)]
+    else:
+        inventory_keys = load_inventory_json()
+
     if not inventory_keys:
         return jsonify({"error": "Your inventory is empty. Add items on the Inventory tab first."}), 400
 
