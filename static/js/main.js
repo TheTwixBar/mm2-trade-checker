@@ -15,77 +15,187 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
   });
 });
 
-// ── Generic tag input (trade/stats tabs — no qty) ─────────────
-function makeTagInput(wrapperId, inputId, suggestId) {
+// ════════════════════════════════════════════════════════════════
+// QTY TAG INPUT FACTORY
+// Used for trade (yours/theirs) AND inventory tabs.
+// Each tag shows an ×N badge; clicking opens an inline qty popup.
+// options.autoPopup — open qty popup immediately when a new tag is added
+// ════════════════════════════════════════════════════════════════
+function makeQtyTagInput(wrapperId, inputId, suggestId, options = {}) {
   const wrapper    = document.getElementById(wrapperId);
-  const input      = document.getElementById(inputId);
+  const textInput  = document.getElementById(inputId);
   const suggestBox = document.getElementById(suggestId);
-  const tags       = [];
-  let activeIdx    = -1;
+  // items: [{name, qty}]
+  let items = [];
+  let activeIdx     = -1;
+  let activePopup   = null;
 
-  wrapper.addEventListener("click", () => input.focus());
+  wrapper.addEventListener("click", e => {
+    if (!e.target.closest(".qty-popup") && !e.target.closest(".qty-badge")) {
+      textInput.focus();
+    }
+  });
 
+  // ── Render all tags ──────────────────────────────────────────
   function renderTags() {
     wrapper.querySelectorAll(".tag").forEach(t => t.remove());
-    tags.forEach((name, i) => {
+    items.forEach((entry, i) => {
       const tag = document.createElement("span");
-      tag.className = "tag";
-      tag.innerHTML = `${name}<button class="tag-remove" data-i="${i}">×</button>`;
-      wrapper.insertBefore(tag, input);
-    });
-    wrapper.querySelectorAll(".tag-remove").forEach(btn => {
-      btn.addEventListener("click", e => {
+      tag.className = "tag tag-qty";
+      tag.dataset.i = i;
+
+      const label = document.createElement("span");
+      label.className = "tag-name";
+      label.textContent = entry.name;
+
+      const badge = document.createElement("button");
+      badge.className = "qty-badge";
+      badge.textContent = "×" + entry.qty;
+      badge.title = "click to change quantity";
+      badge.addEventListener("click", e => { e.stopPropagation(); openPopup(tag, i); });
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "tag-remove";
+      removeBtn.textContent = "×";
+      removeBtn.addEventListener("click", e => {
         e.stopPropagation();
-        tags.splice(+btn.dataset.i, 1);
+        closePopup();
+        items.splice(i, 1);
         renderTags();
       });
+
+      tag.appendChild(label);
+      tag.appendChild(badge);
+      tag.appendChild(removeBtn);
+      wrapper.insertBefore(tag, textInput);
     });
   }
 
-  function addTag(name) {
-    const clean = name.trim().toLowerCase();
-    if (clean && !tags.includes(clean)) {
-      tags.push(clean);
-      renderTags();
+  // ── Qty popup ────────────────────────────────────────────────
+  function openPopup(tagEl, idx) {
+    closePopup();
+    const popup = document.createElement("div");
+    popup.className = "qty-popup";
+
+    const minus = document.createElement("button");
+    minus.className = "qty-btn"; minus.textContent = "−";
+
+    const numInput = document.createElement("input");
+    numInput.type = "number"; numInput.className = "qty-num";
+    numInput.min = 1; numInput.max = 9999;
+    numInput.value = items[idx].qty;
+
+    const plus = document.createElement("button");
+    plus.className = "qty-btn"; plus.textContent = "+";
+
+    const done = document.createElement("button");
+    done.className = "qty-done"; done.textContent = "done";
+
+    function updateQty(val) {
+      const n = Math.max(1, Math.min(9999, parseInt(val) || 1));
+      items[idx].qty = n;
+      numInput.value = n;
+      tagEl.querySelector(".qty-badge").textContent = "×" + n;
     }
-    input.value = "";
-    hideSuggestions();
+
+    minus.addEventListener("click", e => { e.stopPropagation(); updateQty(items[idx].qty - 1); });
+    plus.addEventListener("click",  e => { e.stopPropagation(); updateQty(items[idx].qty + 1); });
+    numInput.addEventListener("input", e => { e.stopPropagation(); updateQty(numInput.value); });
+    numInput.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); closePopup(); } });
+    done.addEventListener("click", e => { e.stopPropagation(); closePopup(); });
+
+    popup.append(minus, numInput, plus, done);
+    tagEl.appendChild(popup);
+    activePopup = popup;
+    numInput.focus(); numInput.select();
   }
 
-  function showSuggestions(query) {
-    if (!query) { hideSuggestions(); return; }
+  function closePopup() {
+    if (activePopup) { activePopup.remove(); activePopup = null; }
+  }
+
+  document.addEventListener("click", e => {
+    if (activePopup && !e.target.closest(".tag-qty")) closePopup();
+  });
+
+  // ── Add item ─────────────────────────────────────────────────
+  function addItem(name) {
+    const clean = name.trim().toLowerCase();
+    if (!clean) return;
+    const existing = items.find(e => e.name === clean);
+    if (existing) {
+      // Already exists — open popup to bump qty
+      renderTags();
+      const idx = items.indexOf(existing);
+      const tags = wrapper.querySelectorAll(".tag-qty");
+      if (tags[idx]) openPopup(tags[idx], idx);
+    } else {
+      items.push({ name: clean, qty: 1 });
+      renderTags();
+      if (options.autoPopup !== false) {
+        const tags = wrapper.querySelectorAll(".tag-qty");
+        const newIdx = items.length - 1;
+        if (tags[newIdx]) openPopup(tags[newIdx], newIdx);
+      }
+    }
+    textInput.value = "";
+    hideSuggest();
+  }
+
+  // ── Suggestions ──────────────────────────────────────────────
+  function showSuggest(query) {
+    if (!query) { hideSuggest(); return; }
     const matches = allItems.filter(i => i.includes(query)).slice(0, 8);
-    if (!matches.length) { hideSuggestions(); return; }
+    if (!matches.length) { hideSuggest(); return; }
     suggestBox.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
     suggestBox.classList.add("open");
     activeIdx = -1;
     suggestBox.querySelectorAll("li").forEach(li => {
-      li.addEventListener("mousedown", e => { e.preventDefault(); addTag(li.textContent); });
+      li.addEventListener("mousedown", e => { e.preventDefault(); addItem(li.textContent); });
     });
   }
+  function hideSuggest() { suggestBox.classList.remove("open"); activeIdx = -1; }
 
-  function hideSuggestions() { suggestBox.classList.remove("open"); activeIdx = -1; }
-
-  input.addEventListener("input", () => showSuggestions(input.value.trim().toLowerCase()));
-  input.addEventListener("blur",  () => setTimeout(hideSuggestions, 150));
-  input.addEventListener("keydown", e => {
-    const items = suggestBox.querySelectorAll("li");
-    if (e.key === "ArrowDown") { e.preventDefault(); activeIdx = Math.min(activeIdx + 1, items.length - 1); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx - 1, -1); }
+  textInput.addEventListener("input", () => showSuggest(textInput.value.trim().toLowerCase()));
+  textInput.addEventListener("blur",  () => setTimeout(hideSuggest, 150));
+  textInput.addEventListener("keydown", e => {
+    const lis = suggestBox.querySelectorAll("li");
+    if (e.key === "ArrowDown") { e.preventDefault(); activeIdx = Math.min(activeIdx+1, lis.length-1); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx-1, -1); }
     else if (e.key === "Enter") {
       e.preventDefault();
-      if (activeIdx >= 0 && items[activeIdx]) addTag(items[activeIdx].textContent);
-      else if (input.value.trim()) addTag(input.value.trim());
+      if (activeIdx >= 0 && lis[activeIdx]) addItem(lis[activeIdx].textContent);
+      else if (textInput.value.trim()) addItem(textInput.value.trim());
       return;
-    } else if (e.key === "Backspace" && !input.value && tags.length) { tags.pop(); renderTags(); return; }
-    items.forEach((li, i) => li.classList.toggle("active", i === activeIdx));
+    } else if (e.key === "Backspace" && !textInput.value && items.length) {
+      closePopup(); items.pop(); renderTags(); return;
+    }
+    lis.forEach((li, i) => li.classList.toggle("active", i === activeIdx));
   });
 
-  return { getTags: () => [...tags], clear: () => { tags.length = 0; renderTags(); } };
+  // ── Public API ───────────────────────────────────────────────
+  return {
+    // Returns flat expanded array (e.g. harvester ×3 → ["harvester","harvester","harvester"])
+    getTags: () => {
+      const out = [];
+      items.forEach(e => { for (let i = 0; i < e.qty; i++) out.push(e.name); });
+      return out;
+    },
+    // Returns [{name, qty}] for storage
+    getItems: () => items.map(e => ({ ...e })),
+    // Load from [{name, qty}] array
+    setItems: (arr) => {
+      items = arr.map(e => typeof e === "string" ? { name: e, qty: 1 } : { name: e.name, qty: e.qty || 1 });
+      renderTags();
+    },
+    clear: () => { closePopup(); items = []; renderTags(); },
+    closePopup,
+  };
 }
 
-const yoursInput  = makeTagInput("yours-tags",  "yours-input",  "yours-suggestions");
-const theirsInput = makeTagInput("theirs-tags", "theirs-input", "theirs-suggestions");
+// ── Trade tab inputs ──────────────────────────────────────────
+const yoursInput  = makeQtyTagInput("yours-tags",  "yours-input",  "yours-suggestions",  { autoPopup: false });
+const theirsInput = makeQtyTagInput("theirs-tags", "theirs-input", "theirs-suggestions", { autoPopup: false });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
   yoursInput.clear();
@@ -113,7 +223,6 @@ function setDiff(elId, val) {
   el.textContent = (val > 0 ? "+" : "") + val;
   el.className = "value " + (val > 0 ? "diff-pos" : val < 0 ? "diff-neg" : "");
 }
-
 const STAB_WARN = {
   "Underpaid For": "people often trade this below its listed value, so it may be hard to get fair value back out of it",
   "Decreasing":    "this item is actively losing value and may be worth less by the time you try to retrade it",
@@ -127,8 +236,7 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   const theirs = theirsInput.getTags();
   const errEl  = document.getElementById("trade-error");
   const panel  = document.getElementById("result-panel");
-  errEl.classList.add("hidden");
-  panel.classList.add("hidden");
+  errEl.classList.add("hidden"); panel.classList.add("hidden");
   if (!yours.length || !theirs.length) {
     errEl.textContent = "Please add at least one item on each side.";
     errEl.classList.remove("hidden"); return;
@@ -155,7 +263,6 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   setDiff("r-rarity-diff", data.rarity_diff);
   renderStabTags("r-your-stab",  data.your_stability);
   renderStabTags("r-their-stab", data.their_stability);
-
   const warns = [];
   const danger = new Set(["Fluctuating","Losing Hype","Underpaid For","Decreasing"]);
   data.their_stability.filter(s => danger.has(s)).forEach(s => {
@@ -176,8 +283,7 @@ statsInput.addEventListener("input", () => {
   const matches = allItems.filter(i => i.includes(q)).slice(0, 8);
   if (!matches.length) { statsSuggest.classList.remove("open"); return; }
   statsSuggest.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
-  statsSuggest.classList.add("open");
-  statsActiveIdx = -1;
+  statsSuggest.classList.add("open"); statsActiveIdx = -1;
   statsSuggest.querySelectorAll("li").forEach(li => {
     li.addEventListener("mousedown", e => { e.preventDefault(); statsInput.value = li.textContent; statsSuggest.classList.remove("open"); });
   });
@@ -212,184 +318,30 @@ document.getElementById("stats-btn").addEventListener("click", lookupStats);
 
 
 // ════════════════════════════════════════════════════════════════
-// INVENTORY TAB — with quantities
-// Saved to localStorage as: [{name: "harvester", qty: 72}, ...]
+// INVENTORY TAB
 // ════════════════════════════════════════════════════════════════
+const invInput = makeQtyTagInput("inv-tags", "inv-input", "inv-suggestions", { autoPopup: true });
 
-// inv_items: array of {name: string, qty: number}
-let inv_items = [];
-let activeQtyPopup = null;  // tracks open qty popup so we can close it
-
-const invWrapper  = document.getElementById("inv-tags");
-const invTextInput = document.getElementById("inv-input");
-const invSuggest  = document.getElementById("inv-suggestions");
-let invActiveIdx  = -1;
-
-invWrapper.addEventListener("click", e => {
-  // Don't re-focus if a qty popup button was clicked
-  if (!e.target.closest(".qty-popup") && !e.target.closest(".qty-badge")) {
-    invTextInput.focus();
-  }
-});
-
-// ── Render inventory tags with qty badges ─────────────────────
-function renderInvTags() {
-  invWrapper.querySelectorAll(".tag").forEach(t => t.remove());
-  inv_items.forEach((entry, i) => {
-    const tag = document.createElement("span");
-    tag.className = "tag tag-qty";
-    tag.dataset.i = i;
-
-    const label = document.createElement("span");
-    label.className = "tag-name";
-    label.textContent = entry.name;
-
-    const badge = document.createElement("button");
-    badge.className = "qty-badge";
-    badge.textContent = "×" + entry.qty;
-    badge.title = "click to change quantity";
-    badge.addEventListener("click", e => {
-      e.stopPropagation();
-      openQtyPopup(tag, i);
-    });
-
-    const removeBtn = document.createElement("button");
-    removeBtn.className = "tag-remove";
-    removeBtn.textContent = "×";
-    removeBtn.addEventListener("click", e => {
-      e.stopPropagation();
-      closeQtyPopup();
-      inv_items.splice(i, 1);
-      renderInvTags();
-    });
-
-    tag.appendChild(label);
-    tag.appendChild(badge);
-    tag.appendChild(removeBtn);
-    invWrapper.insertBefore(tag, invTextInput);
-  });
-}
-
-// ── Qty popup (appears anchored below the badge) ──────────────
-function openQtyPopup(tagEl, idx) {
-  closeQtyPopup();
-
-  const popup = document.createElement("div");
-  popup.className = "qty-popup";
-
-  const minus = document.createElement("button");
-  minus.className = "qty-btn";
-  minus.textContent = "−";
-
-  const numInput = document.createElement("input");
-  numInput.type = "number";
-  numInput.className = "qty-num";
-  numInput.min = 1;
-  numInput.max = 9999;
-  numInput.value = inv_items[idx].qty;
-
-  const plus = document.createElement("button");
-  plus.className = "qty-btn";
-  plus.textContent = "+";
-
-  const done = document.createElement("button");
-  done.className = "qty-done";
-  done.textContent = "done";
-
-  function updateQty(val) {
-    const n = Math.max(1, Math.min(9999, parseInt(val) || 1));
-    inv_items[idx].qty = n;
-    numInput.value = n;
-    // update badge text live
-    tagEl.querySelector(".qty-badge").textContent = "×" + n;
-  }
-
-  minus.addEventListener("click", e => { e.stopPropagation(); updateQty(inv_items[idx].qty - 1); });
-  plus.addEventListener("click",  e => { e.stopPropagation(); updateQty(inv_items[idx].qty + 1); });
-  numInput.addEventListener("input", e => { e.stopPropagation(); updateQty(numInput.value); });
-  numInput.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); closeQtyPopup(); } });
-  done.addEventListener("click", e => { e.stopPropagation(); closeQtyPopup(); });
-
-  popup.appendChild(minus);
-  popup.appendChild(numInput);
-  popup.appendChild(plus);
-  popup.appendChild(done);
-
-  tagEl.appendChild(popup);
-  activeQtyPopup = popup;
-  numInput.focus();
-  numInput.select();
-}
-
-function closeQtyPopup() {
-  if (activeQtyPopup) {
-    activeQtyPopup.remove();
-    activeQtyPopup = null;
-  }
-}
-
-// Close popup when clicking outside
-document.addEventListener("click", e => {
-  if (activeQtyPopup && !e.target.closest(".tag-qty")) {
-    closeQtyPopup();
-  }
-});
-
-// ── Add item to inventory ─────────────────────────────────────
-function invAddItem(name) {
-  const clean = name.trim().toLowerCase();
-  if (!clean) return;
-  const existing = inv_items.find(e => e.name === clean);
-  if (existing) {
-    // If already in inventory, just open qty popup to let them bump the count
-    const tags = invWrapper.querySelectorAll(".tag-qty");
-    const idx  = inv_items.indexOf(existing);
-    if (tags[idx]) openQtyPopup(tags[idx], idx);
-  } else {
-    inv_items.push({ name: clean, qty: 1 });
-    renderInvTags();
-    // Auto-open qty popup for the new item so they can immediately set qty
-    const tags = invWrapper.querySelectorAll(".tag-qty");
-    const newIdx = inv_items.length - 1;
-    if (tags[newIdx]) openQtyPopup(tags[newIdx], newIdx);
-  }
-  invTextInput.value = "";
-  hideInvSuggestions();
-}
-
-// ── Suggestion box ────────────────────────────────────────────
-function showInvSuggestions(query) {
-  if (!query) { hideInvSuggestions(); return; }
-  const matches = allItems.filter(i => i.includes(query)).slice(0, 8);
-  if (!matches.length) { hideInvSuggestions(); return; }
-  invSuggest.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
-  invSuggest.classList.add("open");
-  invActiveIdx = -1;
-  invSuggest.querySelectorAll("li").forEach(li => {
-    li.addEventListener("mousedown", e => { e.preventDefault(); invAddItem(li.textContent); });
-  });
-}
-function hideInvSuggestions() { invSuggest.classList.remove("open"); invActiveIdx = -1; }
-
-invTextInput.addEventListener("input", () => showInvSuggestions(invTextInput.value.trim().toLowerCase()));
-invTextInput.addEventListener("blur",  () => setTimeout(hideInvSuggestions, 150));
-invTextInput.addEventListener("keydown", e => {
-  const items = invSuggest.querySelectorAll("li");
-  if (e.key === "ArrowDown") { e.preventDefault(); invActiveIdx = Math.min(invActiveIdx+1, items.length-1); }
-  else if (e.key === "ArrowUp") { e.preventDefault(); invActiveIdx = Math.max(invActiveIdx-1, -1); }
-  else if (e.key === "Enter") {
-    e.preventDefault();
-    if (invActiveIdx >= 0 && items[invActiveIdx]) invAddItem(items[invActiveIdx].textContent);
-    else if (invTextInput.value.trim()) invAddItem(invTextInput.value.trim());
-    return;
-  } else if (e.key === "Backspace" && !invTextInput.value && inv_items.length) {
-    inv_items.pop(); closeQtyPopup(); renderInvTags(); return;
-  }
-  items.forEach((li, i) => li.classList.toggle("active", i === invActiveIdx));
-});
-
-// ── localStorage persistence ──────────────────────────────────
 const LS_KEY = "mm2_inventory_v2";
+
+// ── Import/export string format: "item1:qty1,item2:qty2,..."
+// e.g. "harvester:72,darkbringer:1,eternal iv:3"
+function inventoryToString(itemsArr) {
+  return itemsArr.map(e => e.qty > 1 ? `${e.name}:${e.qty}` : e.name).join(",");
+}
+
+function stringToInventory(str) {
+  if (!str || !str.trim()) return [];
+  return str.split(",").map(s => s.trim()).filter(Boolean).map(part => {
+    const colonIdx = part.lastIndexOf(":");
+    if (colonIdx !== -1) {
+      const name = part.slice(0, colonIdx).trim().toLowerCase();
+      const qty  = Math.max(1, parseInt(part.slice(colonIdx + 1)) || 1);
+      return { name, qty };
+    }
+    return { name: part.toLowerCase(), qty: 1 };
+  });
+}
 
 function loadSavedInventory() {
   try {
@@ -397,72 +349,106 @@ function loadSavedInventory() {
     if (!raw) return;
     const data = JSON.parse(raw);
     if (Array.isArray(data)) {
-      // Support old format (flat string array) and new format (objects)
-      inv_items = data.map(entry => {
-        if (typeof entry === "string") return { name: entry, qty: 1 };
-        return { name: entry.name, qty: entry.qty || 1 };
-      });
-      renderInvTags();
+      invInput.setItems(data);
+      updateExportBox();
     }
-  } catch (e) { /* ignore corrupt data */ }
+  } catch (e) { /* ignore */ }
 }
 
-function saveInventoryToStorage() {
-  localStorage.setItem(LS_KEY, JSON.stringify(inv_items));
+function saveToLocalStorage() {
+  localStorage.setItem(LS_KEY, JSON.stringify(invInput.getItems()));
+  updateExportBox();
+}
+
+function updateExportBox() {
+  const box = document.getElementById("inv-export-box");
+  if (box) box.value = inventoryToString(invInput.getItems());
 }
 
 // ── Save button ───────────────────────────────────────────────
 document.getElementById("inv-save-btn").addEventListener("click", () => {
-  closeQtyPopup();
+  invInput.closePopup();
   const status = document.getElementById("inv-status");
+  const items  = invInput.getItems();
   status.className = "inv-status";
 
-  if (inv_items.length === 0) {
+  if (items.length === 0) {
     status.classList.remove("hidden");
     status.classList.add("status-err");
     status.textContent = "Add some items first.";
     return;
   }
 
-  saveInventoryToStorage();
+  saveToLocalStorage();
 
-  // Also sync to server (best-effort, not required for persistence)
-  const flat = [];
-  inv_items.forEach(e => { for (let i = 0; i < e.qty; i++) flat.push(e.name); });
+  // Sync to server too (best-effort)
+  const flat = invInput.getTags();
   fetch("/api/inventory", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ items: flat }),
-  }).catch(() => {});  // silent — localStorage is the real save
+  }).catch(() => {});
 
-  const total = inv_items.reduce((s, e) => s + e.qty, 0);
+  const total = items.reduce((s, e) => s + e.qty, 0);
   status.classList.remove("hidden");
   status.classList.add("status-ok");
-  status.textContent = `Saved — ${inv_items.length} item type${inv_items.length !== 1 ? "s" : ""}, ${total} total.`;
+  status.textContent = `Saved — ${items.length} item type${items.length !== 1 ? "s" : ""}, ${total} total.`;
   setTimeout(() => status.classList.add("hidden"), 3500);
 });
 
 // ── Clear button ──────────────────────────────────────────────
 document.getElementById("inv-clear-btn").addEventListener("click", () => {
-  closeQtyPopup();
-  inv_items = [];
-  renderInvTags();
+  invInput.clear();
   localStorage.removeItem(LS_KEY);
   document.getElementById("inv-status").classList.add("hidden");
+  updateExportBox();
+});
+
+// ── Import string ─────────────────────────────────────────────
+document.getElementById("inv-import-btn").addEventListener("click", () => {
+  const box    = document.getElementById("inv-export-box");
+  const status = document.getElementById("inv-status");
+  const str    = box.value.trim();
+  if (!str) return;
+
+  const parsed = stringToInventory(str);
+  if (!parsed.length) {
+    status.classList.remove("hidden");
+    status.classList.add("status-err");
+    status.textContent = "Couldn't parse that string. Format: itemname:qty,itemname,...";
+    return;
+  }
+
+  invInput.setItems(parsed);
+  saveToLocalStorage();
+
+  const total = parsed.reduce((s, e) => s + e.qty, 0);
+  status.classList.remove("hidden");
+  status.classList.add("status-ok");
+  status.textContent = `Imported ${parsed.length} item type${parsed.length !== 1 ? "s" : ""}, ${total} total.`;
+  setTimeout(() => status.classList.add("hidden"), 3500);
+});
+
+// Copy export string
+document.getElementById("inv-copy-btn").addEventListener("click", () => {
+  const box = document.getElementById("inv-export-box");
+  box.select();
+  navigator.clipboard.writeText(box.value).catch(() => document.execCommand("copy"));
+  const btn = document.getElementById("inv-copy-btn");
+  btn.textContent = "copied!";
+  setTimeout(() => btn.textContent = "copy", 1800);
 });
 
 // ── Offer generator ───────────────────────────────────────────
 const offerInput   = document.getElementById("offer-input");
 const offerSuggest = document.getElementById("offer-suggestions");
 let offerActiveIdx = -1;
-
 offerInput.addEventListener("input", () => {
   const q = offerInput.value.trim().toLowerCase();
   if (!q) { offerSuggest.classList.remove("open"); return; }
   const matches = allItems.filter(i => i.includes(q)).slice(0, 8);
   if (!matches.length) { offerSuggest.classList.remove("open"); return; }
   offerSuggest.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
-  offerSuggest.classList.add("open");
-  offerActiveIdx = -1;
+  offerSuggest.classList.add("open"); offerActiveIdx = -1;
   offerSuggest.querySelectorAll("li").forEach(li => {
     li.addEventListener("mousedown", e => { e.preventDefault(); offerInput.value = li.textContent; offerSuggest.classList.remove("open"); });
   });
@@ -481,39 +467,28 @@ async function generateOffer() {
   const target = offerInput.value.trim().toLowerCase();
   const errEl  = document.getElementById("offer-error");
   const panel  = document.getElementById("offer-panel");
-  errEl.classList.add("hidden");
-  panel.classList.add("hidden");
-
+  errEl.classList.add("hidden"); panel.classList.add("hidden");
   if (!target) {
     errEl.textContent = "Please enter the item you want to get.";
     errEl.classList.remove("hidden"); return;
   }
-  if (inv_items.length === 0) {
+  const flat = invInput.getTags();
+  if (!flat.length) {
     errEl.textContent = "Your inventory is empty. Add items above first.";
     errEl.classList.remove("hidden"); return;
   }
-
-  // Expand inventory with quantities for the server
-  const flat = [];
-  inv_items.forEach(e => { for (let i = 0; i < e.qty; i++) flat.push(e.name); });
-
   const res = await fetch("/api/suggest-offer", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ target, inventory: flat }),
   });
   const data = await res.json();
-
   if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
 
   document.getElementById("op-target-name").textContent = data.target_name;
-
-  // Count duplicates in offer for display e.g. "harvester ×3"
   const offerCounts = {};
   data.offer_items.forEach(n => { offerCounts[n] = (offerCounts[n] || 0) + 1; });
   document.getElementById("op-offer-items").innerHTML = Object.entries(offerCounts)
-    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " ×" + cnt : ""}</span>`)
-    .join("");
-
+    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " ×"+cnt : ""}</span>`).join("");
   document.getElementById("op-offer-ai").textContent  = data.offer_ai;
   document.getElementById("op-offer-raw").textContent = data.offer_raw;
   document.getElementById("op-target-pill").textContent = data.target_name;
@@ -523,10 +498,8 @@ async function generateOffer() {
   const verdictEl = document.getElementById("op-verdict");
   verdictEl.textContent = { win:"WIN ✓", lose:"LOSE", fair:"FAIR" }[data.verdict] || data.verdict.toUpperCase();
   verdictEl.className = "offer-verdict-badge verdict-" + data.verdict;
-
   const gainEl = document.getElementById("op-gain");
   gainEl.textContent = data.your_gain > 0 ? `(+${data.your_gain} AI in your favor)`
     : data.your_gain < 0 ? `(${data.your_gain} AI — closest possible from your inventory)` : "";
-
   panel.classList.remove("hidden");
 }
