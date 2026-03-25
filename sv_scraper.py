@@ -1,17 +1,9 @@
-"""
-Supreme Values MM2 Scraper
-Scrapes Godlies, Chromas, Ancients, and Uniques from supremevalues.com,
-saves mm2values.txt locally, then pushes it to GitHub automatically.
 
-Setup (one time only):
-    1. Go to https://github.com/settings/tokens
-    2. Click "Generate new token (classic)"
-    3. Give it a name, set expiry, and tick the "repo" scope
-    4. Copy the token and paste it into GITHUB_TOKEN below
 
-Usage:
-    python sv_scraper.py
-"""
+
+#Usage:
+#    python sv_scraper.py
+
 
 import os
 import re
@@ -20,10 +12,7 @@ import base64
 import requests
 from bs4 import BeautifulSoup
 
-# ── GitHub config ─────────────────────────────────────────────
-# When running locally, paste your token in the string below.
-# When running via GitHub Actions, it reads from the environment
-# automatically — no changes needed.
+#github config.
 GITHUB_TOKEN  = os.environ.get("GITHUB_TOKEN", "YOUR_TOKEN_HERE")
 GITHUB_REPO   = "TheTwixBar/mm2-trade-checker"
 GITHUB_PATH   = "data_txt/mm2values.txt"
@@ -185,6 +174,9 @@ def main():
         try:
             html = fetch_page(url)
             items = parse_items(html)
+            # Uniques: only keep the first item (Corrupt)
+            if cat == "uniques" and items:
+                items = items[:1]
             all_items.extend(items)
             print(f"{len(items)} items found.")
         except Exception as e:
