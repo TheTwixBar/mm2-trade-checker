@@ -14,8 +14,8 @@ STABILITY_MAP = {
     "Recovering":    1.07,
     "Stable":        1.00,
     "Fluctuating":   0.82,
-    "Underpaid For": 0.73,  
     "Losing Hype":   0.68,
+    "Underpaid For": 0.55,   # people underpay — bad to receive
     "Decreasing":    0.50,
 }
 
@@ -278,47 +278,79 @@ def find_best_offer(
     min_gain_pct: float = 0.03,
     min_gain_flat: float = 5.0
 ) -> Optional[Tuple[List[Dict[str, Any]], float, float]]:
-    if not inventory_items:
-        return None
+    results = find_top_offers(inventory_items, target_items, max_slots, min_gain_pct, min_gain_flat, top_n=1)
+    return results[0] if results else None
 
-    # Support both single item (legacy) and list
+
+def find_top_offers(
+    inventory_items: List[Dict[str, Any]],
+    target_items: List[Dict[str, Any]],
+    max_slots: int = 4,
+    min_gain_pct: float = 0.03,
+    min_gain_flat: float = 5.0,
+    top_n: int = 3,
+) -> List[Tuple[List[Dict[str, Any]], float, float]]:
+    if not inventory_items:
+        return []
+
     if isinstance(target_items, dict):
         target_items = [target_items]
 
     target_ai = sum(score_item(t)[0] for t in target_items)
-    gain_margin      = max(min_gain_flat, target_ai * min_gain_pct)
+    gain_margin       = max(min_gain_flat, target_ai * min_gain_pct)
     max_offer_allowed = target_ai - gain_margin
 
     scored_inv = [(it, score_item(it)[0]) for it in inventory_items]
 
-    best_under = None
-    best_any   = None
+    # Collect all valid combos that are under the gain cap, sorted by your_gain ascending
+    # (smallest gain = closest to target without overpaying)
+    valid   = []  # (your_gain, offer_ai, frozenset of item names, items)
+    fallback = [] # (abs_diff, offer_ai, items) — if nothing is strictly valid
+
+    seen_names: set = set()
 
     for r in range(1, max_slots + 1):
         for combo in combinations(scored_inv, r):
             offer_ai     = sum(ai for _, ai in combo)
             chosen_items = [it for it, _ in combo]
+            key = frozenset(it["name"] for it in chosen_items)
 
             abs_diff = abs(offer_ai - target_ai)
-            if best_any is None or abs_diff < best_any[0]:
-                best_any = (abs_diff, offer_ai, chosen_items)
+            fallback.append((abs_diff, offer_ai, chosen_items))
 
             if offer_ai <= max_offer_allowed:
                 your_gain = target_ai - offer_ai
-                if best_under is None or your_gain < best_under[0]:
-                    best_under = (your_gain, offer_ai, chosen_items)
+                valid.append((your_gain, offer_ai, key, chosen_items))
 
-    chosen = best_under if best_under is not None else best_any
-    if chosen is None:
-        return None
+    # Pick top_n most distinct valid offers (smallest gain first = fairest wins)
+    valid.sort(key=lambda x: x[0])
+    results = []
+    used_keys: set = set()
+    for your_gain, offer_ai, key, items in valid:
+        if key in used_keys:
+            continue
+        # Ensure it's meaningfully different from already chosen results
+        if any(len(key & prev) == len(key) for prev in used_keys):
+            continue
+        used_keys.add(key)
+        results.append((items, offer_ai, your_gain))
+        if len(results) >= top_n:
+            break
 
-    if chosen is best_under:
-        your_gain, offer_ai, items = best_under
-        return items, offer_ai, your_gain
+    # If we don't have enough valid offers, pad with fallback (closest to target)
+    if len(results) < top_n:
+        fallback.sort(key=lambda x: x[0])
+        for abs_diff, offer_ai, items in fallback:
+            key = frozenset(it["name"] for it in items)
+            if key in used_keys:
+                continue
+            used_keys.add(key)
+            your_gain = target_ai - offer_ai
+            results.append((items, offer_ai, your_gain))
+            if len(results) >= top_n:
+                break
 
-    _, offer_ai, items = best_any
-    your_gain = target_ai - offer_ai
-    return items, offer_ai, your_gain
+    return results
 
 
 # ---------------- OUTPUT ----------------
