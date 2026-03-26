@@ -966,6 +966,66 @@ footer {
   background: #fff;
 }
 
+/* Shared "you get" row at top of panel */
+.offer-get-row {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+}
+
+/* Alternatives section label */
+.offer-alts-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 10px 14px 4px;
+}
+
+/* Alternative cards container */
+.offer-alts {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Single alternative card */
+.offer-alt {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.offer-alt:last-child { border-bottom: none; }
+.offer-alt-best {
+  background: #f6faf6;
+  border-left: 3px solid var(--win);
+}
+
+.offer-alt-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.offer-alt-label {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  min-width: 56px;
+}
+.offer-alt-scores {
+  margin-top: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
 .offer-header {
   padding: 10px 14px 8px;
   border-bottom: 1px solid var(--border);
@@ -989,18 +1049,6 @@ footer {
   font-size: 1rem;
   font-style: italic;
   color: var(--accent);
-}
-
-.offer-trade-row {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0;
-  padding: 14px;
-  align-items: start;
-}
-
-.offer-side {
-  padding: 0 10px;
 }
 
 .offer-side-label {
@@ -1093,16 +1141,6 @@ footer {
   font-style: italic;
 }
 
-@media (max-width: 520px) {
-  .offer-trade-row {
-    grid-template-columns: 1fr;
-  }
-  .offer-arrow {
-    padding: 4px 10px;
-    transform: rotate(90deg);
-    justify-content: center;
-  }
-}
 
 /* ── Inventory quantity badges & popup ───────────────────────── */
 
