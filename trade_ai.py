@@ -302,6 +302,18 @@ def find_top_offers(
 
     scored_inv = [(it, score_item(it)[0]) for it in inventory_items]
 
+    # ── Safety cap: prune inventory before combinatorics blow up ──────────────
+    # Keep only items whose AI score is ≤ max_offer_allowed (no single item
+    # already overshoots the budget) and cap the pool at 40 candidates,
+    # preferring items closest in value to the target (best trade partners).
+    MAX_POOL = 40
+    scored_inv = [(it, ai) for it, ai in scored_inv if ai <= max_offer_allowed * 1.1]
+    if len(scored_inv) > MAX_POOL:
+        # Sort by proximity to target_ai / max_slots (ideal single-item value)
+        ideal = target_ai / max(1, max_slots)
+        scored_inv.sort(key=lambda x: abs(x[1] - ideal))
+        scored_inv = scored_inv[:MAX_POOL]
+
     # Collect all valid combos that are under the gain cap, sorted by your_gain ascending
     # (smallest gain = closest to target without overpaying)
     valid   = []  # (your_gain, offer_ai, frozenset of item names, items)
