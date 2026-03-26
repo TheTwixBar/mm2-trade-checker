@@ -224,10 +224,10 @@ function setDiff(elId, val) {
   el.className = "value " + (val > 0 ? "diff-pos" : val < 0 ? "diff-neg" : "");
 }
 const STAB_WARN = {
-  "Underpaid For": "people often trade this below its listed value, so it may be very hard to get fair value back out of it",
-  "Decreasing":    "this item is actively losing value and may be worth much less by the time you try to retrade it",
-  "Losing Hype":   "demand is fading on this item, which could make it harder to trade off later",
-  "Fluctuating":   "this item's price is unstable; a lot of new items are given this role which makes the price likely to fall",
+  "Underpaid For": "people often trade this below its listed value, so it may be hard to get fair value back out of it",
+  "Decreasing":    "this item is actively losing value and may be worth less by the time you try to retrade it",
+  "Losing Hype":   "demand is fading on this item, which could make it harder to move later",
+  "Fluctuating":   "this item's price is unstable and hard to pin down, trades involving it are riskier",
 };
 
 // ── Check trade ───────────────────────────────────────────────
@@ -376,6 +376,7 @@ document.getElementById("inv-save-btn").addEventListener("click", () => {
     status.classList.remove("hidden");
     status.classList.add("status-err");
     status.textContent = "Add some items first.";
+    document.getElementById("inv-summary").classList.add("hidden");
     return;
   }
 
@@ -386,6 +387,19 @@ document.getElementById("inv-save-btn").addEventListener("click", () => {
   fetch("/api/inventory", {
     method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ items: flat }),
+  }).catch(() => {});
+
+  // Fetch and display inventory value summary
+  fetch("/api/inventory/summary", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: flat }),
+  }).then(r => r.json()).then(d => {
+    if (d.total_items !== undefined) {
+      document.getElementById("inv-sum-count").textContent = d.total_items;
+      document.getElementById("inv-sum-ai").textContent    = d.total_ai;
+      document.getElementById("inv-sum-raw").textContent   = d.total_raw;
+      document.getElementById("inv-summary").classList.remove("hidden");
+    }
   }).catch(() => {});
 
   const total = items.reduce((s, e) => s + e.qty, 0);
@@ -400,6 +414,7 @@ document.getElementById("inv-clear-btn").addEventListener("click", () => {
   invInput.clear();
   localStorage.removeItem(LS_KEY);
   document.getElementById("inv-status").classList.add("hidden");
+  document.getElementById("inv-summary").classList.add("hidden");
   updateExportBox();
 });
 
@@ -437,6 +452,23 @@ document.getElementById("inv-copy-btn").addEventListener("click", () => {
   btn.textContent = "copied!";
   setTimeout(() => btn.textContent = "copy", 1800);
 });
+
+// ── Try-harder slider ─────────────────────────────────────────
+const SLIDER_LEVELS = [
+  { label: "fair (0%)",     pct: 0.0  },
+  { label: "balanced (5%)", pct: 0.05 },
+  { label: "slight (12%)",  pct: 0.12 },
+  { label: "strong (20%)",  pct: 0.20 },
+  { label: "max (35%)",     pct: 0.35 },
+];
+const tryHarderSlider = document.getElementById("try-harder-slider");
+const tryHarderHint   = document.getElementById("try-harder-hint");
+tryHarderSlider.addEventListener("input", () => {
+  tryHarderHint.textContent = SLIDER_LEVELS[+tryHarderSlider.value].label;
+});
+function getMinGainPct() {
+  return SLIDER_LEVELS[+tryHarderSlider.value].pct;
+}
 
 // ── Offer generator (multi-item tag input) ────────────────────
 const offerTargetInput = makeQtyTagInput("offer-tags", "offer-input", "offer-suggestions", { autoPopup: false });
@@ -517,7 +549,7 @@ async function generateOffer() {
   try {
     res = await fetch("/api/suggest-offer", {
       method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ target: targets[0], targets, inventory: flat }),
+      body: JSON.stringify({ target: targets[0], targets, inventory: flat, min_gain_pct: getMinGainPct() }),
     });
     data = await res.json();
   } finally {
@@ -550,5 +582,69 @@ async function generateOffer() {
   const gainEl = document.getElementById("op-gain");
   gainEl.textContent = data.your_gain > 0 ? `(+${data.your_gain} AI in your favor)`
     : data.your_gain < 0 ? `(${data.your_gain} AI, closest possible from your inventory)` : "";
+  panel.classList.remove("hidden");
+}
+
+// ── Reverse offer ─────────────────────────────────────────────
+const revWantInput = makeQtyTagInput("rev-want-tags", "rev-want-input", "rev-want-suggestions", { autoPopup: false });
+const revGiveInput = makeQtyTagInput("rev-give-tags", "rev-give-input", "rev-give-suggestions", { autoPopup: false });
+
+document.getElementById("rev-btn").addEventListener("click", generateReverseOffer);
+
+async function generateReverseOffer() {
+  const give    = revGiveInput.getTags();
+  const want    = revWantInput.getTags();
+  const errEl   = document.getElementById("rev-error");
+  const panel   = document.getElementById("rev-panel");
+  const loadEl  = document.getElementById("rev-loading");
+  const btn     = document.getElementById("rev-btn");
+  errEl.classList.add("hidden"); panel.classList.add("hidden"); loadEl.classList.add("hidden");
+
+  if (!give.length) {
+    errEl.textContent = "Please add at least one item you want to give.";
+    errEl.classList.remove("hidden"); return;
+  }
+  if (!want.length) {
+    errEl.textContent = "Your want list is empty. Add items you want to receive.";
+    errEl.classList.remove("hidden"); return;
+  }
+
+  loadEl.classList.remove("hidden");
+  btn.disabled = true;
+
+  let res, data;
+  try {
+    res = await fetch("/api/reverse-offer", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ give, want, min_gain_pct: getMinGainPct() }),
+    });
+    data = await res.json();
+  } finally {
+    loadEl.classList.add("hidden");
+    btn.disabled = false;
+  }
+
+  if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
+
+  // You give side
+  document.getElementById("rev-give-name").textContent = data.give_names.join(", ");
+  document.getElementById("rev-give-items").innerHTML  = data.give_names.map(n => `<span class="offer-item-pill">${n}</span>`).join("");
+  document.getElementById("rev-give-ai").textContent   = data.give_ai;
+  document.getElementById("rev-give-raw").textContent  = data.give_raw;
+
+  // You receive side
+  const recvCounts = {};
+  data.receive_names.forEach(n => { recvCounts[n] = (recvCounts[n] || 0) + 1; });
+  document.getElementById("rev-receive-items").innerHTML = Object.entries(recvCounts)
+    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " x"+cnt : ""}</span>`).join("");
+  document.getElementById("rev-receive-ai").textContent  = data.receive_ai;
+  document.getElementById("rev-receive-raw").textContent = data.receive_raw;
+
+  const verdictEl = document.getElementById("rev-verdict");
+  verdictEl.textContent = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.verdict] || data.verdict.toUpperCase();
+  verdictEl.className = "offer-verdict-badge verdict-" + data.verdict;
+  document.getElementById("rev-gain").textContent = data.your_gain > 0 ? `(+${data.your_gain} AI in your favor)`
+    : data.your_gain < 0 ? `(${data.your_gain} AI, closest possible from your want list)` : "";
+
   panel.classList.remove("hidden");
 }
