@@ -125,6 +125,24 @@
         </div>
         <div id="inv-status" class="inv-status hidden"></div>
 
+        <!-- Inventory value summary -->
+        <div id="inv-summary" class="inv-summary hidden">
+          <div class="inv-summary-item">
+            <span class="inv-summary-label">total items</span>
+            <span class="inv-summary-val" id="inv-sum-count"></span>
+          </div>
+          <div class="inv-summary-sep"></div>
+          <div class="inv-summary-item">
+            <span class="inv-summary-label">ai score</span>
+            <span class="inv-summary-val" id="inv-sum-ai"></span>
+          </div>
+          <div class="inv-summary-sep"></div>
+          <div class="inv-summary-item">
+            <span class="inv-summary-label">mm2 value</span>
+            <span class="inv-summary-val" id="inv-sum-raw"></span>
+          </div>
+        </div>
+
         <!-- Import / export string -->
         <div class="inv-string-row">
           <div class="inv-string-label">backup / import string</div>
@@ -154,6 +172,22 @@
             <ul class="suggestions" id="offer-suggestions"></ul>
           </div>
           <button id="offer-btn">generate offer</button>
+        </div>
+
+        <!-- Try harder slider -->
+        <div class="try-harder-row">
+          <label class="try-harder-label" for="try-harder-slider">
+            <span>favor</span>
+            <span class="try-harder-hint" id="try-harder-hint">balanced (5%)</span>
+          </label>
+          <input type="range" id="try-harder-slider" class="try-harder-slider" min="0" max="4" step="1" value="1"/>
+          <div class="try-harder-ticks">
+            <span>fair</span>
+            <span>balanced</span>
+            <span>slight</span>
+            <span>strong</span>
+            <span>max</span>
+          </div>
         </div>
 
         <div id="offer-error" class="error-msg hidden"></div>
@@ -204,6 +238,79 @@
             <span class="offer-verdict-label">expected result:</span>
             <span class="offer-verdict-badge" id="op-verdict"></span>
             <span class="offer-gain-note" id="op-gain"></span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="inv-divider"/>
+
+      <!-- Reverse offer -->
+      <div class="inv-section">
+        <div class="inv-section-label">reverse offer</div>
+        <p class="inv-sub">Enter an item you want to trade away. The AI will suggest what to ask for in return from your want list, slightly in your favor.</p>
+
+        <div class="rev-want-row">
+          <div class="inv-section-label" style="margin-bottom:6px;">want list</div>
+          <div class="inv-tag-area">
+            <div class="tag-input-wrapper" id="rev-want-tags">
+              <input type="text" id="rev-want-input" placeholder="items you want to receive..." autocomplete="off"/>
+            </div>
+            <ul class="suggestions" id="rev-want-suggestions"></ul>
+          </div>
+        </div>
+
+        <div class="offer-search-row" style="margin-top:12px;">
+          <div class="offer-input-wrap offer-tag-wrap">
+            <div class="tag-input-wrapper" id="rev-give-tags">
+              <input type="text" id="rev-give-input" placeholder="item(s) you want to give..." autocomplete="off"/>
+            </div>
+            <ul class="suggestions" id="rev-give-suggestions"></ul>
+          </div>
+          <button id="rev-btn">find offer</button>
+        </div>
+
+        <div id="rev-error" class="error-msg hidden"></div>
+
+        <div id="rev-loading" class="offer-loading hidden">
+          <div class="offer-loading-bar"></div>
+        </div>
+
+        <div id="rev-panel" class="offer-panel hidden">
+          <div class="offer-header">
+            <div class="offer-label">suggested ask for</div>
+            <div class="offer-target-name" id="rev-give-name"></div>
+          </div>
+          <div class="offer-trade-row">
+            <div class="offer-side">
+              <div class="offer-side-label">you give</div>
+              <div class="offer-item-list" id="rev-give-items"></div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">ai score</span>
+                <span class="offer-score-val" id="rev-give-ai"></span>
+              </div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">mm2 value</span>
+                <span class="offer-score-val" id="rev-give-raw"></span>
+              </div>
+            </div>
+            <div class="offer-arrow">→</div>
+            <div class="offer-side">
+              <div class="offer-side-label">you get</div>
+              <div class="offer-item-list" id="rev-receive-items"></div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">ai score</span>
+                <span class="offer-score-val" id="rev-receive-ai"></span>
+              </div>
+              <div class="offer-score-row">
+                <span class="offer-score-label">mm2 value</span>
+                <span class="offer-score-val" id="rev-receive-raw"></span>
+              </div>
+            </div>
+          </div>
+          <div class="offer-verdict-row">
+            <span class="offer-verdict-label">expected result:</span>
+            <span class="offer-verdict-badge" id="rev-verdict"></span>
+            <span class="offer-gain-note" id="rev-gain"></span>
           </div>
         </div>
       </div>
