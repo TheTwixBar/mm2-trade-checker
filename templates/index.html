@@ -198,120 +198,28 @@
 
         <div id="offer-panel" class="offer-panel hidden">
           <div class="offer-header">
-            <div class="offer-label">suggested offer for</div>
+            <div class="offer-label">suggested offers for</div>
             <div class="offer-target-name" id="op-target-name"></div>
           </div>
 
-          <div class="offer-trade-row">
-            <div class="offer-side">
-              <div class="offer-side-label">you give</div>
-              <div id="op-offer-items" class="offer-item-list"></div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">ai score</span>
-                <span class="offer-score-val" id="op-offer-ai"></span>
-              </div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">mm2 value</span>
-                <span class="offer-score-val" id="op-offer-raw"></span>
-              </div>
+          <!-- "you get" side is shared across all alternatives -->
+          <div class="offer-get-row">
+            <div class="offer-side-label">you get</div>
+            <div class="offer-item-list" id="op-target-items">
+              <span class="offer-item-pill" id="op-target-pill"></span>
             </div>
-
-            <div class="offer-arrow">→</div>
-
-            <div class="offer-side">
-              <div class="offer-side-label">you get</div>
-              <div class="offer-item-list" id="op-target-items">
-                <span class="offer-item-pill" id="op-target-pill"></span>
-              </div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">ai score</span>
-                <span class="offer-score-val" id="op-target-ai"></span>
-              </div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">mm2 value</span>
-                <span class="offer-score-val" id="op-target-raw"></span>
-              </div>
+            <div class="offer-score-row">
+              <span class="offer-score-label">ai score</span>
+              <span class="offer-score-val" id="op-target-ai"></span>
+            </div>
+            <div class="offer-score-row">
+              <span class="offer-score-label">mm2 value</span>
+              <span class="offer-score-val" id="op-target-raw"></span>
             </div>
           </div>
 
-          <div class="offer-verdict-row">
-            <span class="offer-verdict-label">expected result:</span>
-            <span class="offer-verdict-badge" id="op-verdict"></span>
-            <span class="offer-gain-note" id="op-gain"></span>
-          </div>
-        </div>
-      </div>
-
-      <hr class="inv-divider"/>
-
-      <!-- Reverse offer -->
-      <div class="inv-section">
-        <div class="inv-section-label">reverse offer</div>
-        <p class="inv-sub">Enter an item you want to trade away. The AI will suggest what to ask for in return from your want list, slightly in your favor.</p>
-
-        <div class="rev-want-row">
-          <div class="inv-section-label" style="margin-bottom:6px;">want list</div>
-          <div class="inv-tag-area">
-            <div class="tag-input-wrapper" id="rev-want-tags">
-              <input type="text" id="rev-want-input" placeholder="items you want to receive..." autocomplete="off"/>
-            </div>
-            <ul class="suggestions" id="rev-want-suggestions"></ul>
-          </div>
-        </div>
-
-        <div class="offer-search-row" style="margin-top:12px;">
-          <div class="offer-input-wrap offer-tag-wrap">
-            <div class="tag-input-wrapper" id="rev-give-tags">
-              <input type="text" id="rev-give-input" placeholder="item(s) you want to give..." autocomplete="off"/>
-            </div>
-            <ul class="suggestions" id="rev-give-suggestions"></ul>
-          </div>
-          <button id="rev-btn">find offer</button>
-        </div>
-
-        <div id="rev-error" class="error-msg hidden"></div>
-
-        <div id="rev-loading" class="offer-loading hidden">
-          <div class="offer-loading-bar"></div>
-        </div>
-
-        <div id="rev-panel" class="offer-panel hidden">
-          <div class="offer-header">
-            <div class="offer-label">suggested ask for</div>
-            <div class="offer-target-name" id="rev-give-name"></div>
-          </div>
-          <div class="offer-trade-row">
-            <div class="offer-side">
-              <div class="offer-side-label">you give</div>
-              <div class="offer-item-list" id="rev-give-items"></div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">ai score</span>
-                <span class="offer-score-val" id="rev-give-ai"></span>
-              </div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">mm2 value</span>
-                <span class="offer-score-val" id="rev-give-raw"></span>
-              </div>
-            </div>
-            <div class="offer-arrow">→</div>
-            <div class="offer-side">
-              <div class="offer-side-label">you get</div>
-              <div class="offer-item-list" id="rev-receive-items"></div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">ai score</span>
-                <span class="offer-score-val" id="rev-receive-ai"></span>
-              </div>
-              <div class="offer-score-row">
-                <span class="offer-score-label">mm2 value</span>
-                <span class="offer-score-val" id="rev-receive-raw"></span>
-              </div>
-            </div>
-          </div>
-          <div class="offer-verdict-row">
-            <span class="offer-verdict-label">expected result:</span>
-            <span class="offer-verdict-badge" id="rev-verdict"></span>
-            <span class="offer-gain-note" id="rev-gain"></span>
-          </div>
+          <div class="offer-alts-label">offer options</div>
+          <div id="op-alternatives" class="offer-alts"></div>
         </div>
       </div>
 
