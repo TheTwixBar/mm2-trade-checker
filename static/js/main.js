@@ -502,12 +502,23 @@ async function generateOffer() {
       body: JSON.stringify({ target: targets[0], targets, inventory: flat, min_gain_pct: getMinGainPct() }),
     });
     data = await res.json();
-  } finally {
+  } catch (err) {
     loadingEl.classList.add("hidden");
     btn.disabled = false;
+    console.error("Offer fetch error:", err);
+    errEl.textContent = "Network error: " + err.message;
+    errEl.classList.remove("hidden");
+    return;
   }
+  loadingEl.classList.add("hidden");
+  btn.disabled = false;
 
-  if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
+  if (!res.ok) {
+    console.error("Offer API error:", res.status, data);
+    errEl.textContent = (data && data.error) ? data.error : "Something went wrong (" + res.status + ").";
+    errEl.classList.remove("hidden");
+    return;
+  }
 
   const targetNames = data.target_names || [data.target_name];
   document.getElementById("op-target-name").textContent = targetNames.join(", ");
