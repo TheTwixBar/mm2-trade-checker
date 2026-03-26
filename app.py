@@ -175,14 +175,17 @@ def suggest_offer():
 
     min_gain_pct = float(data.get("min_gain_pct", 0.05))
 
-    alternatives = find_top_offers(
-        inventory_items,
-        target_items,
-        max_slots=4,
-        min_gain_pct=min_gain_pct,
-        min_gain_flat=5.0,
-        top_n=3,
-    )
+    try:
+        alternatives = find_top_offers(
+            inventory_items,
+            target_items,
+            max_slots=4,
+            min_gain_pct=min_gain_pct,
+            min_gain_flat=5.0,
+            top_n=3,
+        )
+    except Exception as e:
+        return jsonify({"error": f"Offer generation failed: {str(e)}"}), 500
 
     if not alternatives:
         return jsonify({"error": "Could not find a suitable offer from your inventory."}), 400
