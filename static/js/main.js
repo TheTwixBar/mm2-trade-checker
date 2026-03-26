@@ -561,90 +561,38 @@ async function generateOffer() {
 
   const targetNames = data.target_names || [data.target_name];
   document.getElementById("op-target-name").textContent = targetNames.join(", ");
-  const offerCounts = {};
-  data.offer_items.forEach(n => { offerCounts[n] = (offerCounts[n] || 0) + 1; });
-  document.getElementById("op-offer-items").innerHTML = Object.entries(offerCounts)
-    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " x"+cnt : ""}</span>`).join("");
-  document.getElementById("op-offer-ai").textContent  = data.offer_ai;
-  document.getElementById("op-offer-raw").textContent = data.offer_raw;
 
+  // "You get" side
   const targetItemsEl = document.getElementById("op-target-items");
   targetItemsEl.innerHTML = targetNames.map(n => `<span class="offer-item-pill">${n}</span>`).join("");
-  const singlePill = document.getElementById("op-target-pill");
-  if (singlePill) singlePill.textContent = "";
+  document.getElementById("op-target-ai").textContent  = data.target_ai;
+  document.getElementById("op-target-raw").textContent = data.target_raw;
 
-  document.getElementById("op-target-ai").textContent   = data.target_ai;
-  document.getElementById("op-target-raw").textContent  = data.target_raw;
-
-  const verdictEl = document.getElementById("op-verdict");
-  verdictEl.textContent = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.verdict] || data.verdict.toUpperCase();
-  verdictEl.className = "offer-verdict-badge verdict-" + data.verdict;
-  const gainEl = document.getElementById("op-gain");
-  gainEl.textContent = data.your_gain > 0 ? `(+${data.your_gain} AI in your favor)`
-    : data.your_gain < 0 ? `(${data.your_gain} AI, closest possible from your inventory)` : "";
-  panel.classList.remove("hidden");
-}
-
-// ── Reverse offer ─────────────────────────────────────────────
-const revWantInput = makeQtyTagInput("rev-want-tags", "rev-want-input", "rev-want-suggestions", { autoPopup: false });
-const revGiveInput = makeQtyTagInput("rev-give-tags", "rev-give-input", "rev-give-suggestions", { autoPopup: false });
-
-document.getElementById("rev-btn").addEventListener("click", generateReverseOffer);
-
-async function generateReverseOffer() {
-  const give    = revGiveInput.getTags();
-  const want    = revWantInput.getTags();
-  const errEl   = document.getElementById("rev-error");
-  const panel   = document.getElementById("rev-panel");
-  const loadEl  = document.getElementById("rev-loading");
-  const btn     = document.getElementById("rev-btn");
-  errEl.classList.add("hidden"); panel.classList.add("hidden"); loadEl.classList.add("hidden");
-
-  if (!give.length) {
-    errEl.textContent = "Please add at least one item you want to give.";
-    errEl.classList.remove("hidden"); return;
-  }
-  if (!want.length) {
-    errEl.textContent = "Your want list is empty. Add items you want to receive.";
-    errEl.classList.remove("hidden"); return;
-  }
-
-  loadEl.classList.remove("hidden");
-  btn.disabled = true;
-
-  let res, data;
-  try {
-    res = await fetch("/api/reverse-offer", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ give, want, min_gain_pct: getMinGainPct() }),
-    });
-    data = await res.json();
-  } finally {
-    loadEl.classList.add("hidden");
-    btn.disabled = false;
-  }
-
-  if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
-
-  // You give side
-  document.getElementById("rev-give-name").textContent = data.give_names.join(", ");
-  document.getElementById("rev-give-items").innerHTML  = data.give_names.map(n => `<span class="offer-item-pill">${n}</span>`).join("");
-  document.getElementById("rev-give-ai").textContent   = data.give_ai;
-  document.getElementById("rev-give-raw").textContent  = data.give_raw;
-
-  // You receive side
-  const recvCounts = {};
-  data.receive_names.forEach(n => { recvCounts[n] = (recvCounts[n] || 0) + 1; });
-  document.getElementById("rev-receive-items").innerHTML = Object.entries(recvCounts)
-    .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " x"+cnt : ""}</span>`).join("");
-  document.getElementById("rev-receive-ai").textContent  = data.receive_ai;
-  document.getElementById("rev-receive-raw").textContent = data.receive_raw;
-
-  const verdictEl = document.getElementById("rev-verdict");
-  verdictEl.textContent = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.verdict] || data.verdict.toUpperCase();
-  verdictEl.className = "offer-verdict-badge verdict-" + data.verdict;
-  document.getElementById("rev-gain").textContent = data.your_gain > 0 ? `(+${data.your_gain} AI in your favor)`
-    : data.your_gain < 0 ? `(${data.your_gain} AI, closest possible from your want list)` : "";
+  // Render alternatives
+  const altsEl = document.getElementById("op-alternatives");
+  const VERDICT_LABELS = { win: "WIN", lose: "LOSE", fair: "FAIR" };
+  altsEl.innerHTML = (data.alternatives || []).map((alt, i) => {
+    const counts = {};
+    alt.offer_items.forEach(n => { counts[n] = (counts[n] || 0) + 1; });
+    const pills = Object.entries(counts)
+      .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " x"+cnt : ""}</span>`).join("");
+    const gainNote = alt.your_gain > 0 ? `+${alt.your_gain} AI in your favor`
+      : alt.your_gain < 0 ? `${alt.your_gain} AI` : "even";
+    const verdictClass = "verdict-" + alt.verdict;
+    const label = i === 0 ? "best" : i === 1 ? "option 2" : "option 3";
+    return `<div class="offer-alt${i === 0 ? " offer-alt-best" : ""}">
+      <div class="offer-alt-header">
+        <span class="offer-alt-label">${label}</span>
+        <span class="offer-verdict-badge ${verdictClass}">${VERDICT_LABELS[alt.verdict] || alt.verdict.toUpperCase()}</span>
+        <span class="offer-gain-note">(${gainNote})</span>
+      </div>
+      <div class="offer-item-list">${pills}</div>
+      <div class="offer-alt-scores">
+        <span class="offer-score-label">ai score</span> <span class="offer-score-val">${alt.offer_ai}</span>
+        <span class="offer-score-label" style="margin-left:14px;">mm2 value</span> <span class="offer-score-val">${alt.offer_raw}</span>
+      </div>
+    </div>`;
+  }).join("");
 
   panel.classList.remove("hidden");
 }
