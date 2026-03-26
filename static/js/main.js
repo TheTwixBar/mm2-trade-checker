@@ -472,57 +472,7 @@ function getMinGainPct() {
 
 // ── Offer generator (multi-item tag input) ────────────────────
 const offerTargetInput = makeQtyTagInput("offer-tags", "offer-input", "offer-suggestions", { autoPopup: false });
-const offerInput   = document.getElementById("offer-input");
-const offerSuggest = document.getElementById("offer-suggestions");
-let offerActiveIdx = -1;
 
-function addOfferTag() {
-  const val = offerInput.value.trim().toLowerCase();
-  if (!val) return;
-  const match = allItems.find(i => i === val) || allItems.find(i => i.includes(val));
-  if (match) {
-    offerTargetInput.setItems([...offerTargetInput.getItems(), { name: match, qty: 1 }]);
-    offerInput.value = "";
-    offerSuggest.classList.remove("open");
-  }
-}
-
-offerInput.addEventListener("input", () => {
-  const q = offerInput.value.trim().toLowerCase();
-  if (!q) { offerSuggest.classList.remove("open"); return; }
-  const matches = allItems.filter(i => i.includes(q)).slice(0, 8);
-  if (!matches.length) { offerSuggest.classList.remove("open"); return; }
-  offerSuggest.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
-  offerSuggest.classList.add("open"); offerActiveIdx = -1;
-  offerSuggest.querySelectorAll("li").forEach(li => {
-    li.addEventListener("mousedown", e => {
-      e.preventDefault();
-      offerTargetInput.setItems([...offerTargetInput.getItems(), { name: li.textContent, qty: 1 }]);
-      offerInput.value = "";
-      offerSuggest.classList.remove("open");
-    });
-  });
-});
-offerInput.addEventListener("blur", () => setTimeout(() => offerSuggest.classList.remove("open"), 150));
-offerInput.addEventListener("keydown", e => {
-  const items = offerSuggest.querySelectorAll("li");
-  if (e.key === "ArrowDown") { e.preventDefault(); offerActiveIdx = Math.min(offerActiveIdx+1, items.length-1); }
-  else if (e.key === "ArrowUp") { e.preventDefault(); offerActiveIdx = Math.max(offerActiveIdx-1, -1); }
-  else if (e.key === "Enter") {
-    e.preventDefault();
-    if (offerActiveIdx >= 0 && items[offerActiveIdx]) {
-      offerTargetInput.setItems([...offerTargetInput.getItems(), { name: items[offerActiveIdx].textContent, qty: 1 }]);
-      offerInput.value = "";
-      offerSuggest.classList.remove("open");
-    } else if (offerInput.value.trim()) {
-      addOfferTag();
-    } else {
-      generateOffer();
-    }
-    return;
-  }
-  items.forEach((li, i) => li.classList.toggle("active", i === offerActiveIdx));
-});
 document.getElementById("offer-btn").addEventListener("click", generateOffer);
 
 async function generateOffer() {
