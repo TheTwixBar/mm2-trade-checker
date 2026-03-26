@@ -1,7 +1,7 @@
 import json
 import os
 from flask import Flask, request, jsonify, render_template
-from trade_ai import load_items, evaluate_trade, explain, score_item, find_best_offer
+from trade_ai import load_items, evaluate_trade, explain, score_item, find_best_offer, find_top_offers
 
 app = Flask(__name__)
 db = load_items()
@@ -175,36 +175,39 @@ def suggest_offer():
 
     min_gain_pct = float(data.get("min_gain_pct", 0.05))
 
-    # 5% min gain = slightly biased toward us
-    result = find_best_offer(
+    alternatives = find_top_offers(
         inventory_items,
         target_items,
         max_slots=4,
         min_gain_pct=min_gain_pct,
         min_gain_flat=5.0,
+        top_n=3,
     )
 
-    if result is None:
+    if not alternatives:
         return jsonify({"error": "Could not find a suitable offer from your inventory."}), 400
 
-    offer_items, offer_ai, your_gain = result
-    offer_names  = [item["name"] for item in offer_items]
-    offer_raw    = sum(item.get("value", 0) for item in offer_items)
-    target_ai_total = sum(score_item(t)[0] for t in target_items)
+    target_ai_total  = sum(score_item(t)[0] for t in target_items)
     target_raw_total = sum(t.get("value", 0) for t in target_items)
-    trade_result = evaluate_trade(offer_items, target_items)
+
+    alt_list = []
+    for offer_items, offer_ai, your_gain in alternatives:
+        trade_result = evaluate_trade(offer_items, target_items)
+        alt_list.append({
+            "offer_items": [item["name"] for item in offer_items],
+            "offer_ai":    round(offer_ai),
+            "offer_raw":   sum(item.get("value", 0) for item in offer_items),
+            "your_gain":   round(your_gain),
+            "verdict":     trade_result["result"],
+            "ai_diff":     trade_result["ai_diff"],
+        })
 
     return jsonify({
-        "offer_items":   offer_names,
-        "offer_ai":      round(offer_ai),
-        "offer_raw":     offer_raw,
+        "alternatives":  alt_list,
         "target_name":   target_items[0]["name"],
         "target_names":  [t["name"] for t in target_items],
         "target_ai":     round(target_ai_total),
         "target_raw":    target_raw_total,
-        "your_gain":     round(your_gain),
-        "verdict":       trade_result["result"],
-        "ai_diff":       trade_result["ai_diff"],
     })
 
 
@@ -231,60 +234,6 @@ def inventory_summary():
         "total_raw":   total_raw,
     })
 
-
-# ── Reverse offer ─────────────────────────────────────────────────────────────
-@app.route("/api/reverse-offer", methods=["POST"])
-def reverse_offer():
-    data = request.get_json()
-
-    # Items the user wants to give away (expanded flat list)
-    give_names = [t.strip().lower() for t in data.get("give", []) if isinstance(t, str) and t.strip()]
-    # Want list — items the user would accept in return
-    want_names = [t.strip().lower() for t in data.get("want", []) if isinstance(t, str) and t.strip()]
-    min_gain_pct = float(data.get("min_gain_pct", 0.05))
-
-    if not give_names:
-        return jsonify({"error": "Please add at least one item you want to give."}), 400
-    if not want_names:
-        return jsonify({"error": "Your want list is empty. Add items you want to receive."}), 400
-
-    unknown = [n for n in give_names + want_names if n not in db]
-    if unknown:
-        return jsonify({"error": f"Unknown item: '{unknown[0]}'"}), 404
-
-    give_items = [db[n] for n in give_names]
-    want_items = [db[n] for n in want_names]
-
-    # Reverse: find best subset of want_items to ask for, given what we're offering
-    result = find_best_offer(
-        want_items,
-        give_items,
-        max_slots=4,
-        min_gain_pct=min_gain_pct,
-        min_gain_flat=5.0,
-    )
-
-    if result is None:
-        return jsonify({"error": "Could not find a suitable ask from your want list."}), 400
-
-    receive_items, receive_ai, your_gain = result
-    receive_names = [item["name"] for item in receive_items]
-    receive_raw   = sum(item.get("value", 0) for item in receive_items)
-    give_ai_total = sum(score_item(g)[0] for g in give_items)
-    give_raw_total = sum(g.get("value", 0) for g in give_items)
-    trade_result  = evaluate_trade(give_items, receive_items)
-
-    return jsonify({
-        "give_names":    [g["name"] for g in give_items],
-        "give_ai":       round(give_ai_total),
-        "give_raw":      give_raw_total,
-        "receive_names": receive_names,
-        "receive_ai":    round(receive_ai),
-        "receive_raw":   receive_raw,
-        "your_gain":     round(your_gain),
-        "verdict":       trade_result["result"],
-        "ai_diff":       trade_result["ai_diff"],
-    })
 
 
 if __name__ == "__main__":
