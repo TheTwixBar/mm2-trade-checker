@@ -224,10 +224,10 @@ function setDiff(elId, val) {
   el.className = "value " + (val > 0 ? "diff-pos" : val < 0 ? "diff-neg" : "");
 }
 const STAB_WARN = {
-  "Underpaid For": "people often trade this below its listed value, so it may be hard to get fair value back out of it",
-  "Decreasing":    "this item is actively losing value and may be worth less by the time you try to retrade it",
-  "Losing Hype":   "demand is fading on this item, which could make it harder to move later",
-  "Fluctuating":   "this item's price is unstable and hard to pin down, trades involving it are riskier",
+  "Underpaid For": "people often trade this below its listed value, so it may be very hard to get fair value back out of it",
+  "Decreasing":    "this item is actively losing value and may be worth much less by the time you try to retrade it",
+  "Losing Hype":   "demand is fading on this item, which could make it harder to trade off later",
+  "Fluctuating":   "this item's price is unstable; a lot of new items are given this role which makes the price likely to fall",
 };
 
 // ── Check trade ───────────────────────────────────────────────
