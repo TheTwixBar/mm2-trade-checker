@@ -173,12 +173,14 @@ def suggest_offer():
     target_items = [db[n] for n in target_names]
     inventory_items = [db[k] for k in inventory_keys if k in db]
 
+    min_gain_pct = float(data.get("min_gain_pct", 0.05))
+
     # 5% min gain = slightly biased toward us
     result = find_best_offer(
         inventory_items,
         target_items,
         max_slots=4,
-        min_gain_pct=0.05,
+        min_gain_pct=min_gain_pct,
         min_gain_flat=5.0,
     )
 
@@ -200,6 +202,85 @@ def suggest_offer():
         "target_names":  [t["name"] for t in target_items],
         "target_ai":     round(target_ai_total),
         "target_raw":    target_raw_total,
+        "your_gain":     round(your_gain),
+        "verdict":       trade_result["result"],
+        "ai_diff":       trade_result["ai_diff"],
+    })
+
+
+# ── Inventory value summary ───────────────────────────────────────────────────
+@app.route("/api/inventory/summary", methods=["POST"])
+def inventory_summary():
+    data = request.get_json()
+    items_flat = data.get("items", [])
+    if not items_flat:
+        return jsonify({"error": "No items provided."}), 400
+
+    total_ai  = 0
+    total_raw = 0
+    for name in items_flat:
+        key = name.strip().lower()
+        if key in db:
+            ai, *_ = score_item(db[key])
+            total_ai  += ai
+            total_raw += db[key].get("value", 0)
+
+    return jsonify({
+        "total_items": len(items_flat),
+        "total_ai":    round(total_ai),
+        "total_raw":   total_raw,
+    })
+
+
+# ── Reverse offer ─────────────────────────────────────────────────────────────
+@app.route("/api/reverse-offer", methods=["POST"])
+def reverse_offer():
+    data = request.get_json()
+
+    # Items the user wants to give away (expanded flat list)
+    give_names = [t.strip().lower() for t in data.get("give", []) if isinstance(t, str) and t.strip()]
+    # Want list — items the user would accept in return
+    want_names = [t.strip().lower() for t in data.get("want", []) if isinstance(t, str) and t.strip()]
+    min_gain_pct = float(data.get("min_gain_pct", 0.05))
+
+    if not give_names:
+        return jsonify({"error": "Please add at least one item you want to give."}), 400
+    if not want_names:
+        return jsonify({"error": "Your want list is empty. Add items you want to receive."}), 400
+
+    unknown = [n for n in give_names + want_names if n not in db]
+    if unknown:
+        return jsonify({"error": f"Unknown item: '{unknown[0]}'"}), 404
+
+    give_items = [db[n] for n in give_names]
+    want_items = [db[n] for n in want_names]
+
+    # Reverse: find best subset of want_items to ask for, given what we're offering
+    result = find_best_offer(
+        want_items,
+        give_items,
+        max_slots=4,
+        min_gain_pct=min_gain_pct,
+        min_gain_flat=5.0,
+    )
+
+    if result is None:
+        return jsonify({"error": "Could not find a suitable ask from your want list."}), 400
+
+    receive_items, receive_ai, your_gain = result
+    receive_names = [item["name"] for item in receive_items]
+    receive_raw   = sum(item.get("value", 0) for item in receive_items)
+    give_ai_total = sum(score_item(g)[0] for g in give_items)
+    give_raw_total = sum(g.get("value", 0) for g in give_items)
+    trade_result  = evaluate_trade(give_items, receive_items)
+
+    return jsonify({
+        "give_names":    [g["name"] for g in give_items],
+        "give_ai":       round(give_ai_total),
+        "give_raw":      give_raw_total,
+        "receive_names": receive_names,
+        "receive_ai":    round(receive_ai),
+        "receive_raw":   receive_raw,
         "your_gain":     round(your_gain),
         "verdict":       trade_result["result"],
         "ai_diff":       trade_result["ai_diff"],
