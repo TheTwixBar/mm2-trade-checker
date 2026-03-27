@@ -8,8 +8,15 @@ db = load_items()
 
 INVENTORY_FILE = "data_txt/inventory.json"
 
+# Untradeable item prefixes — never show in autocomplete
+UNTRADEABLE_PREFIXES = ("gold ", "silver ", "bronze ", "red ", "blue ", "purple ")
+
+def is_untradeable(name: str) -> bool:
+    lower = name.lower()
+    return any(lower.startswith(p) for p in UNTRADEABLE_PREFIXES)
+
 def tradeable_items():
-    return sorted(db.keys())
+    return sorted(k for k in db.keys() if not is_untradeable(k))
 
 
 # ── Inventory persistence ────────────────────────────────────────────────────
@@ -61,6 +68,7 @@ def api_trade():
     result = evaluate_trade(yours_items, theirs_items)
     return jsonify({
         "result":          result["result"],
+        "confidence":      result.get("confidence", ""),
         "your_raw":        result["your_raw"],
         "their_raw":       result["their_raw"],
         "raw_diff":        result["raw_diff"],
