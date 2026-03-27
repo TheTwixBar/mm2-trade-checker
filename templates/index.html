@@ -19,6 +19,7 @@
         <button class="nav-btn active" data-tab="trade">trade</button>
         <button class="nav-btn" data-tab="inventory">inventory</button>
         <button class="nav-btn" data-tab="stats">item stats</button>
+        <button class="nav-btn" data-tab="guide">use guide</button>
         <button class="nav-btn" data-tab="how">how it works</button>
       </nav>
     </div>
@@ -250,11 +251,146 @@
       </div>
     </section>
 
+    <!-- ── USE GUIDE TAB ── -->
+    <section class="tab" id="tab-guide">
+
+      <p class="how-intro">
+        A quick guide to reading results and using each feature.
+      </p>
+
+      <!-- Verdicts -->
+      <div class="how-section">
+        <div class="how-section-title">trade verdicts</div>
+        <div class="verdict-legend">
+          <div class="vl-block">
+            <div class="vl-label verdict-win">WIN</div>
+            <div class="vl-desc">Their AI score beats yours past the fair zone. You come out ahead on value, stability, or rarity.</div>
+          </div>
+          <div class="vl-block">
+            <div class="vl-label verdict-fair">FAIR</div>
+            <div class="vl-desc">Both sides are within the fair zone threshold. Neither player is getting significantly more.</div>
+          </div>
+          <div class="vl-block">
+            <div class="vl-label verdict-lose">LOSE</div>
+            <div class="vl-desc">Your AI score beats theirs past the fair zone. You are giving up more than you are getting.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confidence badges -->
+      <div class="how-section">
+        <div class="how-section-title">confidence badges</div>
+        <p class="how-intro" style="margin-bottom:14px;">
+          Every WIN or LOSE result comes with a badge showing how decisive it is. A barely WIN is much closer to fair than a big WIN.
+        </p>
+        <table class="stab-table">
+          <thead>
+            <tr>
+              <th>badge</th>
+              <th>what it means</th>
+              <th>what to do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="conf-demo conf-barely">barely</span></td>
+              <td>Just past the fair zone. The margin is small.</td>
+              <td>Think twice before pushing it. The other player might not accept, or conditions could flip.</td>
+            </tr>
+            <tr>
+              <td><span class="conf-demo conf-clearly">clearly</span></td>
+              <td>Comfortably past the threshold. A real difference.</td>
+              <td>Good trade. Worth doing if you want the item.</td>
+            </tr>
+            <tr>
+              <td><span class="conf-demo conf-easily">easily</span></td>
+              <td>Well past the threshold. The gap is large.</td>
+              <td>Strong result. You are getting meaningfully more than you are giving.</td>
+            </tr>
+            <tr>
+              <td><span class="conf-demo conf-big">big</span></td>
+              <td>Way past the threshold. A dominant difference.</td>
+              <td>The other player may not accept. Consider offering slightly more if you really want the deal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Inventory tab guide -->
+      <div class="how-section">
+        <div class="how-section-title">inventory tab</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Add your items</div>
+              <div class="step-desc">
+                Type any item name and select it from the dropdown. Click the <strong>x(number)</strong> badge on a tag to set how many of that item you own. Hit <strong>save inventory</strong> when done.
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Back up with the import string</div>
+              <div class="step-desc">
+                After saving, copy the backup string and keep it somewhere safe. If you ever lose your inventory (new device, cleared browser data), paste it back into the import box and hit <strong>import</strong>.
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-title">Use the offer generator</div>
+              <div class="step-desc">
+                Enter the item someone else has. The AI searches your inventory for the best combo to offer them, keeping a slight advantage for you. Use the <strong>favor slider</strong> to control how aggressive the margin is: "fair" aims for even, "max" tries to build in the largest possible gain.
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-title">Read the three options</div>
+              <div class="step-desc">
+                The offer generator shows up to three different combos ranked best to worst. Option 1 is always the closest to your target gain. Options 2 and 3 are alternatives in case option 1 uses an item you do not want to give away.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trade tab guide -->
+      <div class="how-section">
+        <div class="how-section-title">trade tab</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-title">Enter both sides</div>
+              <div class="step-desc">
+                Add your items on the left, their items on the right. Use the <strong>x(number)</strong> badge if either side has multiple of the same item.
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-title">Read the result</div>
+              <div class="step-desc">
+                The verdict tells you WIN, LOSE, or FAIR. The confidence badge tells you by how much. Check the stability section for warnings on items that are dropping or hard to retrade.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
     <!-- ── HOW IT WORKS TAB ── -->
     <section class="tab" id="tab-how">
 
       <p class="how-intro">
-        This trade checker does NOT just compare raw mm2 values, it also factors in stability, demand, rarity, and even more. You can see how it calculates the "ai" score below...
+        This trade checker does not just compare raw mm2 values. It factors in stability, demand, rarity, liquidity, and more to produce an AI score that reflects what an item is actually worth to trade with right now.
       </p>
 
       <!-- Step 1: Base value -->
@@ -266,7 +402,7 @@
             <div class="step-body">
               <div class="step-title">Use range midpoint when available</div>
               <div class="step-desc">
-                If an item has a value range (e.g. <code>200–400</code>), the midpoint (<code>300</code>) is used as its base, not the listed value. If no range exists, the listed mm2 value is used directly.
+                If an item has a value range (e.g. <code>200 to 400</code>), the midpoint (<code>300</code>) is used as its base, not the listed value. If no range exists, the listed mm2 value is used directly.
               </div>
             </div>
           </div>
@@ -280,33 +416,58 @@
           <div class="step-item">
             <div class="step-num">02</div>
             <div class="step-body">
-              <div class="step-title">Demand bonus</div>
+              <div class="step-title">Demand bonus (log-scaled)</div>
               <div class="step-desc">
-                Demand above 2 adds a bonus. Each point above 2 adds <code>+6%</code> to the multiplier. An item with demand 5 adds <code>+18%</code> (3 points × 6%).
+                Higher demand adds a bonus to the score, but using a curve rather than a flat rate. The jump from demand 2 to 4 matters more than the jump from 8 to 10, which is more realistic. An item with demand 5 gets roughly <code>+18%</code>.
               </div>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">03</div>
             <div class="step-body">
-              <div class="step-title">Rarity bonus</div>
+              <div class="step-title">Rarity bonus (log-scaled)</div>
               <div class="step-desc">
-                Rarity above 1.5 adds a bonus. Each point above 1.5 adds <code>+4%</code>. An item with rarity 4 adds <code>+10%</code> (2.5 points × 4%).
+                Same curve as demand. Rarity above average adds a bonus that grows fast at low values and slows at high values. An item with rarity 4 gets roughly <code>+10%</code>.
               </div>
             </div>
           </div>
           <div class="step-item">
             <div class="step-num">04</div>
             <div class="step-body">
+              <div class="step-title">Demand and rarity interaction</div>
+              <div class="step-desc">
+                Items that are both rare and in high demand get an extra bonus on top of the individual bonuses. An item that is hard to get AND everyone wants is worth more than just the sum of its demand plus rarity scores.
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">05</div>
+            <div class="step-body">
               <div class="step-title">Stability bonus or penalty</div>
               <div class="step-desc">
-                Each stability status has a multiplier. The delta from <code>1.0</code> (Stable) is weighted at <code>×0.75</code> and added to the score. A "rising" item (<code>×1.90</code>) adds <code>+67.5%</code>. A "decreasing" item (<code>×0.50</code>) subtracts <code>37.5%</code>.
+                Each stability status has a multiplier. Items trending up are worth more to hold and easier to retrade. Items trending down are worth less. The delta from Stable is weighted at <code>x0.75</code> and added to the score.
               </div>
               <div class="formula-box">
                 <div class="formula-label">formula</div>
-                bonus = demand_bonus + rarity_bonus + stab_bonus<br/>
-                multiplier = 1.0 + bonus  <span class="formula-comment">← clamped to 0.70–1.60</span><br/>
-                ai_score = base_value × multiplier
+                bonus = demand_bonus + rarity_bonus + interaction + stab_bonus - liquidity_penalty<br/>
+                multiplier = 1.0 + bonus  <span class="formula-comment">clamped to 0.60 to 1.70</span><br/>
+                ai_score = base_value x multiplier
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">06</div>
+            <div class="step-body">
+              <div class="step-title">Liquidity penalty</div>
+              <div class="step-desc">
+                Low-value items are harder to trade away on their own, so they receive a penalty to reflect that. Items worth 1000+ have no penalty. Items worth under 50 carry up to a <code>-18%</code> penalty.
+              </div>
+              <div class="formula-box">
+                <div class="formula-label">tiers</div>
+                1000+ value: no penalty<br/>
+                200 to 999:  -4%<br/>
+                50 to 199:   -10%<br/>
+                under 50:    -18%
               </div>
             </div>
           </div>
@@ -325,17 +486,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Rising</td>        <td class="mult-up">×1.90</td>  <td>trending</td></tr>
-            <tr><td>Hyped</td>         <td class="mult-up">×1.60</td>  <td>high interest</td></tr>
-            <tr><td>Doing Well</td>    <td class="mult-up">×1.40</td>  <td>moderate interest</td></tr>
-            <tr><td>Overpaid For</td>  <td class="mult-up">×1.25</td>  <td>moderate interest</td></tr>
-            <tr><td>Stabilizing</td>   <td class="mult-up">×1.08</td>  <td>not much of change </td></tr>
-            <tr><td>Recovering</td>    <td class="mult-up">×1.07</td>  <td>not much of change </td></tr>
-            <tr><td>Stable</td>        <td class="mult-neut">×1.00</td><td>no change. this is the baseline</td></tr>
-            <tr><td>Fluctuating</td>   <td class="mult-down">×0.82</td><td>penalty as this tag is usually given to newly released items, which usually will drop in value</td></tr>
-            <tr><td>Losing Hype</td>   <td class="mult-down">×0.68</td><td>demand fading</td></tr>
-            <tr><td>Underpaid For</td> <td class="mult-down">×0.55</td><td>penalty. people will often trade below value</td></tr>
-            <tr><td>Decreasing</td>    <td class="mult-down">×0.50</td><td>very large penalty. nobody likes this item</td></tr>
+            <tr><td>Rising</td>        <td class="mult-up">x1.90</td>  <td>trending up strongly</td></tr>
+            <tr><td>Hyped</td>         <td class="mult-up">x1.60</td>  <td>high community interest</td></tr>
+            <tr><td>Doing Well</td>    <td class="mult-up">x1.40</td>  <td>moderate upward trend</td></tr>
+            <tr><td>Overpaid For</td>  <td class="mult-up">x1.25</td>  <td>people pay above value, good to hold</td></tr>
+            <tr><td>Stabilizing</td>   <td class="mult-up">x1.08</td>  <td>settling after movement</td></tr>
+            <tr><td>Recovering</td>    <td class="mult-up">x1.07</td>  <td>bouncing back slightly</td></tr>
+            <tr><td>Stable</td>        <td class="mult-neut">x1.00</td><td>no change, this is the baseline</td></tr>
+            <tr><td>N/A</td>           <td class="mult-down">x0.90</td><td>unknown status, slight caution</td></tr>
+            <tr><td>Fluctuating</td>   <td class="mult-down">x0.82</td><td>unstable price, usually new items that will drop</td></tr>
+            <tr><td>Losing Hype</td>   <td class="mult-down">x0.68</td><td>demand is fading</td></tr>
+            <tr><td>Underpaid For</td> <td class="mult-down">x0.55</td><td>people trade below value, bad to receive</td></tr>
+            <tr><td>Decreasing</td>    <td class="mult-down">x0.50</td><td>actively losing value</td></tr>
           </tbody>
         </table>
       </div>
@@ -345,16 +507,17 @@
         <div class="how-section-title">step 3: bundle penalty (your side only)</div>
         <div class="step-list">
           <div class="step-item">
-            <div class="step-num">05</div>
+            <div class="step-num">07</div>
             <div class="step-body">
               <div class="step-title">Multi-item trades are worth less</div>
               <div class="step-desc">
-                When <em>you</em> give more than one item, a <code>3%</code> penalty is applied per extra item (capped at <code>−20%</code>). This is liquidity; a single high-value item is easier to retrade than three mid-tier items worth the same total. This penalty only applies to your side, not theirs.
+                When you give more than one item, a penalty is applied per extra item. A single high-value item is easier to retrade than three mid-tier items worth the same total. The penalty also scales up if your items are low-value, since those are the hardest to move individually. This penalty only applies to your side, not theirs.
               </div>
               <div class="formula-box">
                 <div class="formula-label">example</div>
-                you give 3 items → penalty = 1.0 − (2 × 0.03) = ×0.94<br/>
-                your ai total × 0.94  <span class="formula-comment">← your side worth 6% less</span>
+                you give 3 items: base penalty = 2 x 2.5% = 5%<br/>
+                if your items average low-value: penalty scales up further<br/>
+                max penalty capped at 22%
               </div>
             </div>
           </div>
@@ -366,34 +529,34 @@
         <div class="how-section-title">step 4: result</div>
         <div class="step-list">
           <div class="step-item">
-            <div class="step-num">06</div>
+            <div class="step-num">08</div>
             <div class="step-body">
               <div class="step-title">Dynamic fair zone threshold</div>
               <div class="step-desc">
-                The "fair zone" isn't a fixed number; it will scale with the trade size. The threshold is <code>4.5%</code> of the total trade value, with a minimum floor of <code>3</code>. Larger trades have a larger margin before they go into win or lose.
+                The fair zone scales with trade size. The threshold is <code>4.5%</code> of the total trade value, with a minimum of <code>3</code> and a maximum of <code>400</code>. Larger trades get a wider margin before tipping into win or lose. The cap at 400 prevents very high-value trades from having a blind spot that is too large.
               </div>
               <div class="formula-box">
                 <div class="formula-label">example</div>
-                trade total = 1000  →  threshold = max(3, 45) = ±45<br/>
-                if |their_ai − your_ai| ≤ 45  →  <span class="formula-comment">fair</span>
+                trade total = 1000  then  threshold = max(3, min(45, 400)) = 45<br/>
+                if |their_ai minus your_ai| is 45 or less  then  <span class="formula-comment">fair</span>
               </div>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-num">07</div>
+            <div class="step-num">09</div>
             <div class="step-body">
               <div class="step-title">Stability tiebreaker</div>
               <div class="step-desc">
-                If a trade lands in the fair zone on value, stability is checked. If their average stability multiplier is more than <code>0.08</code> below yours, it flips to <strong>lose</strong>. If theirs is more than <code>0.08</code> above yours, it changes to <strong>win</strong>.
+                If a trade lands in the fair zone on value, stability is checked. If their average stability multiplier is more than <code>0.08</code> below yours, it flips to lose. If theirs is more than <code>0.08</code> above yours, it changes to win.
               </div>
             </div>
           </div>
           <div class="step-item">
-            <div class="step-num">08</div>
+            <div class="step-num">10</div>
             <div class="step-body">
               <div class="step-title">Rarity tiebreaker</div>
               <div class="step-desc">
-                If the trade is still fair after the stability check, rarity is compared. If your highest rarity item is <code>1.5+</code> points rarer than theirs, the result changes to <strong>lose</strong> as you're giving up something harder to get back.
+                If the trade is still fair after the stability check, rarity is compared. If your highest rarity item is 1.5 or more points rarer than theirs, the result changes to lose since you are giving up something harder to get back.
               </div>
             </div>
           </div>
@@ -401,25 +564,6 @@
 
         <div class="how-note">
           The stability tiebreaker and rarity tiebreaker only apply when the trade is already inside the fair zone. They are not overrides.
-        </div>
-      </div>
-
-      <!-- Verdict legend -->
-      <div class="how-section">
-        <div class="how-section-title">what the verdicts mean</div>
-        <div class="verdict-legend">
-          <div class="vl-block">
-            <div class="vl-label verdict-win">WIN</div>
-            <div class="vl-desc">Their AI score exceeds yours beyond the fair zone. You come out ahead on value, stability, or rarity.</div>
-          </div>
-          <div class="vl-block">
-            <div class="vl-label verdict-fair">FAIR</div>
-            <div class="vl-desc">Both sides are within the dynamic threshold. Neither player is getting significantly more.</div>
-          </div>
-          <div class="vl-block">
-            <div class="vl-label verdict-lose">LOSE</div>
-            <div class="vl-desc">Your AI score exceeds theirs beyond the fair zone. You're giving up more than you're getting.</div>
-          </div>
         </div>
       </div>
 
