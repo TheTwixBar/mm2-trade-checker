@@ -5,42 +5,81 @@ from typing import Dict, Any, List, Tuple, Optional
 
 # ════════════════════════════════════════════════════════════════
 # trade_ai.py  v3
-# Based on your updated file — v3 improvements added on top:
 #   1. Log-scaled demand/rarity bonuses (realistic curve, not flat linear)
 #   2. Demand × Rarity interaction term (both high = extra bonus)
-#   3. Value-tier liquidity modifier (low-value items penalised for being hard to move)
-#   4. Smart bundle penalty (scales with how low-value the bundle is)
+#   3. Tier-based stability multipliers (100–300 / 301–700 / 701+)
+#   4. Smart bundle penalty (scales with number of items given)
 #   5. Threshold cap at ±400 (prevents godly trades having a massive blind zone)
 #   6. N/A stability treated as mildly negative, not neutral
 #   7. Confidence output (razor / clear / decisive / dominant)
 # ════════════════════════════════════════════════════════════════
 
 # ---------------- STABILITY MULTIPLIERS ----------------
-STABILITY_MAP = {
-    "Rising":        1.90,
-    "Hyped":         1.60,
-    "Doing Well":    1.40,
-    "Overpaid For":  1.25,
-    "Stabilizing":   1.08,
-    "Recovering":    1.07,
+# Three tier-based stability maps depending on item value
+
+# Tier 1: value 100–300
+STABILITY_MAP_LOW = {
+    "Rising":        1.70,
+    "Hyped":         1.50,
+    "Doing Well":    1.30,
+    "Overpaid For":  1.38,
+    "Stabilizing":   1.05,
+    "Recovering":    1.05,
     "Stable":        1.00,
-    "N/A":           0.90,   # unknown — slight penalty
-    "Fluctuating":   0.82,
-    "Losing Hype":   0.68,
-    "Underpaid For": 0.55,
+    "N/A":           0.90,
+    "Fluctuating":   0.78,
+    "Losing Hype":   0.71,
+    "Underpaid For": 0.60,
+    "Decreasing":    0.53,
+}
+
+# Tier 2: value 301–700
+STABILITY_MAP_MID = {
+    "Rising":        1.70,
+    "Hyped":         1.50,
+    "Doing Well":    1.25,
+    "Overpaid For":  1.32,
+    "Stabilizing":   1.05,
+    "Recovering":    1.05,
+    "Stable":        1.00,
+    "N/A":           0.90,
+    "Fluctuating":   0.78,
+    "Losing Hype":   0.71,
+    "Underpaid For": 0.60,
+    "Decreasing":    0.53,
+}
+
+# Tier 3: value 701+
+STABILITY_MAP_HIGH = {
+    "Rising":        1.80,
+    "Hyped":         1.40,
+    "Doing Well":    1.18,
+    "Overpaid For":  1.26,
+    "Stabilizing":   1.03,
+    "Recovering":    1.03,
+    "Stable":        1.00,
+    "N/A":           0.82,
+    "Fluctuating":   0.74,
+    "Losing Hype":   0.69,
+    "Underpaid For": 0.58,
     "Decreasing":    0.50,
 }
+
+# Default map used by avg_stability_multiplier (fallback / legacy)
+STABILITY_MAP = STABILITY_MAP_MID
 
 STABILITY_WEIGHT = 0.75
 BUNDLE_PENALTY_PER_ITEM = 0.03  # kept for legacy compat, v3 uses smart version
 
-# Liquidity tiers: items worth less are harder to trade away
-LIQUIDITY_TIERS = [
-    (1000, 0.00),
-    (200,  0.04),
-    (50,   0.10),
-    (0,    0.18),
-]
+
+def get_stability_map(value: float) -> dict:
+    """Return the appropriate stability map for the given item value."""
+    if value <= 300:
+        return STABILITY_MAP_LOW
+    elif value <= 700:
+        return STABILITY_MAP_MID
+    else:
+        return STABILITY_MAP_HIGH
 
 # ---------------- HELPERS ----------------
 def parse_range(text: str):
@@ -61,12 +100,6 @@ def effective_base_value(item: Dict[str, Any]) -> float:
     if item.get("range_mid") is not None:
         return item["range_mid"]
     return float(item["value"])
-
-def liquidity_penalty(value: float) -> float:
-    for threshold, penalty in LIQUIDITY_TIERS:
-        if value >= threshold:
-            return penalty
-    return 0.18
 
 # ---------------- LOAD ITEMS ----------------
 def load_items(folder: str = "data_txt") -> Dict[str, Dict[str, Any]]:
@@ -147,13 +180,14 @@ def score_item(item: Dict[str, Any]) -> Tuple[float, float, float, float, str]:
     v3 scoring:
     - Log-scaled demand/rarity (realistic curve, not flat linear)
     - Demand × Rarity interaction bonus for elite items
-    - Value-tier liquidity penalty
+    - Tier-based stability multipliers (100–300, 301–700, 701+)
     """
     base      = effective_base_value(item)
     stability = item.get("stability", "Stable")
     demand    = item.get("demand", 0.0)
     rarity    = item.get("rarity", 0.0)
-    stab_mult = STABILITY_MAP.get(stability, 1.0)
+    stab_map  = get_stability_map(base)
+    stab_mult = stab_map.get(stability, 1.0)
 
     # Log-scaled demand bonus — normalised so demand=5 ≈ +18% (same as v2 baseline)
     demand_bonus = max(0.0, math.log2(demand + 1) * 0.0696 - 0.0696)
@@ -169,11 +203,8 @@ def score_item(item: Dict[str, Any]) -> Tuple[float, float, float, float, str]:
     # Stability
     stab_bonus = (stab_mult - 1.0) * STABILITY_WEIGHT
 
-    # Liquidity penalty based on item value tier
-    liq_penalty = liquidity_penalty(base)
-
-    bonus_multiplier = 1.0 + demand_bonus + rarity_bonus + interaction_bonus + stab_bonus - liq_penalty
-    bonus_multiplier = max(0.60, min(1.70, bonus_multiplier))
+    bonus_multiplier = 1.0 + demand_bonus + rarity_bonus + interaction_bonus + stab_bonus
+    bonus_multiplier = max(0.60, min(1.80, bonus_multiplier))
 
     return base * bonus_multiplier, base, demand, rarity, stability
 
@@ -202,8 +233,7 @@ def score_side(
 
     if apply_bundle_penalty and len(items) > 1:
         base_penalty_pct = 0.025 * (len(items) - 1)
-        avg_liq = sum(liquidity_penalty(effective_base_value(it)) for it in items) / len(items)
-        total_penalty = base_penalty_pct * (1.0 + avg_liq * 2.0)
+        total_penalty = base_penalty_pct
         total_penalty = min(total_penalty, 0.22)
         ai_total *= (1.0 - total_penalty)
 
