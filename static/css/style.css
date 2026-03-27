@@ -1316,3 +1316,17 @@ footer {
   color: #fff;
   border-color: var(--accent);
 }
+
+/* ── Confidence badge on verdict ─────────────────────────────── */
+.verdict-conf {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-left: 10px;
+  vertical-align: middle;
+  border: 1px solid currentColor;
+  padding: 1px 6px;
+}
