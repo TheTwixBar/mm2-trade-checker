@@ -247,7 +247,10 @@ document.getElementById("check-btn").addEventListener("click", async () => {
   if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
 
   const verdict = document.getElementById("result-verdict");
-  verdict.textContent = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.result] || data.result.toUpperCase();
+  const baseLabel = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.result] || data.result.toUpperCase();
+  const confLabel = data.confidence && data.confidence !== "even"
+    ? `<span class="verdict-conf">${data.confidence}</span>` : "";
+  verdict.innerHTML = baseLabel + confLabel;
   verdict.className = "result-verdict verdict-" + data.result;
   document.getElementById("r-your-raw").textContent   = data.your_raw;
   document.getElementById("r-their-raw").textContent  = data.their_raw;
@@ -324,12 +327,10 @@ const invInput = makeQtyTagInput("inv-tags", "inv-input", "inv-suggestions", { a
 
 const LS_KEY = "mm2_inventory_v2";
 
-// ── Import/export string format: "item1:qty1,item2:qty2,..."
-// e.g. "harvester:72,darkbringer:1,eternal iv:3"
+// ── Import/export string: "item:qty,item,item:qty,..."
 function inventoryToString(itemsArr) {
   return itemsArr.map(e => e.qty > 1 ? `${e.name}:${e.qty}` : e.name).join(",");
 }
-
 function stringToInventory(str) {
   if (!str || !str.trim()) return [];
   return str.split(",").map(s => s.trim()).filter(Boolean).map(part => {
