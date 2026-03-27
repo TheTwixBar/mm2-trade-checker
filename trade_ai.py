@@ -219,10 +219,10 @@ def _confidence_label(ai_diff: float, threshold: float) -> str:
         return "even"
     excess = abs(ai_diff) - threshold
     ratio  = excess / max(threshold, 1)
-    if ratio < 0.5:  return "razor"
-    if ratio < 1.5:  return "clear"
-    if ratio < 3.0:  return "decisive"
-    return "dominant"
+    if ratio < 0.5:  return "barely"
+    if ratio < 1.5:  return "clearly"
+    if ratio < 3.0:  return "easily"
+    return "big"
 
 
 def evaluate_trade(
