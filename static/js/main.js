@@ -1,1346 +1,560 @@
-/* ── Reset & Base ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg:          #fffdf7;
-  --bg2:         #f0ede4;
-  --bg3:         #eee;
-  --border:      #ccc;
-  --border-dark: #aaa;
-  --accent:      #111;
-  --link:        #0000ee;
-  --win:         #2d6a2d;
-  --lose:        #aa0000;
-  --fair:        #7a6000;
-  --text:        #222;
-  --text-dim:    #888;
-  --text-mid:    #555;
-  --font-body:   Georgia, 'Times New Roman', serif;
-  --font-mono:   'Courier New', Courier, monospace;
-  --font-ui:     Verdana, Geneva, sans-serif;
+// ── Item database (fetched once on load) ─────────────────────
+let allItems = [];
+fetch("/api/items").then(r => r.json()).then(d => {
+  allItems = d;
+  loadSavedInventory();
+});
+
+// ── Tab switching ─────────────────────────────────────────────
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// QTY TAG INPUT FACTORY
+// Used for trade (yours/theirs) AND inventory tabs.
+// Each tag shows an ×N badge; clicking opens an inline qty popup.
+// options.autoPopup — open qty popup immediately when a new tag is added
+// ════════════════════════════════════════════════════════════════
+function makeQtyTagInput(wrapperId, inputId, suggestId, options = {}) {
+  const wrapper    = document.getElementById(wrapperId);
+  const textInput  = document.getElementById(inputId);
+  const suggestBox = document.getElementById(suggestId);
+  // items: [{name, qty}]
+  let items = [];
+  let activeIdx     = -1;
+  let activePopup   = null;
+
+  wrapper.addEventListener("click", e => {
+    if (!e.target.closest(".qty-popup") && !e.target.closest(".qty-badge")) {
+      textInput.focus();
+    }
+  });
+
+  // ── Render all tags ──────────────────────────────────────────
+  function renderTags() {
+    wrapper.querySelectorAll(".tag").forEach(t => t.remove());
+    items.forEach((entry, i) => {
+      const tag = document.createElement("span");
+      tag.className = "tag tag-qty";
+      tag.dataset.i = i;
+
+      const label = document.createElement("span");
+      label.className = "tag-name";
+      label.textContent = entry.name;
+
+      const badge = document.createElement("button");
+      badge.className = "qty-badge";
+      badge.textContent = "×" + entry.qty;
+      badge.title = "click to change quantity";
+      badge.addEventListener("click", e => { e.stopPropagation(); openPopup(tag, i); });
+
+      const removeBtn = document.createElement("button");
+      removeBtn.className = "tag-remove";
+      removeBtn.textContent = "×";
+      removeBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        closePopup();
+        items.splice(i, 1);
+        renderTags();
+      });
+
+      tag.appendChild(label);
+      tag.appendChild(badge);
+      tag.appendChild(removeBtn);
+      wrapper.insertBefore(tag, textInput);
+    });
+  }
+
+  // ── Qty popup ────────────────────────────────────────────────
+  function openPopup(tagEl, idx) {
+    closePopup();
+    const popup = document.createElement("div");
+    popup.className = "qty-popup";
+
+    const minus = document.createElement("button");
+    minus.className = "qty-btn"; minus.textContent = "−";
+
+    const numInput = document.createElement("input");
+    numInput.type = "number"; numInput.className = "qty-num";
+    numInput.min = 1; numInput.max = 9999;
+    numInput.value = items[idx].qty;
+
+    const plus = document.createElement("button");
+    plus.className = "qty-btn"; plus.textContent = "+";
+
+    const done = document.createElement("button");
+    done.className = "qty-done"; done.textContent = "done";
+
+    function updateQty(val) {
+      const n = Math.max(1, Math.min(9999, parseInt(val) || 1));
+      items[idx].qty = n;
+      numInput.value = n;
+      tagEl.querySelector(".qty-badge").textContent = "×" + n;
+    }
+
+    minus.addEventListener("click", e => { e.stopPropagation(); updateQty(items[idx].qty - 1); });
+    plus.addEventListener("click",  e => { e.stopPropagation(); updateQty(items[idx].qty + 1); });
+    numInput.addEventListener("input", e => { e.stopPropagation(); updateQty(numInput.value); });
+    numInput.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); closePopup(); } });
+    done.addEventListener("click", e => { e.stopPropagation(); closePopup(); });
+
+    popup.append(minus, numInput, plus, done);
+    tagEl.appendChild(popup);
+    activePopup = popup;
+    numInput.focus(); numInput.select();
+  }
+
+  function closePopup() {
+    if (activePopup) { activePopup.remove(); activePopup = null; }
+  }
+
+  document.addEventListener("click", e => {
+    if (activePopup && !e.target.closest(".tag-qty")) closePopup();
+  });
+
+  // ── Add item ─────────────────────────────────────────────────
+  function addItem(name) {
+    const clean = name.trim().toLowerCase();
+    if (!clean) return;
+    const existing = items.find(e => e.name === clean);
+    if (existing) {
+      // Already exists — open popup to bump qty
+      renderTags();
+      const idx = items.indexOf(existing);
+      const tags = wrapper.querySelectorAll(".tag-qty");
+      if (tags[idx]) openPopup(tags[idx], idx);
+    } else {
+      items.push({ name: clean, qty: 1 });
+      renderTags();
+      if (options.autoPopup !== false) {
+        const tags = wrapper.querySelectorAll(".tag-qty");
+        const newIdx = items.length - 1;
+        if (tags[newIdx]) openPopup(tags[newIdx], newIdx);
+      }
+    }
+    textInput.value = "";
+    hideSuggest();
+  }
+
+  // ── Suggestions ──────────────────────────────────────────────
+  function showSuggest(query) {
+    if (!query) { hideSuggest(); return; }
+    const matches = allItems.filter(i => i.includes(query)).slice(0, 8);
+    if (!matches.length) { hideSuggest(); return; }
+    suggestBox.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
+    suggestBox.classList.add("open");
+    activeIdx = -1;
+    suggestBox.querySelectorAll("li").forEach(li => {
+      li.addEventListener("mousedown", e => { e.preventDefault(); addItem(li.textContent); });
+    });
+  }
+  function hideSuggest() { suggestBox.classList.remove("open"); activeIdx = -1; }
+
+  textInput.addEventListener("input", () => showSuggest(textInput.value.trim().toLowerCase()));
+  textInput.addEventListener("blur",  () => setTimeout(hideSuggest, 150));
+  textInput.addEventListener("keydown", e => {
+    const lis = suggestBox.querySelectorAll("li");
+    if (e.key === "ArrowDown") { e.preventDefault(); activeIdx = Math.min(activeIdx+1, lis.length-1); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx-1, -1); }
+    else if (e.key === "Enter") {
+      e.preventDefault();
+      if (activeIdx >= 0 && lis[activeIdx]) addItem(lis[activeIdx].textContent);
+      else if (textInput.value.trim()) addItem(textInput.value.trim());
+      return;
+    } else if (e.key === "Backspace" && !textInput.value && items.length) {
+      closePopup(); items.pop(); renderTags(); return;
+    }
+    lis.forEach((li, i) => li.classList.toggle("active", i === activeIdx));
+  });
+
+  // ── Public API ───────────────────────────────────────────────
+  return {
+    // Returns flat expanded array (e.g. harvester ×3 → ["harvester","harvester","harvester"])
+    getTags: () => {
+      const out = [];
+      items.forEach(e => { for (let i = 0; i < e.qty; i++) out.push(e.name); });
+      return out;
+    },
+    // Returns [{name, qty}] for storage
+    getItems: () => items.map(e => ({ ...e })),
+    // Load from [{name, qty}] array
+    setItems: (arr) => {
+      items = arr.map(e => typeof e === "string" ? { name: e, qty: 1 } : { name: e.name, qty: e.qty || 1 });
+      renderTags();
+    },
+    clear: () => { closePopup(); items = []; renderTags(); },
+    closePopup,
+  };
+}
+
+// ── Trade tab inputs ──────────────────────────────────────────
+const yoursInput  = makeQtyTagInput("yours-tags",  "yours-input",  "yours-suggestions",  { autoPopup: false });
+const theirsInput = makeQtyTagInput("theirs-tags", "theirs-input", "theirs-suggestions", { autoPopup: false });
+
+document.getElementById("clear-btn").addEventListener("click", () => {
+  yoursInput.clear();
+  theirsInput.clear();
+  document.getElementById("result-panel").classList.add("hidden");
+  document.getElementById("trade-error").classList.add("hidden");
+});
+
+// ── Stability helpers ─────────────────────────────────────────
+const STAB_GOOD = new Set(["Rising","Hyped","Doing Well","Overpaid For","Recovering","Stabilizing"]);
+const STAB_BAD  = new Set(["Decreasing","Losing Hype","Underpaid For"]);
+const STAB_MID  = new Set(["Fluctuating"]);
+function stabClass(s) {
+  if (STAB_GOOD.has(s)) return "stab-good";
+  if (STAB_BAD.has(s))  return "stab-bad";
+  if (STAB_MID.has(s))  return "stab-mid";
+  return "stab-neutral";
+}
+function renderStabTags(containerId, stabs) {
+  document.getElementById(containerId).innerHTML = stabs.map(s =>
+    `<span class="stab-tag ${stabClass(s)}">${s}</span>`).join("");
+}
+function setDiff(elId, val) {
+  const el = document.getElementById(elId);
+  el.textContent = (val > 0 ? "+" : "") + val;
+  el.className = "value " + (val > 0 ? "diff-pos" : val < 0 ? "diff-neg" : "");
+}
+const STAB_WARN = {
+  "Underpaid For": "people often trade this below its listed value, so it may be hard to get fair value back out of it",
+  "Decreasing":    "this item is actively losing value and may be worth less by the time you try to retrade it",
+  "Losing Hype":   "demand is fading on this item, which could make it harder to move later",
+  "Fluctuating":   "this item's price is unstable and hard to pin down, trades involving it are riskier",
+};
+
+// ── Check trade ───────────────────────────────────────────────
+document.getElementById("check-btn").addEventListener("click", async () => {
+  const yours  = yoursInput.getTags();
+  const theirs = theirsInput.getTags();
+  const errEl  = document.getElementById("trade-error");
+  const panel  = document.getElementById("result-panel");
+  errEl.classList.add("hidden"); panel.classList.add("hidden");
+  if (!yours.length || !theirs.length) {
+    errEl.textContent = "Please add at least one item on each side.";
+    errEl.classList.remove("hidden"); return;
+  }
+  const res  = await fetch("/api/trade", { method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ yours: yours.join(", "), theirs: theirs.join(", ") }) });
+  const data = await res.json();
+  if (!res.ok) { errEl.textContent = data.error || "Something went wrong."; errEl.classList.remove("hidden"); return; }
+
+  const verdict = document.getElementById("result-verdict");
+  const baseLabel = { win:"WIN", lose:"LOSE", fair:"FAIR" }[data.result] || data.result.toUpperCase();
+  const confLabel = data.confidence && data.confidence !== "even"
+    ? `<span class="verdict-conf">${data.confidence}</span>` : "";
+  verdict.innerHTML = baseLabel + confLabel;
+  verdict.className = "result-verdict verdict-" + data.result;
+  document.getElementById("r-your-raw").textContent   = data.your_raw;
+  document.getElementById("r-their-raw").textContent  = data.their_raw;
+  setDiff("r-raw-diff", data.raw_diff);
+  document.getElementById("r-your-ai").textContent    = data.your_ai;
+  document.getElementById("r-their-ai").textContent   = data.their_ai;
+  setDiff("r-ai-diff", data.ai_diff);
+  document.getElementById("r-your-demand").textContent  = data.your_demand;
+  document.getElementById("r-their-demand").textContent = data.their_demand;
+  setDiff("r-demand-diff", data.demand_diff);
+  document.getElementById("r-your-rarity").textContent  = data.your_rarity;
+  document.getElementById("r-their-rarity").textContent = data.their_rarity;
+  setDiff("r-rarity-diff", data.rarity_diff);
+  renderStabTags("r-your-stab",  data.your_stability);
+  renderStabTags("r-their-stab", data.their_stability);
+  const warns = [];
+  const danger = new Set(["Fluctuating","Losing Hype","Underpaid For","Decreasing"]);
+  data.their_stability.filter(s => danger.has(s)).forEach(s => {
+    warns.push(`⚠ You'd receive a <strong>${s}</strong> item: ${STAB_WARN[s] || s}.`);
+  });
+  if (data.bundle_penalty) warns.push("⚠ Bundle penalty applied: giving multiple items reduces your AI score slightly.");
+  document.getElementById("r-warnings").innerHTML = warns.map(w => `<div class="warn-item">${w}</div>`).join("");
+  panel.classList.remove("hidden");
+});
+
+// ── Stats lookup ──────────────────────────────────────────────
+const statsInput   = document.getElementById("stats-input");
+const statsSuggest = document.getElementById("stats-suggestions");
+let statsActiveIdx = -1;
+statsInput.addEventListener("input", () => {
+  const q = statsInput.value.trim().toLowerCase();
+  if (!q) { statsSuggest.classList.remove("open"); return; }
+  const matches = allItems.filter(i => i.includes(q)).slice(0, 8);
+  if (!matches.length) { statsSuggest.classList.remove("open"); return; }
+  statsSuggest.innerHTML = matches.map(m => `<li>${m}</li>`).join("");
+  statsSuggest.classList.add("open"); statsActiveIdx = -1;
+  statsSuggest.querySelectorAll("li").forEach(li => {
+    li.addEventListener("mousedown", e => { e.preventDefault(); statsInput.value = li.textContent; statsSuggest.classList.remove("open"); });
+  });
+});
+statsInput.addEventListener("blur", () => setTimeout(() => statsSuggest.classList.remove("open"), 150));
+statsInput.addEventListener("keydown", e => {
+  const items = statsSuggest.querySelectorAll("li");
+  if (e.key === "ArrowDown") { e.preventDefault(); statsActiveIdx = Math.min(statsActiveIdx+1, items.length-1); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); statsActiveIdx = Math.max(statsActiveIdx-1, -1); }
+  else if (e.key === "Enter") { e.preventDefault(); lookupStats(); return; }
+  items.forEach((li, i) => li.classList.toggle("active", i === statsActiveIdx));
+});
+async function lookupStats() {
+  const name = statsInput.value.trim().toLowerCase();
+  const errEl = document.getElementById("stats-error");
+  const panel = document.getElementById("stats-panel");
+  errEl.classList.add("hidden"); panel.classList.add("hidden");
+  if (!name) { errEl.textContent = "Please enter an item name."; errEl.classList.remove("hidden"); return; }
+  const res = await fetch("/api/stats?item=" + encodeURIComponent(name));
+  const data = await res.json();
+  if (!res.ok) { errEl.textContent = data.error || "Item not found."; errEl.classList.remove("hidden"); return; }
+  document.getElementById("s-name").textContent      = data.name;
+  document.getElementById("s-value").textContent     = data.value;
+  document.getElementById("s-range").textContent     = data.range;
+  document.getElementById("s-demand").textContent    = data.demand;
+  document.getElementById("s-rarity").textContent    = data.rarity;
+  document.getElementById("s-stability").textContent = data.stability;
+  document.getElementById("s-ai").textContent        = data.ai_score;
+  panel.classList.remove("hidden");
+}
+document.getElementById("stats-btn").addEventListener("click", lookupStats);
+
+
+// ════════════════════════════════════════════════════════════════
+// INVENTORY TAB
+// ════════════════════════════════════════════════════════════════
+const invInput = makeQtyTagInput("inv-tags", "inv-input", "inv-suggestions", { autoPopup: true });
+
+const LS_KEY = "mm2_inventory_v2";
+
+// ── Import/export string: "item:qty,item,item:qty,..."
+function inventoryToString(itemsArr) {
+  return itemsArr.map(e => e.qty > 1 ? `${e.name}:${e.qty}` : e.name).join(",");
+}
+function stringToInventory(str) {
+  if (!str || !str.trim()) return [];
+  return str.split(",").map(s => s.trim()).filter(Boolean).map(part => {
+    const colonIdx = part.lastIndexOf(":");
+    if (colonIdx !== -1) {
+      const name = part.slice(0, colonIdx).trim().toLowerCase();
+      const qty  = Math.max(1, parseInt(part.slice(colonIdx + 1)) || 1);
+      return { name, qty };
+    }
+    return { name: part.toLowerCase(), qty: 1 };
+  });
+}
+
+function loadSavedInventory() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (Array.isArray(data)) {
+      invInput.setItems(data);
+      updateExportBox();
+    }
+  } catch (e) { /* ignore */ }
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem(LS_KEY, JSON.stringify(invInput.getItems()));
+  updateExportBox();
+}
+
+function updateExportBox() {
+  const box = document.getElementById("inv-export-box");
+  if (box) box.value = inventoryToString(invInput.getItems());
+}
+
+// ── Save button ───────────────────────────────────────────────
+document.getElementById("inv-save-btn").addEventListener("click", () => {
+  invInput.closePopup();
+  const status = document.getElementById("inv-status");
+  const items  = invInput.getItems();
+  status.className = "inv-status";
+
+  if (items.length === 0) {
+    status.classList.remove("hidden");
+    status.classList.add("status-err");
+    status.textContent = "Add some items first.";
+    document.getElementById("inv-summary").classList.add("hidden");
+    return;
+  }
+
+  saveToLocalStorage();
+
+  // Sync to server too (best-effort)
+  const flat = invInput.getTags();
+  fetch("/api/inventory", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: flat }),
+  }).catch(() => {});
+
+  // Fetch and display inventory value summary
+  fetch("/api/inventory/summary", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: flat }),
+  }).then(r => r.json()).then(d => {
+    if (d.total_items !== undefined) {
+      document.getElementById("inv-sum-count").textContent = d.total_items;
+      document.getElementById("inv-sum-ai").textContent    = d.total_ai;
+      document.getElementById("inv-sum-raw").textContent   = d.total_raw;
+      document.getElementById("inv-summary").classList.remove("hidden");
+    }
+  }).catch(() => {});
+
+  const total = items.reduce((s, e) => s + e.qty, 0);
+  status.classList.remove("hidden");
+  status.classList.add("status-ok");
+  status.textContent = `Saved: ${items.length} item type${items.length !== 1 ? "s" : ""}, ${total} total.`;
+  setTimeout(() => status.classList.add("hidden"), 3500);
+});
+
+// ── Clear button ──────────────────────────────────────────────
+document.getElementById("inv-clear-btn").addEventListener("click", () => {
+  invInput.clear();
+  localStorage.removeItem(LS_KEY);
+  document.getElementById("inv-status").classList.add("hidden");
+  document.getElementById("inv-summary").classList.add("hidden");
+  updateExportBox();
+});
+
+// ── Import string ─────────────────────────────────────────────
+document.getElementById("inv-import-btn").addEventListener("click", () => {
+  const box    = document.getElementById("inv-export-box");
+  const status = document.getElementById("inv-status");
+  const str    = box.value.trim();
+  if (!str) return;
+
+  const parsed = stringToInventory(str);
+  if (!parsed.length) {
+    status.classList.remove("hidden");
+    status.classList.add("status-err");
+    status.textContent = "Couldn't parse that string. Format: itemname:qty,itemname,...";
+    return;
+  }
+
+  invInput.setItems(parsed);
+  saveToLocalStorage();
+
+  const total = parsed.reduce((s, e) => s + e.qty, 0);
+  status.classList.remove("hidden");
+  status.classList.add("status-ok");
+  status.textContent = `Imported ${parsed.length} item type${parsed.length !== 1 ? "s" : ""}, ${total} total.`;
+  setTimeout(() => status.classList.add("hidden"), 3500);
+});
+
+// Copy export string
+document.getElementById("inv-copy-btn").addEventListener("click", () => {
+  const box = document.getElementById("inv-export-box");
+  box.select();
+  navigator.clipboard.writeText(box.value).catch(() => document.execCommand("copy"));
+  const btn = document.getElementById("inv-copy-btn");
+  btn.textContent = "copied!";
+  setTimeout(() => btn.textContent = "copy", 1800);
+});
+
+// ── Try-harder slider ─────────────────────────────────────────
+const SLIDER_LEVELS = [
+  { label: "fair (0%)",     pct: 0.0  },
+  { label: "balanced (5%)", pct: 0.05 },
+  { label: "slight (12%)",  pct: 0.12 },
+  { label: "strong (20%)",  pct: 0.20 },
+  { label: "max (35%)",     pct: 0.35 },
+];
+const tryHarderSlider = document.getElementById("try-harder-slider");
+const tryHarderHint   = document.getElementById("try-harder-hint");
+tryHarderSlider.addEventListener("input", () => {
+  tryHarderHint.textContent = SLIDER_LEVELS[+tryHarderSlider.value].label;
+});
+function getMinGainPct() {
+  return SLIDER_LEVELS[+tryHarderSlider.value].pct;
+}
+
+// ── Offer generator (multi-item tag input) ────────────────────
+const offerTargetInput = makeQtyTagInput("offer-tags", "offer-input", "offer-suggestions", { autoPopup: false });
+
+document.getElementById("offer-btn").addEventListener("click", generateOffer);
+
+async function generateOffer() {
+  const targets = offerTargetInput.getTags();
+  const errEl     = document.getElementById("offer-error");
+  const panel     = document.getElementById("offer-panel");
+  const loadingEl = document.getElementById("offer-loading");
+  const btn       = document.getElementById("offer-btn");
+  errEl.classList.add("hidden"); panel.classList.add("hidden"); loadingEl.classList.add("hidden");
+  if (!targets.length) {
+    errEl.textContent = "Please add at least one item you want to get.";
+    errEl.classList.remove("hidden"); return;
+  }
+  const flat = invInput.getTags();
+  if (!flat.length) {
+    errEl.textContent = "Your inventory is empty. Add items above first.";
+    errEl.classList.remove("hidden"); return;
+  }
+
+  loadingEl.classList.remove("hidden");
+  btn.disabled = true;
+
+  let res, data;
+  try {
+    res = await fetch("/api/suggest-offer", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ target: targets[0], targets, inventory: flat, min_gain_pct: getMinGainPct() }),
+    });
+    data = await res.json();
+  } catch (err) {
+    loadingEl.classList.add("hidden");
+    btn.disabled = false;
+    console.error("Offer fetch error:", err);
+    errEl.textContent = "Network error: " + err.message;
+    errEl.classList.remove("hidden");
+    return;
+  }
+  loadingEl.classList.add("hidden");
+  btn.disabled = false;
+
+  if (!res.ok) {
+    console.error("Offer API error:", res.status, data);
+    errEl.textContent = (data && data.error) ? data.error : "Something went wrong (" + res.status + ").";
+    errEl.classList.remove("hidden");
+    return;
+  }
+
+  const targetNames = data.target_names || [data.target_name];
+  document.getElementById("op-target-name").textContent = targetNames.join(", ");
+
+  // "You get" side
+  const targetItemsEl = document.getElementById("op-target-items");
+  targetItemsEl.innerHTML = targetNames.map(n => `<span class="offer-item-pill">${n}</span>`).join("");
+  document.getElementById("op-target-ai").textContent  = data.target_ai;
+  document.getElementById("op-target-raw").textContent = data.target_raw;
+
+  // Render alternatives
+  const altsEl = document.getElementById("op-alternatives");
+  const VERDICT_LABELS = { win: "WIN", lose: "LOSE", fair: "FAIR" };
+  altsEl.innerHTML = (data.alternatives || []).map((alt, i) => {
+    const counts = {};
+    alt.offer_items.forEach(n => { counts[n] = (counts[n] || 0) + 1; });
+    const pills = Object.entries(counts)
+      .map(([name, cnt]) => `<span class="offer-item-pill">${name}${cnt > 1 ? " x"+cnt : ""}</span>`).join("");
+    const gainNote = alt.your_gain > 0 ? `+${alt.your_gain} AI in your favor`
+      : alt.your_gain < 0 ? `${alt.your_gain} AI` : "even";
+    const verdictClass = "verdict-" + alt.verdict;
+    const label = i === 0 ? "best" : i === 1 ? "option 2" : "option 3";
+    return `<div class="offer-alt${i === 0 ? " offer-alt-best" : ""}">
+      <div class="offer-alt-header">
+        <span class="offer-alt-label">${label}</span>
+        <span class="offer-verdict-badge ${verdictClass}">${VERDICT_LABELS[alt.verdict] || alt.verdict.toUpperCase()}</span>
+        <span class="offer-gain-note">(${gainNote})</span>
+      </div>
+      <div class="offer-item-list">${pills}</div>
+      <div class="offer-alt-scores">
+        <span class="offer-score-label">ai score</span> <span class="offer-score-val">${alt.offer_ai}</span>
+        <span class="offer-score-label" style="margin-left:14px;">mm2 value</span> <span class="offer-score-val">${alt.offer_raw}</span>
+      </div>
+    </div>`;
+  }).join("");
+
+  panel.classList.remove("hidden");
 }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* ── Header ───────────────────────────────────────────────── */
-header {
-  border-bottom: 2px solid var(--accent);
-  padding: 18px 0 12px;
-  margin-bottom: 32px;
-}
-
-.header-inner {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.logo {
-  font-family: var(--font-body);
-  font-size: 1.35rem;
-  font-weight: normal;
-  letter-spacing: 0.01em;
-}
-
-.logo-mm2 {
-  font-weight: bold;
-  font-style: italic;
-}
-
-.logo-trade {
-  color: var(--text-dim);
-  font-size: 1rem;
-}
-
-nav {
-  display: flex;
-  gap: 16px;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-}
-
-.nav-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--link);
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  padding: 0;
-  transition: color 0.1s;
-}
-.nav-btn:hover { color: var(--accent); }
-.nav-btn.active {
-  color: var(--accent);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* ── Main ─────────────────────────────────────────────────── */
-main {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 20px 80px;
-}
-
-.tab { display: none; }
-.tab.active { display: block; animation: fadein 0.35s ease; }
-@keyframes fadein { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
-
-/* ── Trade Layout ─────────────────────────────────────────── */
-.trade-section-label {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 6px;
-}
-
-.card-row {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0;
-  align-items: start;
-  margin-bottom: 16px;
-}
-
-.trade-card {
-  padding: 12px;
-  border: 1px solid var(--border);
-  background: #fff;
-  position: relative;
-}
-.trade-card.yours  { border-right: none; }
-.trade-card.theirs { border-left: none; }
-
-.card-label {
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 8px;
-}
-
-.vs-col {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 34px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-}
-.vs-badge {
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  padding: 6px 8px;
-  line-height: 1;
-}
-
-/* ── Tag Input ────────────────────────────────────────────── */
-.tag-input-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  min-height: 36px;
-  cursor: text;
-  position: relative;
-}
-
-.tag-input-wrapper input {
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  flex: 1;
-  min-width: 100px;
-  padding: 2px 0;
-}
-.tag-input-wrapper input::placeholder {
-  color: var(--border-dark);
-  font-style: italic;
-}
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  color: var(--text-mid);
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  padding: 2px 7px;
-  text-transform: capitalize;
-  animation: tagpop 0.15s ease;
-}
-@keyframes tagpop {
-  from { opacity: 0; transform: scale(0.85); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-.tag-remove {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  line-height: 1;
-  padding: 0;
-  transition: color 0.1s;
-}
-.tag-remove:hover { color: var(--lose); }
-
-/* ── Autocomplete ─────────────────────────────────────────── */
-.suggestions {
-  list-style: none;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-top: none;
-  max-height: 180px;
-  overflow-y: auto;
-  position: absolute;
-  left: 0; right: 0;
-  z-index: 200;
-  display: none;
-}
-.suggestions.open { display: block; }
-.suggestions li {
-  padding: 6px 10px;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  cursor: pointer;
-  color: var(--text-mid);
-  text-transform: capitalize;
-  border-bottom: 1px solid var(--bg2);
-}
-.suggestions li:hover, .suggestions li.active {
-  background: var(--bg2);
-  color: var(--text);
-}
-
-/* ── Buttons ──────────────────────────────────────────────── */
-.check-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-#check-btn {
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 9px 28px;
-  cursor: pointer;
-  transition: opacity 0.15s, transform 0.1s;
-}
-#check-btn:hover  { opacity: 0.82; }
-#check-btn:active { transform: scale(0.97); }
-
-.clear-btn {
-  background: none;
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  padding: 0;
-  transition: color 0.1s;
-}
-.clear-btn:hover { color: var(--lose); }
-
-/* ── Error ────────────────────────────────────────────────── */
-.error-msg {
-  font-family: var(--font-ui);
-  font-size: 0.82rem;
-  color: var(--lose);
-  border-left: 3px solid var(--lose);
-  padding: 8px 12px;
-  margin-bottom: 18px;
-  background: #fff0f0;
-}
-.hidden { display: none !important; }
-
-/* ── Result Panel ─────────────────────────────────────────── */
-.result-panel {
-  border-top: 2px solid var(--accent);
-  padding-top: 20px;
-  margin-top: 4px;
-  animation: fadein 0.35s ease;
-}
-
-.result-verdict {
-  font-family: var(--font-body);
-  font-size: 1.6rem;
-  margin-bottom: 18px;
-  letter-spacing: 0.01em;
-}
-.verdict-win  { color: var(--win);  font-weight: bold; font-style: normal; }
-.verdict-lose { color: var(--lose); font-style: italic; }
-.verdict-fair { color: var(--fair); font-style: italic; }
-
-/* result tables */
-.result-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-
-.stat-block {
-  padding: 12px 14px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.stat-block:nth-child(2n) { border-right: none; }
-.stat-block:nth-last-child(-n+2) { border-bottom: none; }
-
-.stat-title {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 8px;
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.88rem;
-  padding: 2px 0;
-}
-.stat-row .label {
-  color: var(--text-dim);
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-}
-.stat-row .value {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text);
-}
-.diff-row {
-  border-top: 1px dashed var(--border);
-  margin-top: 4px;
-  padding-top: 4px;
-}
-.diff-row .label { font-weight: bold; color: var(--text-mid) !important; }
-.diff-row .value { color: var(--text-dim); font-weight: bold; }
-.diff-pos { color: var(--win)  !important; }
-.diff-neg { color: var(--lose) !important; }
-
-/* ── Stability ────────────────────────────────────────────── */
-.stability-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-top: none;
-  margin-bottom: 14px;
-}
-.stab-block {
-  padding: 10px 14px;
-  border-right: 1px solid var(--border);
-}
-.stab-block:last-child { border-right: none; }
-.stab-label {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 7px;
-}
-.stab-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-.stab-tag {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  padding: 2px 7px;
-  border: 1px solid;
-}
-.stab-good    { color: var(--win);  border-color: #8abf8a; background: #f0fff0; }
-.stab-bad     { color: var(--lose); border-color: #d09090; background: #fff0f0; }
-.stab-mid     { color: var(--fair); border-color: #c8a830; background: #fffbe8; }
-.stab-neutral { color: var(--text-dim); border-color: var(--border); background: transparent; }
-
-/* ── Warnings ─────────────────────────────────────────────── */
-.warnings { display: flex; flex-direction: column; gap: 5px; }
-.warn-item {
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  padding: 7px 10px;
-  background: #fffbe8;
-  border-left: 3px solid #c8a830;
-  color: var(--text-mid);
-}
-
-/* ── Stats Tab ────────────────────────────────────────────── */
-.stats-search-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 22px;
-  position: relative;
-}
-.stats-input-wrap { flex: 1; position: relative; }
-.stats-input-wrap input {
-  width: 100%;
-  border: 1px solid var(--border);
-  background: #fff;
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  padding: 9px 12px;
-  outline: none;
-  transition: border-color 0.15s;
-}
-.stats-input-wrap input:focus { border-color: var(--accent); }
-.stats-input-wrap .suggestions { left: 0; right: 0; }
-
-#stats-btn {
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 9px 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: opacity 0.15s;
-}
-#stats-btn:hover { opacity: 0.82; }
-
-#inv-save-btn {
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 9px 28px;
-  cursor: pointer;
-  transition: opacity 0.15s, transform 0.1s;
-}
-#inv-save-btn:hover  { opacity: 0.82; }
-#inv-save-btn:active { transform: scale(0.97); }
-
-#offer-btn {
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 9px 28px;
-  cursor: pointer;
-  transition: opacity 0.15s, transform 0.1s;
-  white-space: nowrap;
-  align-self: flex-start;
-}
-#offer-btn:hover  { opacity: 0.82; }
-#offer-btn:active { transform: scale(0.97); }
-
-#rev-btn {
-  background: var(--accent);
-  color: var(--bg);
-  border: none;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 9px 28px;
-  cursor: pointer;
-  transition: opacity 0.15s, transform 0.1s;
-  white-space: nowrap;
-  align-self: flex-start;
-}
-#rev-btn:hover  { opacity: 0.82; }
-#rev-btn:active { transform: scale(0.97); }
-
-.stats-panel { }
-.stats-name {
-  font-family: var(--font-body);
-  font-size: 1.5rem;
-  font-style: italic;
-  color: var(--text);
-  margin-bottom: 14px;
-  text-transform: capitalize;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
-}
-.stats-tile {
-  padding: 12px 14px;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: #fff;
-}
-.stats-tile:nth-child(3n) { border-right: none; }
-.stats-tile:nth-last-child(-n+3) { border-bottom: none; }
-.stats-tile.highlight { background: var(--bg2); }
-
-.tile-label {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 6px;
-}
-.tile-value {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  color: var(--text);
-}
-.stats-tile.highlight .tile-value { color: var(--text); font-weight: bold; }
-
-/* ── Footer ───────────────────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--border);
-  margin-top: 60px;
-  padding: 14px 20px;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  color: var(--text-dim);
-}
-
-/* ── Responsive ───────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .card-row { grid-template-columns: 1fr; }
-  .vs-col { padding: 8px 0; border: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .result-grid { grid-template-columns: 1fr; }
-  .result-grid .stat-block { border-right: none; }
-  .result-grid .stat-block:last-child { border-bottom: none; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-tile:nth-child(3n) { border-right: 1px solid var(--border); }
-  .stats-tile:nth-child(2n) { border-right: none; }
-  .stability-row { grid-template-columns: 1fr; }
-  .stab-block { border-right: none; border-bottom: 1px solid var(--border); }
-  .stab-block:last-child { border-bottom: none; }
-}
-/* ================================================================
-   HOW IT WORKS TAB — append to the bottom of static/css/style.css
-   ================================================================ */
-
-/* ── How It Works Tab ─────────────────────────────────────── */
-.how-section {
-  margin-bottom: 32px;
-}
-.how-section-title {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 6px;
-  margin-bottom: 14px;
-}
-.how-intro {
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  color: var(--text-mid);
-  margin-bottom: 28px;
-  line-height: 1.7;
-}
-
-/* step cards */
-.step-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-.step-item {
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  gap: 0;
-  border-bottom: 1px solid var(--border);
-}
-.step-item:last-child { border-bottom: none; }
-.step-num {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  background: var(--bg2);
-  border-right: 1px solid var(--border);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 13px;
-}
-.step-body {
-  padding: 11px 14px;
-  background: #fff;
-}
-.step-title {
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  font-weight: bold;
-  color: var(--text);
-  margin-bottom: 4px;
-  letter-spacing: 0.02em;
-}
-.step-desc {
-  font-family: var(--font-body);
-  font-size: 0.87rem;
-  color: var(--text-mid);
-  line-height: 1.6;
-}
-.step-desc code {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  background: var(--bg2);
-  padding: 1px 5px;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
-/* formula box */
-.formula-box {
-  border: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 14px 16px;
-  margin: 12px 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text);
-  line-height: 1.9;
-}
-.formula-box .formula-label {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 8px;
-  font-style: normal;
-}
-.formula-comment {
-  color: var(--text-dim);
-  font-size: 0.78rem;
-}
-
-/* stability table */
-.stab-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid var(--border);
-  margin-top: 0;
-}
-.stab-table th {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  background: var(--bg2);
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  font-weight: normal;
-}
-.stab-table td {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  padding: 7px 12px;
-  border-bottom: 1px solid var(--bg3);
-  vertical-align: middle;
-}
-.stab-table tr:last-child td { border-bottom: none; }
-.stab-table td:first-child { width: 44%; }
-.stab-table td:nth-child(2) {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  width: 22%;
-}
-.stab-table td:nth-child(3) {
-  font-size: 0.8rem;
-  color: var(--text-mid);
-}
-.mult-up   { color: var(--win); }
-.mult-down { color: var(--lose); }
-.mult-neut { color: var(--text-dim); }
-
-/* verdict legend */
-.verdict-legend {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
-}
-.vl-block {
-  padding: 12px 14px;
-  border-right: 1px solid var(--border);
-  background: #fff;
-}
-.vl-block:last-child { border-right: none; }
-.vl-label {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  margin-bottom: 6px;
-}
-.vl-desc {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  color: var(--text-mid);
-  line-height: 1.5;
-}
-
-/* callout note */
-.how-note {
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  color: var(--text-mid);
-  background: #fffbe8;
-  border-left: 3px solid #c8a830;
-  padding: 9px 12px;
-  margin-top: 14px;
-  line-height: 1.55;
-}
-
-/* ── Responsive additions ─────────────────────────────────── */
-@media (max-width: 600px) {
-  .verdict-legend { grid-template-columns: 1fr; }
-  .vl-block { border-right: none; border-bottom: 1px solid var(--border); }
-  .vl-block:last-child { border-bottom: none; }
-  .step-item { grid-template-columns: 30px 1fr; }
-}
-
-/* ══════════════════════════════════════════════════════════════
-   INVENTORY TAB
-   ══════════════════════════════════════════════════════════════ */
-
-.inv-intro {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-mid);
-  margin-bottom: 22px;
-  line-height: 1.6;
-}
-
-.inv-section {
-  margin-bottom: 28px;
-}
-
-.inv-section-label {
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 8px;
-}
-
-.inv-tag-area {
-  position: relative;
-}
-
-.inv-btn-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.inv-status {
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  margin-top: 8px;
-  padding: 7px 10px;
-  border: 1px solid var(--border);
-  background: var(--bg2);
-}
-
-.inv-status.status-ok {
-  border-color: var(--win);
-  color: var(--win);
-  background: #f0f7f0;
-}
-
-.inv-status.status-err {
-  border-color: var(--lose);
-  color: var(--lose);
-  background: #fff0f0;
-}
-
-.inv-divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 24px 0;
-}
-
-.inv-sub {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-mid);
-  margin-bottom: 12px;
-  line-height: 1.55;
-}
-
-/* Offer search row */
-.offer-search-row {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.offer-input-wrap {
-  position: relative;
-  flex: 1;
-}
-
-.offer-input-wrap input {
-  width: 100%;
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  padding: 7px 10px;
-  border: 1px solid var(--border-dark);
-  background: #fff;
-  outline: none;
-  color: var(--text);
-}
-
-.offer-input-wrap input:focus {
-  border-color: var(--accent);
-}
-
-/* Inventory value summary */
-.inv-summary {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-top: 12px;
-  border: 1px solid var(--border);
-  background: var(--bg2);
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-}
-.inv-summary-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 10px 20px;
-  flex: 1;
-}
-.inv-summary-label {
-  color: var(--text-dim);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.inv-summary-val {
-  color: var(--text);
-  font-size: 1rem;
-  font-family: var(--font-body);
-}
-.inv-summary-sep {
-  width: 1px;
-  align-self: stretch;
-  background: var(--border);
-}
-
-/* Try-harder slider */
-.try-harder-row {
-  margin-top: 14px;
-}
-.try-harder-label {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-dim);
-  margin-bottom: 6px;
-}
-.try-harder-hint {
-  color: var(--text-mid);
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.78rem;
-}
-.try-harder-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 2px;
-  background: var(--border-dark);
-  outline: none;
-  cursor: pointer;
-}
-.try-harder-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-  cursor: pointer;
-}
-.try-harder-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-  border: none;
-  cursor: pointer;
-}
-.try-harder-ticks {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  margin-top: 4px;
-}
-
-/* Reverse want list row */
-.rev-want-row {
-  margin-bottom: 4px;
-}
-
-/* Offer loading bar */
-.offer-loading {
-  margin-top: 14px;
-  height: 3px;
-  background: var(--border);
-  overflow: hidden;
-}
-.offer-loading-bar {
-  height: 100%;
-  width: 0%;
-  background: var(--accent);
-  animation: offer-progress 2.2s ease-in-out infinite;
-}
-@keyframes offer-progress {
-  0%   { width: 0%;   margin-left: 0%; }
-  50%  { width: 60%;  margin-left: 20%; }
-  100% { width: 0%;   margin-left: 100%; }
-}
-
-/* Offer result panel */
-.offer-panel {
-  margin-top: 20px;
-  border: 1px solid var(--border);
-  background: #fff;
-}
-
-/* Shared "you get" row at top of panel */
-.offer-get-row {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-}
-
-/* Alternatives section label */
-.offer-alts-label {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  padding: 10px 14px 4px;
-}
-
-/* Alternative cards container */
-.offer-alts {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Single alternative card */
-.offer-alt {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-}
-.offer-alt:last-child { border-bottom: none; }
-.offer-alt-best {
-  background: #f6faf6;
-  border-left: 3px solid var(--win);
-}
-
-.offer-alt-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-}
-.offer-alt-label {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  min-width: 56px;
-}
-.offer-alt-scores {
-  margin-top: 8px;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  color: var(--text-mid);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-
-.offer-header {
-  padding: 10px 14px 8px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.offer-label {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.offer-target-name {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--accent);
-}
-
-.offer-side-label {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 8px;
-}
-
-.offer-item-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 10px;
-  min-height: 28px;
-}
-
-.offer-item-pill {
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  padding: 3px 8px;
-  color: var(--text);
-}
-
-.offer-score-row {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  color: var(--text-mid);
-  margin-bottom: 3px;
-  gap: 8px;
-}
-
-.offer-score-label {
-  color: var(--text-dim);
-}
-
-.offer-score-val {
-  font-weight: bold;
-  color: var(--text);
-  font-family: var(--font-mono);
-}
-
-.offer-arrow {
-  font-size: 1.4rem;
-  color: var(--text-dim);
-  display: flex;
-  align-items: center;
-  padding-top: 22px;
-  padding-right: 4px;
-  padding-left: 4px;
-}
-
-.offer-verdict-row {
-  border-top: 1px solid var(--border);
-  padding: 9px 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  background: var(--bg2);
-}
-
-.offer-verdict-label {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  letter-spacing: 0.05em;
-}
-
-.offer-verdict-badge {
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  font-weight: bold;
-}
-
-.offer-verdict-badge.verdict-win  { color: var(--win); }
-.offer-verdict-badge.verdict-fair { color: var(--fair); }
-.offer-verdict-badge.verdict-lose { color: var(--lose); }
-
-.offer-gain-note {
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  color: var(--text-mid);
-  font-style: italic;
-}
-
-
-/* ── Inventory quantity badges & popup ───────────────────────── */
-
-/* tag with qty badge has slightly different padding to fit both elements */
-.tag.tag-qty {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  padding: 3px 4px 3px 8px;
-  position: relative;
-}
-
-.tag-name {
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  color: var(--text);
-  pointer-events: none;
-}
-
-/* the ×N badge button */
-.qty-badge {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-left: none;
-  color: var(--text-mid);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 0 5px;
-  cursor: pointer;
-  margin: 0 4px 0 5px;
-  height: 18px;
-  line-height: 18px;
-  transition: background 0.1s, color 0.1s;
-}
-.qty-badge:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-/* popup that appears when badge is clicked */
-.qty-popup {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  z-index: 100;
-  background: #fff;
-  border: 1px solid var(--border-dark);
-  padding: 6px 8px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  white-space: nowrap;
-}
-
-.qty-btn {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  padding: 0;
-  flex-shrink: 0;
-}
-.qty-btn:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.qty-num {
-  width: 52px;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  padding: 3px 5px;
-  border: 1px solid var(--border-dark);
-  text-align: center;
-  color: var(--text);
-  background: #fff;
-  outline: none;
-  height: 24px;
-  -moz-appearance: textfield;
-}
-.qty-num::-webkit-outer-spin-button,
-.qty-num::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.qty-num:focus { border-color: var(--accent); }
-
-.qty-done {
-  background: var(--accent);
-  color: #fff;
-  border: 1px solid var(--accent);
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
-  padding: 0 8px;
-  height: 24px;
-  cursor: pointer;
-  letter-spacing: 0.04em;
-}
-.qty-done:hover { opacity: 0.85; }
-
-/* ── Inventory import/export string ─────────────────────────── */
-.inv-string-row {
-  margin-top: 16px;
-  border: 1px solid var(--border);
-  padding: 12px 14px;
-  background: var(--bg2);
-}
-
-.inv-string-label {
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 4px;
-}
-
-.inv-string-desc {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--text-mid);
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-.inv-string-controls {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.inv-export-box {
-  flex: 1;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 6px 8px;
-  border: 1px solid var(--border-dark);
-  background: #fff;
-  color: var(--text);
-  resize: none;
-  outline: none;
-  line-height: 1.45;
-  min-height: 46px;
-}
-.inv-export-box:focus { border-color: var(--accent); }
-
-.inv-string-btns {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.inv-str-btn {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  padding: 5px 12px;
-  border: 1px solid var(--border-dark);
-  background: #fff;
-  cursor: pointer;
-  color: var(--text);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-.inv-str-btn:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-/* ── Confidence badge on verdict ─────────────────────────────── */
-.verdict-conf {
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  font-weight: normal;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-left: 10px;
-  vertical-align: middle;
-  border: 1px solid currentColor;
-  padding: 1px 6px;
-}
-
-/* ── Use guide confidence demo badges ────────────────────────── */
-.conf-demo {
-  font-family: var(--font-ui);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  padding: 2px 8px;
-  border: 1px solid currentColor;
-  display: inline-block;
-}
-.conf-barely  { color: var(--fair);  border-color: var(--fair); }
-.conf-clearly { color: #2a5a9a; border-color: #2a5a9a; }
-.conf-easily  { color: var(--win);  border-color: var(--win); }
-.conf-big     { color: #7a1a8a; border-color: #7a1a8a; }
