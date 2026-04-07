@@ -1,10 +1,3 @@
-
-
-
-#Usage:
-#    python sv_scraper.py
-
-
 import os
 import re
 import time
@@ -17,7 +10,7 @@ GITHUB_TOKEN  = os.environ.get("GITHUB_TOKEN", "YOUR_TOKEN_HERE")
 GITHUB_REPO   = "TheTwixBar/mm2-trade-checker"
 GITHUB_PATH   = "data_txt/mm2values.txt"
 GITHUB_BRANCH = "main"
-# ─────────────────────────────────────────────────────────────
+
 
 BASE_URL = "https://supremevalues.com/mm2/"
 
@@ -63,7 +56,7 @@ def parse_items(html):
         img_cell = cells[0]
         stat_cell = cells[1]
 
-        # ── Name ──────────────────────────────────────────────────────────
+        # scrape name
         img = img_cell.find("img")
         if not img:
             continue
@@ -76,26 +69,26 @@ def parse_items(html):
         stat_text = stat_cell.get_text(separator=" ").replace("\xa0", " ")
         stat_text = re.sub(r"\s+", " ", stat_text).strip()
 
-        # ── Value ─────────────────────────────────────────────────────────
+        # value
         m = re.search(r"Value\s*[-–]\s*\*?\*?([\d,]+)\*?\*?", stat_text)
         value = m.group(1).replace(",", "") if m else "N/A"
 
-        # ── Ranged Value ──────────────────────────────────────────────────
+        # ranged value
         m = re.search(r"Ranged Value\s*[-–]\s*\[?\*?\*?([\d,]+\s*-\s*[\d,]+|N/A)\*?\*?\]?", stat_text)
         if m and m.group(1) != "N/A":
             ranged = re.sub(r"\s*-\s*", "-", m.group(1)).replace(",", "")
         else:
             ranged = "N/A"
 
-        # ── Stability ─────────────────────────────────────────────────────
+        # stability
         m = re.search(r"Stability\s*[-–]\s*\*?\*?([A-Za-z ]+?)\*?\*?(?:\s+Item Stability|\s+Demand|$)", stat_text)
         stability = m.group(1).strip() if m else "N/A"
 
-        # ── Demand ────────────────────────────────────────────────────────
+        # demand
         m = re.search(r"Demand\s*[-–]\s*\*?\*?(\d+)\*?\*?", stat_text)
         demand = m.group(1) if m else "N/A"
 
-        # ── Rarity ────────────────────────────────────────────────────────
+        # rarity
         m = re.search(r"Rarity\s*[-–]\s*\*?\*?(\d+)\*?\*?", stat_text)
         rarity = m.group(1) if m else "N/A"
 
@@ -138,13 +131,13 @@ def push_to_github(content: str):
         "Accept": "application/vnd.github+json",
     }
 
-    # Check if the file already exists so we can get its SHA (required for updates)
+    # see if file exists
     sha = None
     check = requests.get(api_url, headers=gh_headers, params={"ref": GITHUB_BRANCH})
     if check.status_code == 200:
         sha = check.json().get("sha")
 
-    # Base64-encode the content (GitHub API requires this)
+    # encode 64
     encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
 
     payload = {
