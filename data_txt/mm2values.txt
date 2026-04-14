@@ -13,7 +13,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Constellation
-Value: 2950
+Value: 2900
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -34,16 +34,16 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Vampires Gun
-Value: 1725
+Value: 1700
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Alienbeam
-Value: 1550
+Value: 1650
 Range: N/A
-Demand: 6
+Demand: 7
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
@@ -76,7 +76,7 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1025
+Value: 1075
 Range: N/A
 Demand: 6
 Rarity: 3
@@ -97,7 +97,7 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Snowcannon
-Value: 575
+Value: 600
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -111,20 +111,20 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 310
-Range: N/A
-Demand: 4
-Rarity: 3
-Stability: Stable
-----------------------------------------
-Name: Rainbow Gun
-Value: 300
+Value: 315
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Spirit
+Value: 305
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Rainbow Gun
 Value: 300
 Range: N/A
 Demand: 4
@@ -153,21 +153,21 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Heart Wand
-Value: 230
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Underpaid For
-----------------------------------------
-Name: Treat
 Value: 225
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Underpaid For
 ----------------------------------------
-Name: Sweet
+Name: Treat
 Value: 220
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
+Name: Sweet
+Value: 215
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -215,15 +215,15 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Bat
+Name: Waves
 Value: 165
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Waves
-Value: 165
+Name: Bat
+Value: 160
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -867,42 +867,42 @@ Rarity: 7
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 69000
+Value: 67000
 Range: N/A
 Demand: 7
 Rarity: 6
 Stability: Receding
 ----------------------------------------
 Name: Chroma Bauble
-Value: 47000
+Value: 46000
 Range: N/A
 Demand: 7
 Rarity: 5
-Stability: Stable
+Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Vampires Gun
-Value: 39500
+Value: 39000
 Range: N/A
 Demand: 7
 Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Constellation
-Value: 38500
+Value: 38000
 Range: N/A
 Demand: 7
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Alienbeam
-Value: 32000
+Value: 33000
 Range: N/A
 Demand: 7
 Rarity: 5
-Stability: Stable
+Stability: Improving
 ----------------------------------------
 Name: Chroma Raygun
-Value: 17500
+Value: 17000
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -937,28 +937,28 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snowstorm
-Value: 5750
+Value: 5500
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Treat
-Value: 5000
-Range: N/A
-Demand: 5
-Rarity: 5
-Stability: Underpaid For
-----------------------------------------
-Name: Chroma Heart Wand
 Value: 4750
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Underpaid For
 ----------------------------------------
-Name: Chroma Sweet
+Name: Chroma Heart Wand
 Value: 4500
+Range: N/A
+Demand: 5
+Rarity: 5
+Stability: Underpaid For
+----------------------------------------
+Name: Chroma Sweet
+Value: 4250
 Range: N/A
 Demand: 5
 Rarity: 5
