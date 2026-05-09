@@ -13,7 +13,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Constellation
-Value: 2750
+Value: 2700
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -27,18 +27,18 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Alienbeam
-Value: 2250
+Value: 2175
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 3
 Stability: Receding
 ----------------------------------------
 Name: Turkey
-Value: 2050
+Value: 2100
 Range: N/A
 Demand: 6
 Rarity: 3
-Stability: Doing Well
+Stability: Overpaid For
 ----------------------------------------
 Name: Vampires Gun
 Value: 1700
@@ -48,35 +48,35 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1400
+Value: 1325
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Receding
 ----------------------------------------
 Name: Darkshot
-Value: 1240
+Value: 1250
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1220
+Value: 1230
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Blossom
-Value: 1110
+Value: 1120
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sakura
-Value: 1100
+Value: 1110
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -89,22 +89,22 @@ Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Snowcannon
-Value: 875
-Range: N/A
-Demand: 6
-Rarity: 3
-Stability: Doing Well
-----------------------------------------
 Name: Sunrise
-Value: 850
+Value: 900
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
+Name: Snowcannon
+Value: 900
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
 Name: Sunset
-Value: 450
+Value: 475
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -146,14 +146,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Flora
-Value: 275
+Value: 280
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Bloom
-Value: 265
+Value: 270
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -172,13 +172,6 @@ Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
-----------------------------------------
-Name: Treat
-Value: 205
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Underpaid For
 ----------------------------------------
 Name: Flowerwood
 Value: 200
@@ -201,8 +194,15 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Treat
+Value: 195
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
 Name: Sweet
-Value: 200
+Value: 190
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -215,15 +215,15 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Waves
+Name: Watergun
 Value: 165
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Watergun
-Value: 160
+Name: Waves
+Value: 165
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -860,7 +860,7 @@ Rarity: 9
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergun
-Value: 100000
+Value: 98000
 Range: N/A
 Demand: 8
 Rarity: 7
@@ -873,18 +873,18 @@ Demand: 7
 Rarity: 6
 Stability: Stable
 ----------------------------------------
-Name: Chroma Vampires Gun
-Value: 38000
-Range: N/A
-Demand: 7
-Rarity: 6
-Stability: Stable
-----------------------------------------
 Name: Chroma Bauble
 Value: 38000
 Range: N/A
 Demand: 7
 Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Chroma Vampires Gun
+Value: 37500
+Range: N/A
+Demand: 7
+Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Constellation
@@ -902,14 +902,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 15500
+Value: 15750
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Chroma Sunrise
-Value: 10500
+Value: 10750
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -920,7 +920,7 @@ Value: 8500
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Chroma Blizzard
 Value: 8000
@@ -929,15 +929,8 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Treat
-Value: 6250
-Range: N/A
-Demand: 5
-Rarity: 5
-Stability: Underpaid For
-----------------------------------------
 Name: Chroma Sunset
-Value: 6000
+Value: 6250
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -950,8 +943,15 @@ Demand: 6
 Rarity: 5
 Stability: Stable
 ----------------------------------------
+Name: Chroma Treat
+Value: 6000
+Range: N/A
+Demand: 5
+Rarity: 5
+Stability: Underpaid For
+----------------------------------------
 Name: Chroma Snow Dagger
-Value: 5000
+Value: 5250
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -965,7 +965,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sweet
-Value: 4250
+Value: 4000
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -979,7 +979,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Ornament
-Value: 2850
+Value: 2800
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1175,7 +1175,7 @@ Rarity: 11
 Stability: Overpaid For
 ----------------------------------------
 Name: Gingerscope
-Value: 17250
+Value: 17000
 Range: N/A
 Demand: 7
 Rarity: 4
