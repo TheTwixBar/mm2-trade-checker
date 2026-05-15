@@ -67,27 +67,33 @@ def api_trade():
         return jsonify({"error": "Please enter at least one item on each side."}), 400
 
     result = ml_evaluate_trade(yours_items, theirs_items)
-    return jsonify({
-        "result":          result["result"],
-        "confidence":      result.get("confidence", ""),
-        "your_raw":        result["your_raw"],
-        "their_raw":       result["their_raw"],
-        "raw_diff":        result["raw_diff"],
-        "your_ai":         result["your_ai"],
-        "their_ai":        result["their_ai"],
-        "ai_diff":         result["ai_diff"],
-        "threshold":       result["threshold"],
-        "your_demand":     round(result["your_demand"],  1),
-        "their_demand":    round(result["their_demand"], 1),
-        "demand_diff":     round(result["demand_diff"],  1),
-        "your_rarity":     round(result["your_rarity"],  1),
-        "their_rarity":    round(result["their_rarity"], 1),
-        "rarity_diff":     round(result["rarity_diff"],  1),
-        "your_stability":  result["your_stability"],
-        "their_stability": result["their_stability"],
-        "bundle_penalty":  result["bundle_penalty"],
-    })
-
+return jsonify({
+    "result":          result["result"],
+    "confidence":      result.get("confidence", ""),
+    "your_raw":        result["your_raw"],
+    "their_raw":       result["their_raw"],
+    "raw_diff":        result["raw_diff"],
+    "your_ai":         result["your_ai"],
+    "their_ai":        result["their_ai"],
+    "ai_diff":         result["ai_diff"],
+    "threshold":       result["threshold"],
+    "your_demand":     round(result["your_demand"],  1),
+    "their_demand":    round(result["their_demand"], 1),
+    "demand_diff":     round(result["demand_diff"],  1),
+    "your_rarity":     round(result["your_rarity"],  1),
+    "their_rarity":    round(result["their_rarity"], 1),
+    "rarity_diff":     round(result["rarity_diff"],  1),
+    "your_stability":  result["your_stability"],
+    "their_stability": result["their_stability"],
+    "bundle_penalty":  result["bundle_penalty"],
+    "ml_label":        result.get("ml_label"),
+    "ml_score":        result.get("ml_score"),
+    "ml_win_prob":     result.get("ml_win_prob"),
+    "ml_fair_prob":    result.get("ml_fair_prob"),
+    "ml_lose_prob":    result.get("ml_lose_prob"),
+    "ml_confidence":   result.get("ml_confidence"),
+    "ml_available":    result.get("ml_available"),
+})
 
 @app.route("/stats", methods=["GET"])
 def api_stats():
