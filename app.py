@@ -2,7 +2,13 @@ import json
 import os
 from flask import Flask, request, jsonify, render_template
 from trade_ai import load_items, evaluate_trade, explain, score_item, find_best_offer, find_top_offers
-from ml_model import ml_evaluate_trade
+try:
+    from ml_model import ml_evaluate_trade
+    ML_AVAILABLE = True
+except Exception as e:
+    print(f"ML model unavailable: {e}")
+    from trade_ai import evaluate_trade as ml_evaluate_trade
+    ML_AVAILABLE = False
 
 app = Flask(__name__)
 db = load_items()
