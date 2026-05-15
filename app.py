@@ -66,7 +66,7 @@ def api_trade():
     if not yours_items or not theirs_items:
         return jsonify({"error": "Please enter at least one item on each side."}), 400
 
-    result = evaluate_trade(yours_items, theirs_items)
+    result = ml_evaluate_trade(yours_items, theirs_items)
     return jsonify({
         "result":          result["result"],
         "confidence":      result.get("confidence", ""),
@@ -89,7 +89,7 @@ def api_trade():
     })
 
 
-@app.route("/api/stats", methods=["GET"])
+@app.route("/stats", methods=["GET"])
 def api_stats():
     name = request.args.get("item", "").strip().lower()
     if name not in db:
@@ -112,19 +112,19 @@ def api_stats():
     })
 
 
-@app.route("/api/items", methods=["GET"])
+@app.route("/items", methods=["GET"])
 def api_items():
     """Only tradeable items — no gold/silver/bronze/red/blue/purple variants."""
     return jsonify(tradeable_items())
 
 
 # ── Inventory endpoints ───────────────────────────────────────────────────────
-@app.route("/api/inventory", methods=["GET"])
+@app.route("/inventory", methods=["GET"])
 def get_inventory():
     return jsonify(load_inventory_json())
 
 
-@app.route("/api/inventory", methods=["POST"])
+@app.route("/inventory", methods=["POST"])
 def set_inventory():
     data = request.get_json()
     items = data.get("items", [])
@@ -148,7 +148,7 @@ def set_inventory():
 
 
 # ── Offer suggester ───────────────────────────────────────────────────────────
-@app.route("/api/suggest-offer", methods=["POST"])
+@app.route("/suggest-offer", methods=["POST"])
 def suggest_offer():
     data = request.get_json()
 
@@ -224,7 +224,7 @@ def suggest_offer():
 
 
 # ── Inventory value summary ───────────────────────────────────────────────────
-@app.route("/api/inventory/summary", methods=["POST"])
+@app.route("/inventory/summary", methods=["POST"])
 def inventory_summary():
     data = request.get_json()
     items_flat = data.get("items", [])
