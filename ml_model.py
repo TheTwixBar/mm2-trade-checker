@@ -212,6 +212,7 @@ def ml_evaluate_trade(
     except Exception as e:
         import traceback
         warnings.warn(f"ML model unavailable: {e}\n{traceback.format_exc()}")
+        print(f"ML ERROR: {traceback.format_exc()}")
         base_result.update({
             "ml_label":      base_result["result"],
             "ml_win_prob":   None,
