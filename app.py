@@ -73,7 +73,7 @@ def api_trade():
         return jsonify({"error": "Please enter at least one item on each side."}), 400
 
     result = ml_evaluate_trade(yours_items, theirs_items)
-return jsonify({
+    return jsonify({
     "result":          result["result"],
     "confidence":      result.get("confidence", ""),
     "your_raw":        result["your_raw"],
