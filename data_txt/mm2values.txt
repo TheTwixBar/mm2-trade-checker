@@ -6,7 +6,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Evergun
-Value: 3375
+Value: 3350
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -20,25 +20,25 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Evergreen
-Value: 2525
+Value: 2500
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Turkey
-Value: 2350
+Value: 2425
 Range: N/A
 Demand: 6
 Rarity: 3
-Stability: Overpaid For
+Stability: Doing Well
 ----------------------------------------
 Name: Alienbeam
-Value: 2050
+Value: 2100
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Stable
+Stability: Improving
 ----------------------------------------
 Name: Vampires Gun
 Value: 1700
@@ -48,35 +48,35 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1330
+Value: 1360
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
 Name: Darksword
-Value: 1310
+Value: 1340
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
+Name: Raygun
+Value: 1200
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Improving
+----------------------------------------
 Name: Blossom
-Value: 1150
+Value: 1160
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
-Name: Raygun
-Value: 1150
-Range: N/A
-Demand: 5
-Rarity: 3
-Stability: Stable
-----------------------------------------
 Name: Sakura
-Value: 1140
+Value: 1150
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -85,9 +85,9 @@ Stability: Doing Well
 Name: Sunrise
 Value: 1000
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 3
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Snowcannon
 Value: 925
@@ -111,21 +111,28 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Heart Wand
-Value: 450
-Range: N/A
-Demand: 4
-Rarity: 3
-Stability: Doing Well
-----------------------------------------
-Name: Soul
-Value: 365
+Value: 475
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Soul
+Value: 370
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
 Name: Spirit
-Value: 355
+Value: 360
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
+Name: Flora
+Value: 300
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -138,8 +145,8 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Flora
-Value: 295
+Name: Bloom
+Value: 290
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -147,13 +154,6 @@ Stability: Stable
 ----------------------------------------
 Name: Rainbow
 Value: 290
-Range: N/A
-Demand: 4
-Rarity: 3
-Stability: Stable
-----------------------------------------
-Name: Bloom
-Value: 285
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -201,13 +201,6 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Treat
-Value: 180
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Underpaid For
-----------------------------------------
 Name: Watergun
 Value: 175
 Range: N/A
@@ -222,8 +215,15 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Sweet
+Name: Treat
 Value: 175
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Underpaid For
+----------------------------------------
+Name: Sweet
+Value: 170
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -257,18 +257,18 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Candy
-Value: 105
-Range: N/A
-Demand: 2
-Rarity: 2
-Stability: Stable
-----------------------------------------
 Name: Australis
 Value: 100
 Range: N/A
 Demand: 3
 Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Candy
+Value: 100
+Range: N/A
+Demand: 2
+Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Heartblade
@@ -300,13 +300,6 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Red Luger
-Value: 45
-Range: N/A
-Demand: 2
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Sugar
 Value: 45
 Range: N/A
 Demand: 2
@@ -363,6 +356,13 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Iceblaster
+Value: 42
+Range: N/A
+Demand: 2
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Sugar
 Value: 42
 Range: N/A
 Demand: 2
@@ -860,7 +860,7 @@ Rarity: 9
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergun
-Value: 83000
+Value: 80000
 Range: N/A
 Demand: 8
 Rarity: 7
@@ -902,7 +902,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 15500
+Value: 15250
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -944,14 +944,14 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Heart Wand
-Value: 5250
+Value: 5000
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 5250
+Value: 5000
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -972,7 +972,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sweet
-Value: 3250
+Value: 3000
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -1175,7 +1175,7 @@ Rarity: 11
 Stability: Overpaid For
 ----------------------------------------
 Name: Gingerscope
-Value: 17250
+Value: 17500
 Range: N/A
 Demand: 7
 Rarity: 4
