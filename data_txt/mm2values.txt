@@ -957,19 +957,19 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Treat
-Value: 4000
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Underpaid For
-----------------------------------------
 Name: Chroma Watergun
 Value: 3400
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
+----------------------------------------
+Name: Chroma Treat
+Value: 3250
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Sweet
 Value: 2600
