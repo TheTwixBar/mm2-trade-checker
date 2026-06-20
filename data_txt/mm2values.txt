@@ -1,5 +1,5 @@
 Name: Travelers Gun
-Value: 6300
+Value: 6200
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -13,11 +13,11 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Constellation
-Value: 2625
+Value: 2650
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Turkey
 Value: 2450
@@ -83,7 +83,7 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sunrise
-Value: 1100
+Value: 1075
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -97,9 +97,9 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Snowcannon
-Value: 700
+Value: 725
 Range: N/A
-Demand: 4
+Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
@@ -131,6 +131,13 @@ Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Rainbow Gun
+Value: 400
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Overpaid For
+----------------------------------------
 Name: Bloom
 Value: 400
 Range: N/A
@@ -138,22 +145,15 @@ Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Rainbow Gun
-Value: 380
-Range: N/A
-Demand: 5
-Rarity: 3
-Stability: Overpaid For
-----------------------------------------
 Name: Rainbow
-Value: 370
+Value: 390
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
 Name: Heart Wand
-Value: 320
+Value: 330
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -208,26 +208,26 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Snow Dagger
-Value: 230
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Stable
-----------------------------------------
 Name: Blizzard
-Value: 215
+Value: 235
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Snowstorm
-Value: 215
+Value: 235
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Doing Well
+----------------------------------------
+Name: Snow Dagger
+Value: 230
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
 ----------------------------------------
 Name: Treat
 Value: 140
@@ -236,6 +236,13 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Borealis
+Value: 135
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Doing Well
+----------------------------------------
 Name: Sweet
 Value: 135
 Range: N/A
@@ -243,17 +250,10 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Borealis
-Value: 125
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Doing Well
-----------------------------------------
 Name: Australis
-Value: 120
+Value: 130
 Range: N/A
-Demand: 3
+Demand: 4
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
@@ -881,21 +881,21 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Vampires Gun
-Value: 35000
+Value: 34000
 Range: N/A
 Demand: 7
 Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Constellation
-Value: 32000
+Value: 31000
 Range: N/A
 Demand: 7
 Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Alienbeam
-Value: 30000
+Value: 29000
 Range: N/A
 Demand: 7
 Rarity: 6
@@ -937,7 +937,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snow Dagger
-Value: 5500
+Value: 5250
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -979,11 +979,11 @@ Rarity: 4
 Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Ornament
-Value: 1900
+Value: 1800
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Underpaid For
+Stability: Stable
 ----------------------------------------
 Name: Chroma Darkbringer
 Value: 70
@@ -1175,7 +1175,7 @@ Rarity: 11
 Stability: Overpaid For
 ----------------------------------------
 Name: Gingerscope
-Value: 17000
+Value: 17250
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1189,9 +1189,9 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 1850
+Value: 1900
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
@@ -1266,7 +1266,7 @@ Rarity: 2
 Stability: Fluctuating
 ----------------------------------------
 Name: Corrupt
-Value: 450
+Value: 475
 Range: N/A
 Demand: 4
 Rarity: 3
