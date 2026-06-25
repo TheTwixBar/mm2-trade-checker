@@ -1,30 +1,30 @@
 Name: Travelers Gun
-Value: 6000
+Value: 5750
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Evergun
-Value: 3325
+Value: 3350
 Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Stable
-----------------------------------------
-Name: Constellation
-Value: 2700
-Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
-Name: Evergreen
-Value: 2450
+Name: Constellation
+Value: 2725
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
+----------------------------------------
+Name: Evergreen
+Value: 2475
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Doing Well
 ----------------------------------------
 Name: Turkey
 Value: 2450
@@ -76,14 +76,14 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1175
+Value: 1200
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Stable
+Stability: Improving
 ----------------------------------------
 Name: Sunrise
-Value: 1050
+Value: 1025
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -97,7 +97,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Snowcannon
-Value: 750
+Value: 800
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -125,11 +125,11 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Rainbow Gun
-Value: 415
+Value: 420
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Flora
 Value: 410
@@ -139,11 +139,11 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Rainbow
-Value: 405
+Value: 410
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Bloom
 Value: 400
@@ -230,14 +230,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Borealis
-Value: 150
+Value: 155
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Australis
-Value: 145
+Value: 150
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -881,23 +881,23 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Vampires Gun
-Value: 33000
+Value: 32000
 Range: N/A
-Demand: 7
+Demand: 6
 Rarity: 6
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Constellation
-Value: 30000
+Value: 29000
 Range: N/A
-Demand: 7
+Demand: 6
 Rarity: 6
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Alienbeam
-Value: 28000
+Value: 27000
 Range: N/A
-Demand: 7
+Demand: 6
 Rarity: 6
 Stability: Underpaid For
 ----------------------------------------
@@ -937,7 +937,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snow Dagger
-Value: 5000
+Value: 4750
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -1175,7 +1175,7 @@ Rarity: 11
 Stability: Overpaid For
 ----------------------------------------
 Name: Gingerscope
-Value: 17500
+Value: 17750
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1189,11 +1189,11 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 1950
+Value: 2000
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Vampires Axe
 Value: 1225
