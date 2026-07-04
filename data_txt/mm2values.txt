@@ -1,16 +1,16 @@
 Name: Travelers Gun
-Value: 5250
+Value: 5000
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Evergun
-Value: 3450
+Value: 3500
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Constellation
 Value: 2725
@@ -24,7 +24,7 @@ Value: 2550
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Turkey
 Value: 2450
@@ -48,21 +48,21 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1510
+Value: 1525
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1490
+Value: 1500
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Raygun
-Value: 1275
+Value: 1300
 Range: N/A
 Demand: 6
 Rarity: 3
@@ -87,7 +87,7 @@ Value: 975
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Receding
+Stability: Stable
 ----------------------------------------
 Name: Bauble
 Value: 900
@@ -104,21 +104,21 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 500
+Value: 515
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sunset
-Value: 500
+Value: 515
 Range: N/A
-Demand: 4
+Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Spirit
-Value: 490
+Value: 505
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -201,6 +201,13 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Snow Dagger
+Value: 255
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
 Name: Blizzard
 Value: 250
 Range: N/A
@@ -212,13 +219,6 @@ Name: Snowstorm
 Value: 250
 Range: N/A
 Demand: 4
-Rarity: 3
-Stability: Stable
-----------------------------------------
-Name: Snow Dagger
-Value: 250
-Range: N/A
-Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
@@ -236,6 +236,13 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Treat
+Value: 155
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
 Name: Australis
 Value: 150
 Range: N/A
@@ -243,15 +250,8 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Treat
-Value: 145
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Stable
-----------------------------------------
 Name: Sweet
-Value: 140
+Value: 150
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -874,7 +874,7 @@ Rarity: 7
 Stability: Stable
 ----------------------------------------
 Name: Chroma Bauble
-Value: 37000
+Value: 36000
 Range: N/A
 Demand: 7
 Rarity: 6
@@ -883,14 +883,14 @@ Stability: Stable
 Name: Chroma Vampires Gun
 Value: 29000
 Range: N/A
-Demand: 6
+Demand: 7
 Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Constellation
-Value: 26500
+Value: 27000
 Range: N/A
-Demand: 6
+Demand: 7
 Rarity: 6
 Stability: Stable
 ----------------------------------------
@@ -899,7 +899,7 @@ Value: 24000
 Range: N/A
 Demand: 6
 Rarity: 6
-Stability: Underpaid For
+Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
 Value: 14500
@@ -909,7 +909,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunrise
-Value: 11250
+Value: 11500
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -965,7 +965,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2700
+Value: 2600
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1266,7 +1266,7 @@ Rarity: 2
 Stability: Fluctuating
 ----------------------------------------
 Name: Corrupt
-Value: 485
+Value: 475
 Range: N/A
 Demand: 4
 Rarity: 3
