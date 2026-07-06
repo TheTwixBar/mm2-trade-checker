@@ -1,14 +1,14 @@
 Name: Travelers Gun
-Value: 5000
+Value: 4750
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Evergun
-Value: 3500
+Value: 3475
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
@@ -20,9 +20,9 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Evergreen
-Value: 2550
+Value: 2525
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
@@ -48,21 +48,21 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1525
+Value: 1550
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1500
+Value: 1525
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Raygun
-Value: 1300
+Value: 1325
 Range: N/A
 Demand: 6
 Rarity: 3
@@ -83,7 +83,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sunrise
-Value: 975
+Value: 1000
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -104,21 +104,21 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 515
+Value: 525
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sunset
-Value: 515
+Value: 525
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Spirit
-Value: 505
+Value: 515
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -194,14 +194,14 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Flowerwood
-Value: 255
+Name: Snow Dagger
+Value: 260
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Snow Dagger
+Name: Flowerwood
 Value: 255
 Range: N/A
 Demand: 4
@@ -229,6 +229,20 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Treat
+Value: 165
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Sweet
+Value: 160
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
 Name: Borealis
 Value: 155
 Range: N/A
@@ -236,21 +250,7 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Treat
-Value: 155
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Stable
-----------------------------------------
 Name: Australis
-Value: 150
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Stable
-----------------------------------------
-Name: Sweet
 Value: 150
 Range: N/A
 Demand: 3
@@ -874,7 +874,7 @@ Rarity: 7
 Stability: Stable
 ----------------------------------------
 Name: Chroma Bauble
-Value: 36000
+Value: 35000
 Range: N/A
 Demand: 7
 Rarity: 6
