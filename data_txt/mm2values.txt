@@ -48,25 +48,25 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1575
+Value: 1600
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1550
+Value: 1575
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Raygun
-Value: 1350
+Value: 1375
 Range: N/A
 Demand: 6
 Rarity: 3
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Blossom
 Value: 1265
@@ -83,11 +83,11 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sunrise
-Value: 1025
+Value: 1050
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
-Stability: Improving
+Stability: Doing Well
 ----------------------------------------
 Name: Bauble
 Value: 900
@@ -104,11 +104,11 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sunset
-Value: 540
+Value: 550
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Improving
+Stability: Doing Well
 ----------------------------------------
 Name: Soul
 Value: 530
@@ -867,11 +867,11 @@ Rarity: 8
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 59000
+Value: 58000
 Range: N/A
 Demand: 7
 Rarity: 7
-Stability: Stable
+Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Bauble
 Value: 34000
@@ -902,14 +902,14 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 14250
+Value: 14000
 Range: N/A
 Demand: 6
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunrise
-Value: 11750
+Value: 12000
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -930,7 +930,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunset
-Value: 6750
+Value: 7000
 Range: N/A
 Demand: 6
 Rarity: 5
