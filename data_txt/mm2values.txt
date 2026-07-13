@@ -1,5 +1,5 @@
 Name: Travelers Gun
-Value: 4750
+Value: 4800
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -13,7 +13,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Constellation
-Value: 2725
+Value: 2700
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -34,7 +34,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Alienbeam
-Value: 2000
+Value: 1975
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -48,14 +48,14 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1600
+Value: 1615
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1575
+Value: 1590
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -69,28 +69,28 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blossom
-Value: 1265
+Value: 1270
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sakura
-Value: 1255
+Value: 1260
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sunrise
-Value: 1050
+Value: 1075
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Bauble
-Value: 900
+Value: 875
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -104,21 +104,21 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sunset
-Value: 550
+Value: 575
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Soul
-Value: 530
+Value: 535
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Spirit
-Value: 520
+Value: 525
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -153,7 +153,7 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Heart Wand
-Value: 330
+Value: 340
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -188,6 +188,13 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Flowerwood Gun
+Value: 265
+Range: N/A
+Demand: 4
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Flowerwood
 Value: 260
 Range: N/A
 Demand: 4
@@ -196,13 +203,6 @@ Stability: Stable
 ----------------------------------------
 Name: Snow Dagger
 Value: 260
-Range: N/A
-Demand: 4
-Rarity: 3
-Stability: Stable
-----------------------------------------
-Name: Flowerwood
-Value: 255
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -230,14 +230,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Treat
-Value: 175
+Value: 170
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sweet
-Value: 170
+Value: 165
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -262,17 +262,17 @@ Value: 120
 Range: N/A
 Demand: 2
 Rarity: 2
-Stability: Stable
+Stability: Fluctuating
 ----------------------------------------
 Name: Pearlshine
-Value: 100
+Value: 95
 Range: N/A
 Demand: 2
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Pearl
-Value: 95
+Value: 90
 Range: N/A
 Demand: 2
 Rarity: 3
@@ -286,77 +286,21 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Heartblade
-Value: 68
+Value: 67
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Luger
-Value: 45
+Value: 42
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Red Luger
-Value: 40
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Phantom
-Value: 37
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Spectre
-Value: 37
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Candleflame
-Value: 35
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Darkbringer
-Value: 35
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Elderwood Blade
-Value: 35
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Elderwood Revolver
-Value: 35
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Iceblaster
-Value: 35
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Lightbringer
-Value: 35
+Value: 38
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -369,8 +313,64 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Sugar
+Name: Phantom
 Value: 35
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Spectre
+Value: 35
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Candleflame
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Darkbringer
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Elderwood Blade
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Elderwood Revolver
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Iceblaster
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Lightbringer
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Sugar
+Value: 33
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -397,15 +397,15 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Hallowgun
+Name: Laser
 Value: 23
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Laser
-Value: 23
+Name: Hallowgun
+Value: 22
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -432,28 +432,14 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Swirly Gun
-Value: 20
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Blaster
-Value: 18
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Iceflake
-Value: 18
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
 Name: Plasmabeam
+Value: 18
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Swirly Gun
 Value: 18
 Range: N/A
 Demand: 1
@@ -467,6 +453,13 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
+Name: Blaster
+Value: 17
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
 Name: Ginger Luger
 Value: 17
 Range: N/A
@@ -474,7 +467,7 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Old Glory
+Name: Iceflake
 Value: 17
 Range: N/A
 Demand: 1
@@ -495,27 +488,6 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Slasher
-Value: 17
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Cookiecane
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Eternalcane
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
 Name: Gemstone
 Value: 15
 Range: N/A
@@ -523,49 +495,14 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Gingerblade
+Name: Old Glory
 Value: 15
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Gingermint
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Jinglegun
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Lugercane
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Minty
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Nebula
-Value: 15
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Swirly Blade
+Name: Slasher
 Value: 15
 Range: N/A
 Demand: 1
@@ -579,14 +516,77 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Virtual
-Value: 15
+Name: Cookiecane
+Value: 13
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Deathshard
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternalcane
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Gingerblade
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Gingermint
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Jinglegun
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Lugercane
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Minty
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Nebula
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Swirly Blade
+Value: 13
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Virtual
 Value: 13
 Range: N/A
 Demand: 1
@@ -600,13 +600,6 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Bioblade
-Value: 10
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
 Name: Chill
 Value: 10
 Range: N/A
@@ -615,20 +608,6 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Clockwork
-Value: 10
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Eternal III
-Value: 10
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Eternal IV
 Value: 10
 Range: N/A
 Demand: 1
@@ -670,14 +649,21 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Eternal
+Name: Bioblade
 Value: 8
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Eternal II
+Name: Eternal III
+Value: 8
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternal IV
 Value: 8
 Range: N/A
 Demand: 1
@@ -705,14 +691,21 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Xmas
-Value: 8
+Name: Boneblade
+Value: 7
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Boneblade
+Name: Eternal
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Eternal II
 Value: 7
 Range: N/A
 Demand: 1
@@ -762,6 +755,13 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Saw
+Value: 7
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
+Name: Xmas
 Value: 7
 Range: N/A
 Demand: 1
@@ -860,14 +860,14 @@ Rarity: 10
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergun
-Value: 76000
+Value: 75000
 Range: N/A
 Demand: 8
 Rarity: 8
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 58000
+Value: 57000
 Range: N/A
 Demand: 7
 Rarity: 7
@@ -902,18 +902,18 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 14000
+Value: 13750
 Range: N/A
 Demand: 6
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunrise
-Value: 12000
+Value: 12250
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Chroma Snowcannon
 Value: 8500
@@ -930,14 +930,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunset
-Value: 7000
+Value: 7250
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Chroma Heart Wand
-Value: 4750
+Value: 4700
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -951,7 +951,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snowstorm
-Value: 4250
+Value: 4200
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -965,14 +965,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2600
+Value: 2550
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Sweet
-Value: 2300
+Value: 2250
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1007,13 +1007,6 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Chroma Candleflame
-Value: 42
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Chroma Elderwood Blade
 Value: 40
 Range: N/A
 Demand: 1
@@ -1027,15 +1020,15 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Chroma Swirly Gun
-Value: 40
+Name: Chroma Elderwood Blade
+Value: 38
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Chroma Cookiecane
-Value: 35
+Name: Chroma Swirly Gun
+Value: 38
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -1048,8 +1041,15 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
+Name: Chroma Cookiecane
+Value: 33
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
 Name: Chroma Slasher
-Value: 35
+Value: 33
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -1076,13 +1076,6 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Chroma Gingerblade
-Value: 30
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
 Name: Chroma Heat
 Value: 30
 Range: N/A
@@ -1097,6 +1090,13 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
+Name: Chroma Gingerblade
+Value: 28
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
 Name: Chroma Tides
 Value: 28
 Range: N/A
@@ -1105,7 +1105,7 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Chroma Saw
-Value: 27
+Value: 25
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -1217,35 +1217,35 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Icebreaker
-Value: 68
+Value: 67
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Batwing
-Value: 45
+Value: 43
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Swirly Axe
-Value: 42
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Stable
-----------------------------------------
-Name: Elderwood Scythe
 Value: 40
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
+Name: Elderwood Scythe
+Value: 38
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Stable
+----------------------------------------
 Name: Hallowscythe
-Value: 32
+Value: 30
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -1266,7 +1266,7 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Corrupt
-Value: 475
+Value: 470
 Range: N/A
 Demand: 4
 Rarity: 3
