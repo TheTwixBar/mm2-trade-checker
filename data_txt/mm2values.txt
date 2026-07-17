@@ -1,9 +1,9 @@
 Name: Travelers Gun
-Value: 4900
+Value: 5000
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 5
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Evergun
 Value: 3450
@@ -34,16 +34,16 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Alienbeam
-Value: 1950
+Value: 1925
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Vampires Gun
-Value: 1750
+Value: 1800
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
@@ -69,28 +69,28 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blossom
-Value: 1270
+Value: 1275
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sakura
-Value: 1260
+Value: 1265
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sunrise
-Value: 1100
+Value: 1125
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Bauble
-Value: 875
+Value: 850
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -104,25 +104,25 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Sunset
-Value: 600
+Value: 625
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Soul
+Value: 545
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
-Name: Soul
-Value: 540
-Range: N/A
-Demand: 5
-Rarity: 3
-Stability: Stable
-----------------------------------------
 Name: Spirit
-Value: 530
+Value: 535
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Rainbow Gun
 Value: 420
@@ -209,14 +209,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blizzard
-Value: 250
+Value: 255
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Snowstorm
-Value: 250
+Value: 255
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -244,14 +244,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Borealis
-Value: 155
+Value: 150
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Australis
-Value: 150
+Value: 145
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -867,7 +867,7 @@ Rarity: 8
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 55000
+Value: 54000
 Range: N/A
 Demand: 7
 Rarity: 7
@@ -902,14 +902,14 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 13500
+Value: 13250
 Range: N/A
 Demand: 6
 Rarity: 5
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Sunrise
-Value: 12500
+Value: 12750
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -930,7 +930,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunset
-Value: 7500
+Value: 7750
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -943,18 +943,18 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Heart Wand
-Value: 4500
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Stable
-----------------------------------------
 Name: Chroma Snowstorm
 Value: 4250
 Range: N/A
 Demand: 5
 Rarity: 5
+Stability: Stable
+----------------------------------------
+Name: Chroma Heart Wand
+Value: 4250
+Range: N/A
+Demand: 5
+Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Watergun
@@ -965,14 +965,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2550
+Value: 2500
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Sweet
-Value: 2250
+Value: 2200
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1182,9 +1182,9 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Travelers Axe
-Value: 8300
+Value: 8250
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
