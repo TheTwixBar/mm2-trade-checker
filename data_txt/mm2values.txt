@@ -152,6 +152,27 @@ Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Batwing
+Value: 1000000
+Range: N/A
+Demand: 10
+Rarity: 10
+Stability: Stable
+----------------------------------------
+Name: Black Luger
+Value: 1000000
+Range: N/A
+Demand: 10
+Rarity: 10
+Stability: Stable
+----------------------------------------
+Name: Mortal Blade
+Value: 1000000
+Range: N/A
+Demand: 10
+Rarity: 10
+Stability: Stable
+----------------------------------------
 Name: Heart Wand
 Value: 340
 Range: N/A
