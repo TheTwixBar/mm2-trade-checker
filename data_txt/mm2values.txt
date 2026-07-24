@@ -152,6 +152,27 @@ Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Beachy
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: Overpaid For
+----------------------------------------
+Name: Icecream
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: Overpaid For
+----------------------------------------
+Name: Sands
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: Overpaid For
+----------------------------------------
 Name: Batwing
 Value: 1000000
 Range: N/A
@@ -921,6 +942,27 @@ Range: N/A
 Demand: 6
 Rarity: 6
 Stability: Stable
+----------------------------------------
+Name: Chroma Beachy
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: Overpaid For
+----------------------------------------
+Name: Chroma Icecream
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: Overpaid For
+----------------------------------------
+Name: Chroma Sands
+Value: N/A
+Range: N/A
+Demand: N/A
+Rarity: N/A
+Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Sunrise
 Value: 13250
