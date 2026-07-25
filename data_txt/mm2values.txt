@@ -1,5 +1,5 @@
 Name: Travelers Gun
-Value: 5400
+Value: 5500
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -34,7 +34,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Vampires Gun
-Value: 1875
+Value: 1900
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -89,6 +89,13 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
+Name: Icecream
+Value: 1000
+Range: N/A
+Demand: 7
+Rarity: 6
+Stability: Overpaid For
+----------------------------------------
 Name: Snowcannon
 Value: 850
 Range: N/A
@@ -111,14 +118,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 570
+Value: 580
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Spirit
-Value: 560
+Value: 570
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -153,25 +160,18 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Beachy
-Value: N/A
+Value: 375
 Range: N/A
-Demand: N/A
-Rarity: N/A
-Stability: Overpaid For
-----------------------------------------
-Name: Icecream
-Value: N/A
-Range: N/A
-Demand: N/A
-Rarity: N/A
-Stability: Overpaid For
+Demand: 5
+Rarity: 4
+Stability: Doing Well
 ----------------------------------------
 Name: Sands
-Value: N/A
+Value: 375
 Range: N/A
-Demand: N/A
-Rarity: N/A
-Stability: Overpaid For
+Demand: 5
+Rarity: 4
+Stability: Doing Well
 ----------------------------------------
 Name: Batwing
 Value: 1000000
@@ -909,7 +909,7 @@ Rarity: 8
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 52000
+Value: 51000
 Range: N/A
 Demand: 7
 Rarity: 7
@@ -943,25 +943,25 @@ Demand: 6
 Rarity: 6
 Stability: Stable
 ----------------------------------------
-Name: Chroma Beachy
-Value: N/A
-Range: N/A
-Demand: N/A
-Rarity: N/A
-Stability: Overpaid For
-----------------------------------------
 Name: Chroma Icecream
 Value: N/A
 Range: N/A
-Demand: N/A
-Rarity: N/A
+Demand: 9
+Rarity: 9
+Stability: Overpaid For
+----------------------------------------
+Name: Chroma Beachy
+Value: N/A
+Range: N/A
+Demand: 8
+Rarity: 7
 Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Sands
 Value: N/A
 Range: N/A
-Demand: N/A
-Rarity: N/A
+Demand: 8
+Rarity: 7
 Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Sunrise
@@ -972,7 +972,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 12750
+Value: 12500
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -1028,7 +1028,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2500
+Value: 2550
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1252,9 +1252,9 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2025
+Value: 2050
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
