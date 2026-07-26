@@ -34,7 +34,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Vampires Gun
-Value: 1900
+Value: 1925
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -69,14 +69,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blossom
-Value: 1290
+Value: 1295
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sakura
-Value: 1280
+Value: 1285
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -88,13 +88,6 @@ Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
-----------------------------------------
-Name: Icecream
-Value: 1000
-Range: N/A
-Demand: 7
-Rarity: 6
-Stability: Overpaid For
 ----------------------------------------
 Name: Snowcannon
 Value: 850
@@ -110,6 +103,13 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
+Name: Icecream
+Value: 750
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Doing Well
+----------------------------------------
 Name: Sunset
 Value: 625
 Range: N/A
@@ -118,14 +118,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 580
+Value: 590
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Spirit
-Value: 570
+Value: 580
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -159,20 +159,6 @@ Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Beachy
-Value: 375
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Doing Well
-----------------------------------------
-Name: Sands
-Value: 375
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Doing Well
-----------------------------------------
 Name: Batwing
 Value: 1000000
 Range: N/A
@@ -201,6 +187,20 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Beachy
+Value: 300
+Range: N/A
+Demand: 4
+Rarity: 4
+Stability: Doing Well
+----------------------------------------
+Name: Sands
+Value: 300
+Range: N/A
+Demand: 4
+Rarity: 4
+Stability: Doing Well
+----------------------------------------
 Name: Ocean
 Value: 280
 Range: N/A
@@ -216,14 +216,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Xenoknife
-Value: 270
+Value: 275
 Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Xenoshot
-Value: 270
+Value: 275
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -943,27 +943,6 @@ Demand: 6
 Rarity: 6
 Stability: Stable
 ----------------------------------------
-Name: Chroma Icecream
-Value: N/A
-Range: N/A
-Demand: 9
-Rarity: 9
-Stability: Overpaid For
-----------------------------------------
-Name: Chroma Beachy
-Value: N/A
-Range: N/A
-Demand: 8
-Rarity: 7
-Stability: Overpaid For
-----------------------------------------
-Name: Chroma Sands
-Value: N/A
-Range: N/A
-Demand: 8
-Rarity: 7
-Stability: Overpaid For
-----------------------------------------
 Name: Chroma Sunrise
 Value: 13250
 Range: N/A
@@ -972,7 +951,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 12500
+Value: 12250
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -998,6 +977,13 @@ Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
+----------------------------------------
+Name: Chroma Icecream
+Value: 6500
+Range: N/A
+Demand: 8
+Rarity: 8
+Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Snow Dagger
 Value: 4250
@@ -1027,8 +1013,22 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
+Name: Chroma Beachy
+Value: 3250
+Range: N/A
+Demand: 7
+Rarity: 6
+Stability: Overpaid For
+----------------------------------------
+Name: Chroma Sands
+Value: 3250
+Range: N/A
+Demand: 7
+Rarity: 6
+Stability: Overpaid For
+----------------------------------------
 Name: Chroma Treat
-Value: 2550
+Value: 2600
 Range: N/A
 Demand: 5
 Rarity: 4
