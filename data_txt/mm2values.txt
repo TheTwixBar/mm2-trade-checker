@@ -1,9 +1,9 @@
 Name: Travelers Gun
-Value: 5500
+Value: 5600
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Evergun
 Value: 3450
@@ -34,11 +34,11 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Vampires Gun
-Value: 1925
+Value: 1950
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Alienbeam
 Value: 1875
@@ -62,21 +62,21 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1375
+Value: 1400
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blossom
-Value: 1295
+Value: 1300
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sakura
-Value: 1285
+Value: 1290
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -103,13 +103,6 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
-Name: Icecream
-Value: 750
-Range: N/A
-Demand: 6
-Rarity: 5
-Stability: Doing Well
-----------------------------------------
 Name: Sunset
 Value: 625
 Range: N/A
@@ -118,18 +111,25 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 590
+Value: 600
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Spirit
-Value: 580
+Value: 590
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
+----------------------------------------
+Name: Icecream
+Value: 500
+Range: N/A
+Demand: 5
+Rarity: 5
+Stability: Fluctuating
 ----------------------------------------
 Name: Rainbow Gun
 Value: 420
@@ -186,20 +186,6 @@ Range: N/A
 Demand: 4
 Rarity: 3
 Stability: Stable
-----------------------------------------
-Name: Beachy
-Value: 300
-Range: N/A
-Demand: 4
-Rarity: 4
-Stability: Doing Well
-----------------------------------------
-Name: Sands
-Value: 300
-Range: N/A
-Demand: 4
-Rarity: 4
-Stability: Doing Well
 ----------------------------------------
 Name: Ocean
 Value: 280
@@ -264,6 +250,20 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Beachy
+Value: 250
+Range: N/A
+Demand: 4
+Rarity: 4
+Stability: Fluctuating
+----------------------------------------
+Name: Sands
+Value: 250
+Range: N/A
+Demand: 4
+Rarity: 4
+Stability: Fluctuating
+----------------------------------------
 Name: Watergun
 Value: 250
 Range: N/A
@@ -272,13 +272,6 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Treat
-Value: 160
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Stable
-----------------------------------------
-Name: Sweet
 Value: 155
 Range: N/A
 Demand: 3
@@ -286,6 +279,13 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Borealis
+Value: 150
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Sweet
 Value: 150
 Range: N/A
 Demand: 3
@@ -979,10 +979,10 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Icecream
-Value: 6500
+Value: 4500
 Range: N/A
-Demand: 8
-Rarity: 8
+Demand: 7
+Rarity: 7
 Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Snow Dagger
@@ -1014,32 +1014,32 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Beachy
-Value: 3250
+Value: 3000
 Range: N/A
 Demand: 7
 Rarity: 6
 Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Sands
-Value: 3250
+Value: 3000
 Range: N/A
 Demand: 7
 Rarity: 6
 Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Treat
-Value: 2600
+Value: 2650
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Fluctuating
+Stability: Doing Well
 ----------------------------------------
 Name: Chroma Sweet
-Value: 2200
+Value: 2250
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Fluctuating
+Stability: Stable
 ----------------------------------------
 Name: Chroma Ornament
 Value: 1800
@@ -1252,7 +1252,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2050
+Value: 2075
 Range: N/A
 Demand: 6
 Rarity: 4
