@@ -1,7 +1,7 @@
 Name: Travelers Gun
 Value: 5600
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
@@ -69,14 +69,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blossom
-Value: 1300
+Value: 1305
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Sakura
-Value: 1290
+Value: 1295
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -111,25 +111,18 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 600
+Value: 605
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Spirit
-Value: 590
+Value: 595
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
-----------------------------------------
-Name: Icecream
-Value: 500
-Range: N/A
-Demand: 5
-Rarity: 5
-Stability: Fluctuating
 ----------------------------------------
 Name: Rainbow Gun
 Value: 420
@@ -194,6 +187,13 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
+Name: Icecream
+Value: 275
+Range: N/A
+Demand: 4
+Rarity: 4
+Stability: Fluctuating
+----------------------------------------
 Name: Waves
 Value: 275
 Range: N/A
@@ -250,20 +250,6 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Beachy
-Value: 250
-Range: N/A
-Demand: 4
-Rarity: 4
-Stability: Fluctuating
-----------------------------------------
-Name: Sands
-Value: 250
-Range: N/A
-Demand: 4
-Rarity: 4
-Stability: Fluctuating
-----------------------------------------
 Name: Watergun
 Value: 250
 Range: N/A
@@ -271,15 +257,22 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Treat
-Value: 155
+Name: Beachy
+Value: 225
 Range: N/A
 Demand: 3
 Rarity: 3
-Stability: Stable
+Stability: Fluctuating
 ----------------------------------------
-Name: Borealis
-Value: 150
+Name: Sands
+Value: 225
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Fluctuating
+----------------------------------------
+Name: Treat
+Value: 155
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -292,8 +285,15 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Australis
+Name: Borealis
 Value: 145
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Australis
+Value: 140
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -978,13 +978,6 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Icecream
-Value: 4500
-Range: N/A
-Demand: 7
-Rarity: 7
-Stability: Overpaid For
-----------------------------------------
 Name: Chroma Snow Dagger
 Value: 4250
 Range: N/A
@@ -1013,29 +1006,36 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Beachy
-Value: 3000
+Name: Chroma Icecream
+Value: 3250
 Range: N/A
-Demand: 7
+Demand: 6
 Rarity: 6
-Stability: Overpaid For
-----------------------------------------
-Name: Chroma Sands
-Value: 3000
-Range: N/A
-Demand: 7
-Rarity: 6
-Stability: Overpaid For
+Stability: Doing Well
 ----------------------------------------
 Name: Chroma Treat
-Value: 2650
+Value: 2700
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
+Name: Chroma Beachy
+Value: 2500
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Doing Well
+----------------------------------------
+Name: Chroma Sands
+Value: 2500
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Doing Well
+----------------------------------------
 Name: Chroma Sweet
-Value: 2250
+Value: 2300
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1252,7 +1252,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2075
+Value: 2100
 Range: N/A
 Demand: 6
 Rarity: 4
