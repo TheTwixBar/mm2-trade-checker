@@ -36,7 +36,7 @@ Stability: Stable
 Name: Vampires Gun
 Value: 1950
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
@@ -48,39 +48,39 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1625
+Value: 1650
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darksword
-Value: 1600
+Value: 1625
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1425
+Value: 1450
 Range: N/A
 Demand: 6
 Rarity: 3
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Blossom
-Value: 1305
+Value: 1310
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Sakura
-Value: 1295
+Value: 1300
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Sunrise
 Value: 1125
@@ -111,18 +111,18 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Soul
-Value: 610
+Value: 615
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Spirit
-Value: 600
+Value: 605
 Range: N/A
 Demand: 5
 Rarity: 3
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Rainbow Gun
 Value: 420
@@ -250,22 +250,22 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Icecream
-Value: 200
+Name: Beachy
+Value: 160
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Fluctuating
 ----------------------------------------
-Name: Beachy
-Value: 175
+Name: Icecream
+Value: 160
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Fluctuating
 ----------------------------------------
 Name: Sands
-Value: 175
+Value: 160
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -1007,18 +1007,11 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2750
+Value: 2800
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
-----------------------------------------
-Name: Chroma Icecream
-Value: 2500
-Range: N/A
-Demand: 5
-Rarity: 5
-Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Sweet
 Value: 2300
@@ -1027,15 +1020,15 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
-Name: Chroma Beachy
+Name: Chroma Icecream
 Value: 2000
 Range: N/A
 Demand: 5
-Rarity: 4
+Rarity: 5
 Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Sands
-Value: 2000
+Value: 1800
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1047,6 +1040,13 @@ Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
+----------------------------------------
+Name: Chroma Beachy
+Value: 1750
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Darkbringer
 Value: 65
@@ -1252,7 +1252,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2125
+Value: 2175
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1329,7 +1329,7 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Corrupt
-Value: 470
+Value: 460
 Range: N/A
 Demand: 4
 Rarity: 3
