@@ -48,35 +48,35 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1650
+Value: 1675
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darksword
-Value: 1625
+Value: 1650
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1450
+Value: 1500
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Blossom
-Value: 1310
+Value: 1320
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Sakura
-Value: 1300
+Value: 1310
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -237,7 +237,7 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Snow Dagger
-Value: 255
+Value: 250
 Range: N/A
 Demand: 4
 Rarity: 3
@@ -250,21 +250,7 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Beachy
-Value: 160
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
 Name: Icecream
-Value: 160
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
-Name: Sands
 Value: 160
 Range: N/A
 Demand: 3
@@ -277,6 +263,20 @@ Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
+----------------------------------------
+Name: Beachy
+Value: 150
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Fluctuating
+----------------------------------------
+Name: Sands
+Value: 150
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Fluctuating
 ----------------------------------------
 Name: Sweet
 Value: 150
@@ -909,7 +909,7 @@ Rarity: 8
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 50000
+Value: 49000
 Range: N/A
 Demand: 7
 Rarity: 7
@@ -951,14 +951,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 12000
+Value: 12250
 Range: N/A
 Demand: 6
 Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snowcannon
-Value: 8500
+Value: 8250
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -1007,11 +1007,11 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2800
+Value: 2850
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Chroma Sweet
 Value: 2300
@@ -1252,7 +1252,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2175
+Value: 2225
 Range: N/A
 Demand: 6
 Rarity: 4
