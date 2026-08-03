@@ -166,13 +166,6 @@ Demand: 10
 Rarity: 10
 Stability: Stable
 ----------------------------------------
-Name: Mortal Blade
-Value: 1000000
-Range: N/A
-Demand: 10
-Rarity: 10
-Stability: Stable
-----------------------------------------
 Name: Heart Wand
 Value: 340
 Range: N/A
