@@ -48,35 +48,35 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
+Value: 1700
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Doing Well
+----------------------------------------
+Name: Darksword
 Value: 1675
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Stable
-----------------------------------------
-Name: Darksword
-Value: 1650
-Range: N/A
-Demand: 6
-Rarity: 4
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Raygun
-Value: 1500
+Value: 1550
 Range: N/A
 Demand: 6
 Rarity: 3
-Stability: Doing Well
+Stability: Overpaid For
 ----------------------------------------
 Name: Blossom
-Value: 1320
+Value: 1330
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Sakura
-Value: 1310
+Value: 1320
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -232,7 +232,7 @@ Stability: Stable
 Name: Snow Dagger
 Value: 250
 Range: N/A
-Demand: 4
+Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
@@ -300,14 +300,14 @@ Rarity: 2
 Stability: Fluctuating
 ----------------------------------------
 Name: Pearlshine
-Value: 90
+Value: 85
 Range: N/A
 Demand: 2
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Pearl
-Value: 85
+Value: 80
 Range: N/A
 Demand: 2
 Rarity: 3
@@ -412,7 +412,7 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Ornament Godly
-Value: 27
+Value: 28
 Range: N/A
 Demand: 1
 Rarity: 2
@@ -944,25 +944,18 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 12250
+Value: 12500
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Stable
-----------------------------------------
-Name: Chroma Snowcannon
-Value: 8250
-Range: N/A
-Demand: 6
-Rarity: 5
-Stability: Stable
+Stability: Improving
 ----------------------------------------
 Name: Chroma Sunset
-Value: 8250
+Value: 8500
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Chroma Blizzard
 Value: 8000
@@ -971,8 +964,8 @@ Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Snow Dagger
-Value: 4250
+Name: Chroma Snowcannon
+Value: 8000
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -992,6 +985,13 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
+Name: Chroma Snow Dagger
+Value: 4000
+Range: N/A
+Demand: 5
+Rarity: 5
+Stability: Stable
+----------------------------------------
 Name: Chroma Watergun
 Value: 3400
 Range: N/A
@@ -1000,11 +1000,11 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2850
+Value: 2800
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Stable
+Stability: Receding
 ----------------------------------------
 Name: Chroma Sweet
 Value: 2300
@@ -1245,11 +1245,11 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2225
+Value: 2300
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Doing Well
+Stability: Overpaid For
 ----------------------------------------
 Name: Vampires Axe
 Value: 1225
