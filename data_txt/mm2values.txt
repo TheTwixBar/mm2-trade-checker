@@ -48,35 +48,35 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
-Value: 1700
+Value: 1725
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1675
+Value: 1700
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Raygun
-Value: 1550
+Value: 1600
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
 Name: Blossom
-Value: 1330
+Value: 1340
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Sakura
-Value: 1320
+Value: 1330
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -302,14 +302,14 @@ Stability: Fluctuating
 Name: Pearlshine
 Value: 85
 Range: N/A
-Demand: 2
+Demand: 1
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Pearl
 Value: 80
 Range: N/A
-Demand: 2
+Demand: 1
 Rarity: 3
 Stability: Stable
 ----------------------------------------
@@ -902,11 +902,11 @@ Rarity: 8
 Stability: Stable
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 49000
+Value: 48000
 Range: N/A
 Demand: 7
 Rarity: 7
-Stability: Underpaid For
+Stability: Stable
 ----------------------------------------
 Name: Chroma Bauble
 Value: 34000
@@ -944,14 +944,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 12500
+Value: 12750
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Improving
+Stability: Doing Well
 ----------------------------------------
 Name: Chroma Sunset
-Value: 8500
+Value: 8750
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -1000,7 +1000,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2800
+Value: 2700
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1021,6 +1021,13 @@ Rarity: 5
 Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Sands
+Value: 1850
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Fluctuating
+----------------------------------------
+Name: Chroma Beachy
 Value: 1800
 Range: N/A
 Demand: 5
@@ -1033,13 +1040,6 @@ Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
-----------------------------------------
-Name: Chroma Beachy
-Value: 1750
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Darkbringer
 Value: 65
@@ -1245,7 +1245,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2300
+Value: 2350
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1322,7 +1322,7 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Corrupt
-Value: 460
+Value: 450
 Range: N/A
 Demand: 4
 Rarity: 3
