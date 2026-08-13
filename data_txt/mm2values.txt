@@ -41,42 +41,42 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Alienbeam
-Value: 1875
+Value: 1925
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Improving
+Stability: Doing Well
 ----------------------------------------
 Name: Darkshot
-Value: 1750
+Value: 1775
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Darksword
-Value: 1725
+Value: 1750
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Raygun
-Value: 1650
+Value: 1700
 Range: N/A
 Demand: 6
 Rarity: 3
 Stability: Overpaid For
 ----------------------------------------
 Name: Blossom
-Value: 1350
+Value: 1360
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
 Name: Sakura
-Value: 1340
+Value: 1350
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -243,13 +243,6 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Icecream
-Value: 160
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
 Name: Treat
 Value: 155
 Range: N/A
@@ -258,6 +251,13 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Beachy
+Value: 150
+Range: N/A
+Demand: 3
+Rarity: 3
+Stability: Fluctuating
+----------------------------------------
+Name: Icecream
 Value: 150
 Range: N/A
 Demand: 3
@@ -281,14 +281,14 @@ Stability: Stable
 Name: Borealis
 Value: 145
 Range: N/A
-Demand: 3
+Demand: 2
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Australis
 Value: 140
 Range: N/A
-Demand: 3
+Demand: 2
 Rarity: 3
 Stability: Stable
 ----------------------------------------
@@ -404,19 +404,19 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
+Name: Ornament Godly
+Value: 32
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Fluctuating
+----------------------------------------
 Name: Sugar
 Value: 32
 Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
-----------------------------------------
-Name: Ornament Godly
-Value: 30
-Range: N/A
-Demand: 1
-Rarity: 2
-Stability: Fluctuating
 ----------------------------------------
 Name: Green Luger
 Value: 23
@@ -936,6 +936,13 @@ Demand: 6
 Rarity: 6
 Stability: Stable
 ----------------------------------------
+Name: Chroma Raygun
+Value: 13250
+Range: N/A
+Demand: 6
+Rarity: 5
+Stability: Doing Well
+----------------------------------------
 Name: Chroma Sunrise
 Value: 13250
 Range: N/A
@@ -943,29 +950,22 @@ Demand: 6
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Raygun
-Value: 13000
-Range: N/A
-Demand: 6
-Rarity: 5
-Stability: Doing Well
-----------------------------------------
 Name: Chroma Sunset
-Value: 9000
+Value: 9250
 Range: N/A
 Demand: 6
 Rarity: 5
 Stability: Doing Well
 ----------------------------------------
-Name: Chroma Blizzard
+Name: Chroma Snowcannon
 Value: 7750
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Stable
 ----------------------------------------
-Name: Chroma Snowcannon
-Value: 7750
+Name: Chroma Blizzard
+Value: 7500
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -986,7 +986,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snow Dagger
-Value: 3750
+Value: 3500
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -1000,14 +1000,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2600
+Value: 2500
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Receding
 ----------------------------------------
 Name: Chroma Sweet
-Value: 2300
+Value: 2250
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1245,14 +1245,14 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2400
+Value: 2450
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Vampires Axe
-Value: 1250
+Value: 1275
 Range: N/A
 Demand: 5
 Rarity: 4
