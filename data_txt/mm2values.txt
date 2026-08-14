@@ -33,19 +33,19 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
+Name: Alienbeam
+Value: 1975
+Range: N/A
+Demand: 6
+Rarity: 4
+Stability: Overpaid For
+----------------------------------------
 Name: Vampires Gun
 Value: 1950
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
-----------------------------------------
-Name: Alienbeam
-Value: 1925
-Range: N/A
-Demand: 6
-Rarity: 4
-Stability: Doing Well
 ----------------------------------------
 Name: Darkshot
 Value: 1775
@@ -54,19 +54,19 @@ Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
+Name: Raygun
+Value: 1750
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Overpaid For
+----------------------------------------
 Name: Darksword
 Value: 1750
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
-----------------------------------------
-Name: Raygun
-Value: 1700
-Range: N/A
-Demand: 6
-Rarity: 3
-Stability: Overpaid For
 ----------------------------------------
 Name: Blossom
 Value: 1360
@@ -250,33 +250,26 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Beachy
-Value: 150
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
-Name: Icecream
-Value: 150
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
-Name: Sands
-Value: 150
-Range: N/A
-Demand: 3
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
 Name: Sweet
 Value: 150
 Range: N/A
 Demand: 3
 Rarity: 3
 Stability: Stable
+----------------------------------------
+Name: Beachy
+Value: 145
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Fluctuating
+----------------------------------------
+Name: Sands
+Value: 145
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Fluctuating
 ----------------------------------------
 Name: Borealis
 Value: 145
@@ -291,6 +284,13 @@ Range: N/A
 Demand: 2
 Rarity: 3
 Stability: Stable
+----------------------------------------
+Name: Icecream
+Value: 135
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Fluctuating
 ----------------------------------------
 Name: Bat
 Value: 120
@@ -409,7 +409,7 @@ Value: 32
 Range: N/A
 Demand: 1
 Rarity: 2
-Stability: Fluctuating
+Stability: Doing Well
 ----------------------------------------
 Name: Sugar
 Value: 32
@@ -937,7 +937,7 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 13250
+Value: 13500
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -955,7 +955,7 @@ Value: 9250
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Chroma Snowcannon
 Value: 7750
@@ -965,7 +965,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Blizzard
-Value: 7500
+Value: 7250
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -1000,35 +1000,28 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2500
+Value: 2400
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Receding
 ----------------------------------------
 Name: Chroma Sweet
-Value: 2250
+Value: 2200
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Icecream
-Value: 2000
+Value: 1900
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Sands
-Value: 1900
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Fluctuating
-----------------------------------------
-Name: Chroma Beachy
-Value: 1800
+Value: 1850
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1040,6 +1033,13 @@ Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
+----------------------------------------
+Name: Chroma Beachy
+Value: 1750
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Fluctuating
 ----------------------------------------
 Name: Chroma Darkbringer
 Value: 65
@@ -1252,9 +1252,9 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Vampires Axe
-Value: 1275
+Value: 1300
 Range: N/A
-Demand: 5
+Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
