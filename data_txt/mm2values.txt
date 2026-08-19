@@ -20,7 +20,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Evergreen
-Value: 2500
+Value: 2550
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -34,7 +34,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Alienbeam
-Value: 2100
+Value: 2350
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -48,7 +48,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Raygun
-Value: 1800
+Value: 1900
 Range: N/A
 Demand: 6
 Rarity: 3
@@ -173,21 +173,21 @@ Demand: 4
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Ocean
-Value: 285
-Range: N/A
-Demand: 4
-Rarity: 3
-Stability: Stable
-----------------------------------------
 Name: Xenoknife
-Value: 285
+Value: 295
 Range: N/A
-Demand: 4
+Demand: 5
 Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Xenoshot
+Value: 295
+Range: N/A
+Demand: 5
+Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Ocean
 Value: 285
 Range: N/A
 Demand: 4
@@ -272,20 +272,13 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Beachy
-Value: 135
+Value: 130
 Range: N/A
 Demand: 2
 Rarity: 3
-Stability: Fluctuating
+Stability: Underpaid For
 ----------------------------------------
 Name: Sands
-Value: 135
-Range: N/A
-Demand: 2
-Rarity: 3
-Stability: Fluctuating
-----------------------------------------
-Name: Icecream
 Value: 130
 Range: N/A
 Demand: 2
@@ -298,6 +291,13 @@ Range: N/A
 Demand: 2
 Rarity: 2
 Stability: Fluctuating
+----------------------------------------
+Name: Icecream
+Value: 120
+Range: N/A
+Demand: 2
+Rarity: 3
+Stability: Underpaid For
 ----------------------------------------
 Name: Pearlshine
 Value: 85
@@ -327,12 +327,12 @@ Demand: 1
 Rarity: 2
 Stability: Stable
 ----------------------------------------
-Name: Luger
-Value: 37
+Name: Ornament Godly
+Value: 38
 Range: N/A
-Demand: 1
+Demand: 2
 Rarity: 2
-Stability: Stable
+Stability: Doing Well
 ----------------------------------------
 Name: Red Luger
 Value: 37
@@ -340,13 +340,6 @@ Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
-----------------------------------------
-Name: Ornament Godly
-Value: 35
-Range: N/A
-Demand: 2
-Rarity: 2
-Stability: Doing Well
 ----------------------------------------
 Name: Phantom
 Value: 35
@@ -361,6 +354,13 @@ Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
+----------------------------------------
+Name: Luger
+Value: 35
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Underpaid For
 ----------------------------------------
 Name: Candleflame
 Value: 33
@@ -923,7 +923,7 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Constellation
-Value: 27000
+Value: 27500
 Range: N/A
 Demand: 7
 Rarity: 6
@@ -937,11 +937,11 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Raygun
-Value: 13750
+Value: 14000
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Chroma Sunrise
 Value: 13250
@@ -965,7 +965,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Blizzard
-Value: 7000
+Value: 6500
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -993,21 +993,21 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Snow Dagger
-Value: 3250
+Value: 3000
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Treat
-Value: 2300
+Value: 2250
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Receding
 ----------------------------------------
 Name: Chroma Sweet
-Value: 2150
+Value: 2100
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1021,21 +1021,21 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Icecream
-Value: 1800
+Value: 1600
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Sands
-Value: 1750
+Value: 1550
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Beachy
-Value: 1650
+Value: 1450
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1252,7 +1252,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Vampires Axe
-Value: 1325
+Value: 1400
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1322,7 +1322,7 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Corrupt
-Value: 410
+Value: 400
 Range: N/A
 Demand: 4
 Rarity: 3
