@@ -1,5 +1,5 @@
 Name: Travelers Gun
-Value: 5500
+Value: 5400
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -13,35 +13,35 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Constellation
-Value: 3150
+Value: 3100
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Evergreen
-Value: 2800
+Value: 2700
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Receding
 ----------------------------------------
 Name: Alienbeam
-Value: 1950
+Value: 1850
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Receding
 ----------------------------------------
 Name: Vampires Gun
-Value: 1950
+Value: 1850
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Receding
 ----------------------------------------
 Name: Turkey
-Value: 1900
+Value: 1850
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -54,18 +54,18 @@ Demand: 6
 Rarity: 4
 Stability: Stable
 ----------------------------------------
+Name: Raygun
+Value: 1800
+Range: N/A
+Demand: 6
+Rarity: 3
+Stability: Stable
+----------------------------------------
 Name: Darksword
 Value: 1775
 Range: N/A
 Demand: 6
 Rarity: 4
-Stability: Stable
-----------------------------------------
-Name: Raygun
-Value: 1750
-Range: N/A
-Demand: 5
-Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blossom
@@ -188,14 +188,14 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Blizzard
-Value: 290
+Value: 300
 Range: N/A
 Demand: 5
 Rarity: 3
 Stability: Doing Well
 ----------------------------------------
 Name: Snowstorm
-Value: 290
+Value: 300
 Range: N/A
 Demand: 5
 Rarity: 3
@@ -257,14 +257,14 @@ Demand: 3
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Icecream
-Value: 150
+Name: Borealis
+Value: 145
 Range: N/A
 Demand: 2
 Rarity: 3
 Stability: Stable
 ----------------------------------------
-Name: Borealis
+Name: Icecream
 Value: 145
 Range: N/A
 Demand: 2
@@ -300,7 +300,7 @@ Rarity: 3
 Stability: Fluctuating
 ----------------------------------------
 Name: Ornament Godly
-Value: 100
+Value: 95
 Range: N/A
 Demand: 2
 Rarity: 2
@@ -888,21 +888,21 @@ Rarity: 1
 Stability: Stable
 ----------------------------------------
 Name: Chroma Travelers Gun
-Value: 180000
+Value: 175000
 Range: N/A
 Demand: 8
 Rarity: 10
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Evergun
-Value: 66000
+Value: 64000
 Range: N/A
 Demand: 7
 Rarity: 8
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Evergreen
-Value: 45000
+Value: 44000
 Range: N/A
 Demand: 7
 Rarity: 7
@@ -916,7 +916,7 @@ Rarity: 6
 Stability: Stable
 ----------------------------------------
 Name: Chroma Constellation
-Value: 32500
+Value: 32000
 Range: N/A
 Demand: 7
 Rarity: 6
@@ -944,7 +944,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunrise
-Value: 11000
+Value: 10750
 Range: N/A
 Demand: 5
 Rarity: 5
@@ -958,18 +958,18 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunset
-Value: 7000
+Value: 6750
 Range: N/A
 Demand: 5
 Rarity: 5
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Blizzard
-Value: 4750
+Value: 5000
 Range: N/A
 Demand: 6
 Rarity: 5
-Stability: Doing Well
+Stability: Overpaid For
 ----------------------------------------
 Name: Chroma Snowstorm
 Value: 4250
@@ -1000,7 +1000,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Icecream
-Value: 2300
+Value: 2250
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1028,14 +1028,14 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sands
-Value: 1625
+Value: 1600
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Beachy
-Value: 1575
+Value: 1550
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1231,7 +1231,7 @@ Rarity: 11
 Stability: Overpaid For
 ----------------------------------------
 Name: Gingerscope
-Value: 16250
+Value: 16000
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1245,11 +1245,11 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2600
+Value: 2650
 Range: N/A
-Demand: 6
+Demand: 5
 Rarity: 4
-Stability: Doing Well
+Stability: Stable
 ----------------------------------------
 Name: Vampires Axe
 Value: 1600
