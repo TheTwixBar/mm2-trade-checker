@@ -2,28 +2,14 @@ import json
 import os
 from flask import Flask, request, jsonify, render_template
 from trade_ai import load_items, evaluate_trade, explain, score_item, find_best_offer, find_top_offers
-try:
-    from ml_model import ml_evaluate_trade
-    ML_AVAILABLE = True
-except Exception as e:
-    print(f"ML model unavailable: {e}")
-    from trade_ai import evaluate_trade as ml_evaluate_trade
-    ML_AVAILABLE = False
 
 app = Flask(__name__)
 db = load_items()
 
 INVENTORY_FILE = "data_txt/inventory.json"
 
-# Untradeable item prefixes — never show in autocomplete
-UNTRADEABLE_PREFIXES = ("gold ", "silver ", "bronze ", "red ", "blue ", "purple ")
-
-def is_untradeable(name: str) -> bool:
-    lower = name.lower()
-    return any(lower.startswith(p) for p in UNTRADEABLE_PREFIXES)
-
 def tradeable_items():
-    return sorted(k for k in db.keys() if not is_untradeable(k))
+    return sorted(db.keys())
 
 
 # ── Inventory persistence ────────────────────────────────────────────────────
@@ -72,7 +58,7 @@ def api_trade():
     if not yours_items or not theirs_items:
         return jsonify({"error": "Please enter at least one item on each side."}), 400
 
-    result = ml_evaluate_trade(yours_items, theirs_items)
+    result = evaluate_trade(yours_items, theirs_items)
     return jsonify({
     "result":          result["result"],
     "confidence":      result.get("confidence", ""),
@@ -92,13 +78,6 @@ def api_trade():
     "your_stability":  result["your_stability"],
     "their_stability": result["their_stability"],
     "bundle_penalty":  result["bundle_penalty"],
-    "ml_label":        result.get("ml_label"),
-    "ml_score":        result.get("ml_score"),
-    "ml_win_prob":     result.get("ml_win_prob"),
-    "ml_fair_prob":    result.get("ml_fair_prob"),
-    "ml_lose_prob":    result.get("ml_lose_prob"),
-    "ml_confidence":   result.get("ml_confidence"),
-    "ml_available":    result.get("ml_available"),
 })
 
 @app.route("/api/stats", methods=["GET"])
