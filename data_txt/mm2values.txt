@@ -13,7 +13,7 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Constellation
-Value: 2750
+Value: 2700
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -24,27 +24,34 @@ Value: 2500
 Range: N/A
 Demand: 5
 Rarity: 4
-Stability: Receding
+Stability: Stable
 ----------------------------------------
 Name: Alienbeam
+Value: 2100
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Stable
+----------------------------------------
+Name: Turkey
 Value: 2050
 Range: N/A
 Demand: 6
 Rarity: 4
 Stability: Doing Well
 ----------------------------------------
-Name: Turkey
-Value: 2000
-Range: N/A
-Demand: 6
-Rarity: 4
-Stability: Doing Well
-----------------------------------------
 Name: Raygun
-Value: 1975
+Value: 1950
 Range: N/A
 Demand: 5
 Rarity: 3
+Stability: Stable
+----------------------------------------
+Name: Vampires Gun
+Value: 1825
+Range: N/A
+Demand: 6
+Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Darkshot
@@ -58,13 +65,6 @@ Name: Darksword
 Value: 1775
 Range: N/A
 Demand: 6
-Rarity: 4
-Stability: Stable
-----------------------------------------
-Name: Vampires Gun
-Value: 1775
-Range: N/A
-Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
@@ -237,7 +237,7 @@ Rarity: 3
 Stability: Stable
 ----------------------------------------
 Name: Watergun
-Value: 170
+Value: 165
 Range: N/A
 Demand: 3
 Rarity: 3
@@ -286,25 +286,18 @@ Rarity: 2
 Stability: Stable
 ----------------------------------------
 Name: Beachy
-Value: 100
+Value: 95
 Range: N/A
 Demand: 2
 Rarity: 3
 Stability: Fluctuating
 ----------------------------------------
 Name: Sands
-Value: 100
+Value: 95
 Range: N/A
 Demand: 2
 Rarity: 3
 Stability: Fluctuating
-----------------------------------------
-Name: Ornament Godly
-Value: 85
-Range: N/A
-Demand: 2
-Rarity: 2
-Stability: Underpaid For
 ----------------------------------------
 Name: Pearlshine
 Value: 80
@@ -319,6 +312,13 @@ Range: N/A
 Demand: 1
 Rarity: 2
 Stability: Stable
+----------------------------------------
+Name: Ornament Godly
+Value: 80
+Range: N/A
+Demand: 1
+Rarity: 2
+Stability: Underpaid For
 ----------------------------------------
 Name: Pearl
 Value: 75
@@ -888,7 +888,7 @@ Rarity: 1
 Stability: Stable
 ----------------------------------------
 Name: Chroma Travelers Gun
-Value: 155000
+Value: 150000
 Range: N/A
 Demand: 8
 Rarity: 10
@@ -958,7 +958,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sunset
-Value: 7250
+Value: 7500
 Range: N/A
 Demand: 6
 Rarity: 5
@@ -1006,19 +1006,19 @@ Demand: 5
 Rarity: 4
 Stability: Stable
 ----------------------------------------
-Name: Chroma Icecream
-Value: 1800
-Range: N/A
-Demand: 5
-Rarity: 4
-Stability: Underpaid For
-----------------------------------------
 Name: Chroma Treat
 Value: 1775
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Stable
+----------------------------------------
+Name: Chroma Icecream
+Value: 1750
+Range: N/A
+Demand: 5
+Rarity: 4
+Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Sweet
 Value: 1725
@@ -1028,14 +1028,14 @@ Rarity: 4
 Stability: Stable
 ----------------------------------------
 Name: Chroma Sands
-Value: 1350
+Value: 1300
 Range: N/A
 Demand: 5
 Rarity: 4
 Stability: Underpaid For
 ----------------------------------------
 Name: Chroma Beachy
-Value: 1300
+Value: 1250
 Range: N/A
 Demand: 5
 Rarity: 4
@@ -1231,7 +1231,7 @@ Rarity: 11
 Stability: Overpaid For
 ----------------------------------------
 Name: Gingerscope
-Value: 16000
+Value: 16250
 Range: N/A
 Demand: 6
 Rarity: 4
@@ -1245,7 +1245,7 @@ Rarity: 5
 Stability: Stable
 ----------------------------------------
 Name: Celestial
-Value: 2350
+Value: 2300
 Range: N/A
 Demand: 5
 Rarity: 4
